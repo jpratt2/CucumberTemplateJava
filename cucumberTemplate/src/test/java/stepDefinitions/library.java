@@ -1,5 +1,7 @@
 package stepDefinitions;
-import com.codeborne.selenide.*;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -48,29 +50,48 @@ public class library{
 
 
     ////////////utilities///////////////
+
+    HashMap<String, String> elementNameMap_Gherkin = new HashMap<String, String>();
+
+    public String elementNameLookup_Gherkin(String name){
+        return elementNameMap_Gherkin.get(name);
+    }
+
+    HashMap<String, SelenideElement> elementNameMap_Java = new HashMap<String, SelenideElement>();
+    public SelenideElement elementNameLookup_Java(String name){
+        return elementNameMap_Java.get(name);
+    }
+
+    public void putElementName(String name, SelenideElement elementLocatorCode){
+        elementNameMap_Java.put(name, elementLocatorCode);
+        //example:  putElementName("main button", $("#divMain").find("button"));
+    }
+
     public SelenideElement getElement(String elementLocator){
-        /*
-        When a digit comes after locator code in single quotes, the digit is used as the index value of the desired element
-        elementLocator examples:
-        By.className("test")
-        'By.className(test")'5
-        #buttonIdValue
-        '#buttonIdValue'5
-          This would get the 6th button. The index value of 0 is the first.
-          An elementLocator can be a cssSelector or a By. selenium selector.
-        */
-        String indexStr = StringUtils.substringAfterLast(elementLocator,"'");
-        if(indexStr.equals("")){indexStr = "0";}
-        Integer index = Integer.parseInt(indexStr);
-        elementLocator = StringUtils.removePattern(elementLocator,"'\\d+$");
-        elementLocator = StringUtils.removePattern(elementLocator,"^'");
         SelenideElement element;
-        printVal(index);
-        printVal(elementLocator);
-        if(elementLocator.matches("By[.].*")){
+
+        //check if the elementLocator is a name for a Java (code) locator
+        if(elementNameLookup_Java(elementLocator) != null) {
+            element = elementNameLookup_Java(elementLocator);
+            return element;//////////////////////end of method for java locator///////////////
+        }
+
+        //check if the elementLocator is a name for a Gherkin locator
+        if (elementNameLookup_Gherkin(elementLocator) != null){
+            elementLocator = elementNameLookup_Gherkin(elementLocator);
+        }
+        //process the Gherkin (String) locator:
+        String indexStr = StringUtils.substringAfterLast(elementLocator, "'");
+        if (indexStr.equals("")) {
+            indexStr = "0";
+        }
+        Integer index = Integer.parseInt(indexStr);
+        elementLocator = StringUtils.removePattern(elementLocator, "'\\d+$");
+        elementLocator = StringUtils.removePattern(elementLocator, "^'");
+        if (elementLocator.matches("By[.].*")) {
             By byLocator = convertStringToByLocator(elementLocator);
             element = $(byLocator, index);
-        }else{
+        } else {
             element = $(elementLocator, index);
         }
         return element;
@@ -130,6 +151,7 @@ public class library{
         }
         driver.switchTo().window(subWindowHandler); // switch to popup window
     }
+
     public void deselectBrowserPopup() {
         WebDriver driver = getWebDriver();
         driver.switchTo().window(parentWindowHandler);
@@ -163,10 +185,8 @@ public class library{
                         "return computedStyle;"
                 , element,propertyValue);
         return computedStyle;
-
         //source: https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
         // use this, alternatively element.getCssValue()
-
     }
 
 

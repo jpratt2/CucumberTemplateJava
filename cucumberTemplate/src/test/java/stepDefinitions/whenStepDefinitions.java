@@ -47,15 +47,15 @@ public class whenStepDefinitions extends library {
     getWebDriver().manage().deleteCookieNamed(cookieName);
   }
 
-  @When("I click on the element (.*)")
+  @When("I click on (.*)")
   public void clickElement(String elementLocator) {
     SelenideElement element = getElement(elementLocator);
     tabCountBeforeClick = getWebDriver().getWindowHandles().size();
     executeJavaScript("arguments[0].click();", element);//sometimes Chrome requires this for the "element not clickable" error
   }
 
-  @When("I double-click on the element (.*)")
-  public void clickElement(String click, String elementLocator) {
+  @When("I double-click on (.*)")
+  public void doubleClickElement(String elementLocator) {
     SelenideElement element = getElement(elementLocator);
     tabCountBeforeClick = getWebDriver().getWindowHandles().size();
     element.doubleClick();
@@ -177,13 +177,15 @@ public class whenStepDefinitions extends library {
 
   @When("I exit the test")
   public void exitTest() {
+    //for debugging
     System.exit(0);
   }
 
   @When("I test the test")
   public void testTheTest(){
   //for debugging, as needed
-  open("demo app");
+  openURL("demo app");
+  // test code
   }
 
   @When("I highlight the element (.*)")
@@ -245,7 +247,18 @@ public class whenStepDefinitions extends library {
     dropdown.selectByVisibleText(optionText);
   }
 
+  @When("I set the name (.*) to the element (.*)")
+  public void declareElementName(String name, String elementLocator){
+    elementNameMap_Gherkin.put(name,elementLocator);
+  }
 
-
+  @When("I set names to page elements")
+  public void putNamesToElementsJava(){
+    //compound locators can help locate page elements more easily. For example, here is code for the first button in the div with #divID:
+    //putElementName("main button", $("#divID").find(By.tagName("button")));
+    //for use in "demo app", this finds the div that contains the "Dropzone" without any id:
+    putElementName("DragNDrop Area", $(".container").$("div",1));
+    //it can now be used as "main button" in Gherkin syntax.
+  }
 
 }

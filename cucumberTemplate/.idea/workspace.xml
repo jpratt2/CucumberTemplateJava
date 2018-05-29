@@ -12,11 +12,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="whenStepDefinitions.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="whenStepDefinitions.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/whenStepDefinitions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="469">
+              <caret line="259" column="34" selection-start-line="259" selection-start-column="34" selection-end-line="259" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#858#859#0" expanded="true" />
@@ -27,26 +27,23 @@
                 <element signature="e#1111#1112#0" expanded="true" />
                 <element signature="e#1201#1202#0" expanded="true" />
                 <element signature="e#1264#1265#0" expanded="true" />
+                <element signature="e#2323#2331#0" expanded="true" />
                 <element signature="e#3849#3850#0" expanded="true" />
                 <element signature="e#3904#3905#0" expanded="true" />
                 <element signature="e#6232#6233#0" expanded="true" />
                 <element signature="e#6288#6289#0" expanded="true" />
-                <element signature="e#6343#6344#0" expanded="true" />
-                <element signature="e#6367#6368#0" expanded="true" />
-                <element signature="e#6468#6469#0" expanded="true" />
-                <element signature="e#6510#6511#0" expanded="true" />
-                <element signature="e#7212#7220#0" expanded="true" />
-                <element signature="e#7561#7569#0" expanded="true" />
+                <element signature="e#7325#7333#0" expanded="true" />
+                <element signature="e#7674#7682#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="demo.feature" pinned="false" current-in-tab="false">
+      <file leaf-file-name="demo.feature" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/resources/demo.feature">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="41" lean-forward="true" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+            <state relative-caret-position="153">
+              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -54,10 +51,16 @@
       <file leaf-file-name="library.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/library.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1734">
-              <caret line="102" column="5" lean-forward="true" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
+            <state relative-caret-position="289">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1813#1829#0" expanded="true" />
+                <element signature="e#1883#1884#0" expanded="true" />
+                <element signature="e#1931#1932#0" expanded="true" />
+                <element signature="e#2108#2133#0" expanded="true" />
+                <element signature="e#2170#2171#0" expanded="true" />
+                <element signature="e#2222#2223#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -95,13 +98,14 @@
       <find>SelenideElement</find>
       <find>(cssSelector)</find>
       <find>SelenideElement element = \$\(cssSelector</find>
-      <find>cssSelector</find>
       <find>cookie</find>
       <find>not\)</find>
       <find>highl</find>
       <find>returnElement</find>
       <find>printVa</find>
       <find>css pro</find>
+      <find>click</find>
+      <find>test</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -153,8 +157,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="743" />
-    <option name="y" value="93" />
+    <option name="x" value="639" />
+    <option name="y" value="59" />
     <option name="width" value="1203" />
     <option name="height" value="881" />
   </component>
@@ -164,7 +168,6 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -209,6 +212,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -290,7 +294,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="743" y="93" width="1203" height="881" extended-state="0" />
+    <frame x="639" y="59" width="1203" height="881" extended-state="0" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -304,8 +308,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18372704" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1872266" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -317,6 +320,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -328,6 +332,64 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/whenStepDefinitions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#882#883#0" expanded="true" />
+            <element signature="e#956#957#0" expanded="true" />
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1080#1081#0" expanded="true" />
+            <element signature="e#1111#1112#0" expanded="true" />
+            <element signature="e#1201#1202#0" expanded="true" />
+            <element signature="e#1264#1265#0" expanded="true" />
+            <element signature="e#2323#2331#0" expanded="true" />
+            <element signature="e#3849#3850#0" expanded="true" />
+            <element signature="e#3904#3905#0" expanded="true" />
+            <element signature="e#6232#6233#0" expanded="true" />
+            <element signature="e#6288#6289#0" expanded="true" />
+            <element signature="e#7325#7333#0" expanded="true" />
+            <element signature="e#7674#7682#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/demo.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="41" lean-forward="true" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/library.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1734">
+          <caret line="102" column="5" lean-forward="true" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1813#1829#0" expanded="true" />
+            <element signature="e#1883#1884#0" expanded="true" />
+            <element signature="e#1931#1932#0" expanded="true" />
+            <element signature="e#2108#2133#0" expanded="true" />
+            <element signature="e#2170#2171#0" expanded="true" />
+            <element signature="e#2222#2223#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/thenStepDefinitions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2941">
+          <caret line="173" column="5" selection-start-line="173" selection-start-column="5" selection-end-line="173" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/whenStepDefinitions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2091">
@@ -342,16 +404,13 @@
             <element signature="e#1111#1112#0" expanded="true" />
             <element signature="e#1201#1202#0" expanded="true" />
             <element signature="e#1264#1265#0" expanded="true" />
+            <element signature="e#2323#2331#0" expanded="true" />
             <element signature="e#3849#3850#0" expanded="true" />
             <element signature="e#3904#3905#0" expanded="true" />
             <element signature="e#6232#6233#0" expanded="true" />
             <element signature="e#6288#6289#0" expanded="true" />
-            <element signature="e#6343#6344#0" expanded="true" />
-            <element signature="e#6367#6368#0" expanded="true" />
-            <element signature="e#6468#6469#0" expanded="true" />
-            <element signature="e#6510#6511#0" expanded="true" />
-            <element signature="e#7212#7220#0" expanded="true" />
-            <element signature="e#7561#7569#0" expanded="true" />
+            <element signature="e#7325#7333#0" expanded="true" />
+            <element signature="e#7674#7682#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -382,6 +441,12 @@
           <caret line="40" selection-start-line="40" selection-end-line="40" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1813#1829#0" expanded="true" />
+            <element signature="e#1883#1884#0" expanded="true" />
+            <element signature="e#1931#1932#0" expanded="true" />
+            <element signature="e#2108#2133#0" expanded="true" />
+            <element signature="e#2170#2171#0" expanded="true" />
+            <element signature="e#2222#2223#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -407,16 +472,13 @@
             <element signature="e#1111#1112#0" expanded="true" />
             <element signature="e#1201#1202#0" expanded="true" />
             <element signature="e#1264#1265#0" expanded="true" />
+            <element signature="e#2323#2331#0" expanded="true" />
             <element signature="e#3849#3850#0" expanded="true" />
             <element signature="e#3904#3905#0" expanded="true" />
             <element signature="e#6232#6233#0" expanded="true" />
             <element signature="e#6288#6289#0" expanded="true" />
-            <element signature="e#6343#6344#0" expanded="true" />
-            <element signature="e#6367#6368#0" expanded="true" />
-            <element signature="e#6468#6469#0" expanded="true" />
-            <element signature="e#6510#6511#0" expanded="true" />
-            <element signature="e#7212#7220#0" expanded="true" />
-            <element signature="e#7561#7569#0" expanded="true" />
+            <element signature="e#7325#7333#0" expanded="true" />
+            <element signature="e#7674#7682#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -456,16 +518,13 @@
             <element signature="e#1111#1112#0" expanded="true" />
             <element signature="e#1201#1202#0" expanded="true" />
             <element signature="e#1264#1265#0" expanded="true" />
+            <element signature="e#2323#2331#0" expanded="true" />
             <element signature="e#3849#3850#0" expanded="true" />
             <element signature="e#3904#3905#0" expanded="true" />
             <element signature="e#6232#6233#0" expanded="true" />
             <element signature="e#6288#6289#0" expanded="true" />
-            <element signature="e#6343#6344#0" expanded="true" />
-            <element signature="e#6367#6368#0" expanded="true" />
-            <element signature="e#6468#6469#0" expanded="true" />
-            <element signature="e#6510#6511#0" expanded="true" />
-            <element signature="e#7212#7220#0" expanded="true" />
-            <element signature="e#7561#7569#0" expanded="true" />
+            <element signature="e#7325#7333#0" expanded="true" />
+            <element signature="e#7674#7682#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -577,9 +636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../backups/Multiple URL Opener v May 4 2018/test/openMultipleURLTest.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/demos/demo.feature" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -598,19 +654,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/demo.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="41" lean-forward="true" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/library.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1734">
-          <caret line="102" column="5" lean-forward="true" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
+        <state relative-caret-position="289">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1813#1829#0" expanded="true" />
+            <element signature="e#1883#1884#0" expanded="true" />
+            <element signature="e#1931#1932#0" expanded="true" />
+            <element signature="e#2108#2133#0" expanded="true" />
+            <element signature="e#2170#2171#0" expanded="true" />
+            <element signature="e#2222#2223#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -627,8 +682,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/whenStepDefinitions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="469">
+          <caret line="259" column="34" selection-start-line="259" selection-start-column="34" selection-end-line="259" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#858#859#0" expanded="true" />
@@ -639,17 +694,21 @@
             <element signature="e#1111#1112#0" expanded="true" />
             <element signature="e#1201#1202#0" expanded="true" />
             <element signature="e#1264#1265#0" expanded="true" />
+            <element signature="e#2323#2331#0" expanded="true" />
             <element signature="e#3849#3850#0" expanded="true" />
             <element signature="e#3904#3905#0" expanded="true" />
             <element signature="e#6232#6233#0" expanded="true" />
             <element signature="e#6288#6289#0" expanded="true" />
-            <element signature="e#6343#6344#0" expanded="true" />
-            <element signature="e#6367#6368#0" expanded="true" />
-            <element signature="e#6468#6469#0" expanded="true" />
-            <element signature="e#6510#6511#0" expanded="true" />
-            <element signature="e#7212#7220#0" expanded="true" />
-            <element signature="e#7561#7569#0" expanded="true" />
+            <element signature="e#7325#7333#0" expanded="true" />
+            <element signature="e#7674#7682#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/demo.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
         </state>
       </provider>
     </entry>

@@ -1,11 +1,23 @@
 Feature: Test the Cucumber framework
 
-  Scenario: test highlight and locator function
+  Scenario: test locator function
     When I open demo app
-    And I highlight the element 'By.tagname("button")'1
+    # first button
     And I highlight the element By.tagname("button")
+    # second button
+    And I highlight the element 'By.tagname("button")'1
+
+    # first button via cssSelector
     And I highlight the element button
+    # second button
     And I highlight the element 'button'1
+
+    #set custom names
+    And I set the name main button to the element By.tagname("button")
+    And I highlight the element main button
+
+    And I set names to page elements
+    And I highlight the element DragNDrop Area
     And I pause 2000 ms
 
 
