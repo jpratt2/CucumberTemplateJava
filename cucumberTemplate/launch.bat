@@ -1,4 +1,0 @@
-SET COMMAND="mvn clean test"
-
-START POWERSHELL -NoExit %COMMAND% || CMD /K %COMMAND%
-
