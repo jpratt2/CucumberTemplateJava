@@ -8,8 +8,7 @@ It is not necessary to use quotation marks in these Gherkin statements.
 The template uses the benefits of the Selenide framework to solve some of the problems in Selenium including 
 1) automatic waits, 2) additional locator options, and 3) browser drivers.
 
-Locator options
-Within the Gherkin syntax, 2 options are available for locators:
+Two options are available for locators:
 a) By. selenium locators.
     And I click on By.tagname("button")
     
