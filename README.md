@@ -9,6 +9,7 @@ The template uses the benefits of the Selenide framework to solve some of the pr
 1) automatic waits, 2) additional locator options, and 3) browser drivers.
 
 Two options are available for locators:
+
 a) By. selenium locators.
 
     And I click on By.tagname("button")
@@ -26,20 +27,20 @@ b) CSS selectors
 
     And I click on #buttonId
 
-In addition, it is possible to put these locators within single quotes and follow them by a number representing the INDEX value.
+In addition, it is possible to put these locators within single quotes and follow them by a number to obtain an element with that INDEX value.
 
     And I click on 'By.tagname("button")'3
     And I click on '.button'1
 
-See demo.feature for a working example. Additional tests will be found in src/other/selfTest.
+See demo.feature for a working example. Additional tests are in src/other/selfTest.
 
 Selenide offers additional and compound locators such as  
 
     $("#divMain").$("button")
 
 This code represents the first button in #divMain. 
-When quotes are used, the locator is a cssSelector. 
-Standard Selenium By selectors can also be used:
+
+Standard By. Selenium selectors can also be used:
 
     $(By.className("class"), 2);
 
@@ -49,8 +50,7 @@ Selenide also offers additional selectors such as
 
     $$("#multirowTable tr").filterBy(text("Norris"))
 
-A single $ will return the first matching element.
-Two $$ will return a collection of elements.
+Two $$ will return a collection of elements, and a single $ returns the first matching element.
 
 Learn more: 
 http://selenide.org/documentation.html
@@ -61,18 +61,17 @@ https://selenide.gitbooks.io/user-guide/content/en/selenide-api/selectors.html
 To use a compound selector such as the above, you can use this Gherkin statement or your own statement:
 
     I set names to page elements
-Within the code, set the name of the compound locator using the putElementName method.
+    
+Within the Java code, set the name of the compound locator using the putElementName method.
 
      putElementName("main button", $("#divMain").$("button") )
 
-The Gherkin statement will then recognize main button.
+A Gherkin statement will then recognize main button.
 
      I click on main button     
 
 There are 2 categories of statements:
-When statements are for setting up the test. (Cucumber doesn't distinguish any difference between any of the keywords. They are only for readability.) 
-
-Then statements are for assertions. 
+When statements are for setting up the test. (Cucumber doesn't distinguish any difference between the keywords.) Then statements are for assertions. 
 
 When statements
 
