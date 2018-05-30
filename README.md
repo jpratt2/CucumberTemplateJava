@@ -50,7 +50,7 @@ Selenide also offers additional selectors such as
 
     $$("#multirowTable tr").filterBy(text("Norris"))
 
-Two $$ will return a collection of elements, and a single $ returns the first matching element.
+Two $$ will return a collection of elements, and a single $ returns a single element.
 
 Learn more: 
 http://selenide.org/documentation.html
