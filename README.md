@@ -10,6 +10,7 @@ The template uses the benefits of the Selenide framework to solve some of the pr
 
 Two options are available for locators:
 a) By. selenium locators.
+
     And I click on By.tagname("button")
     
 	By.className("value")
@@ -22,6 +23,7 @@ a) By. selenium locators.
 	By.xpath("value")
 
 b) CSS selectors
+
     And I click on #buttonId
 
 In addition, it is possible to put these locators within single quotes and follow them by a number representing the INDEX value.
