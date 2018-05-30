@@ -1,6 +1,5 @@
-# CucumberTemplateJava
-Cucumber Template for Java
-
+# Cucumber Template for Java
+	
 This Cucumber template is designed for use with Java, Maven, IntelliJ, and the Gherkin plugin for IntelliJ (https://plugins.jetbrains.com/plugin/9164-gherkin).
 
 It is not necessary to use quotation marks in these Gherkin statements.
