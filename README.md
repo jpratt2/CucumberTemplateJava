@@ -121,7 +121,6 @@ Then statements
     the element (.*) should( not)* contain within it this text: (.*)
     the element (.*) should( not)* have exactly this text: (.*)
     the element (.*) should( not)* have any text
-    the element (.*) should( not)* be empty
     the browser title should( not)* be (.*)
     the browser URL should( not)* be (.*)
     the browser URL path should( not)* be (.*)
