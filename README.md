@@ -59,7 +59,8 @@ https://selenide.gitbooks.io/user-guide/content/en/selenide-api/selectors.html
 
 
 To use a compound selector such as the above, you can use this Gherkin statement or your own statement:
-I set names to page elements
+
+    I set names to page elements
 Within the code, set the name of the compound locator using the putElementName method.
 
      putElementName("main button", $("#divMain").$("button") )
