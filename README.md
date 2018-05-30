@@ -42,30 +42,31 @@ In this case, the 2 represents the index value.
 
 Selenide also offers additional selectors such as
 $$("#multirowTable tr").filterBy(text("Norris"))
-
 A single $ represents one element.
 Two $$ represents a collection of elements.
 Learn more: 
+http://selenide.org/documentation.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/elements-collection.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/selectors.html
-http://selenide.org/documentation.html
+
 
 To use a compound selector such as the above, you can use this Gherkin statement or your own statement:
 I set names to page elements
 Within the code, set the name of the compound locator using the putElementName method.
+
      putElementName("main button", $("#divMain").$("button") )
+
 The Gherkin statement will then recognize main button.
+
      I click on main button     
 
 There are 2 categories of statements:
-When statements
-For setting up the test. (Cucumber doesn't distinguish any difference between any of these keywords. They are for readability only.)
-They all start with "I".
+When statements are for setting up the test. (Cucumber doesn't distinguish any difference between any of the keywords. They are only for readability.) 
 
-Then statements
-Test assertions. They all contain the word "should".
+Then statements are for assertions. 
 
 When statements
+
     I open (.*)
     I wait for the page to load  
     I pause (\\d+) ms
@@ -103,6 +104,7 @@ When statements
     I set names to page elements
 
 Then statements
+
     the element (.*) should( not)* be visible
     the element (.*) should( not)* be enabled
     the element (.*) should( not)* be selected
