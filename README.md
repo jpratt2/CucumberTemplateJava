@@ -97,7 +97,7 @@ When statements
     I focus on element (.*)
     I move the mouse to element (\\S+) with an offset of (\\d+),(\\d+)
     I move the mouse to element (\\S+)$
-    I exit the test
+    I stop the test
     I test the test
     I highlight the element (.*)
     I println the value (.*)
@@ -134,6 +134,7 @@ Then statements
     the element (.*) should( not)* be positioned at (\\d+)px on the (x|y) axis
     (an alertbox|a confirmbox|a prompt) should( not)* be opened
     (an alertbox|a confirmbox|a prompt) should( not)* contain the text (.*)
+    the browser width should be (\\d+) pixels
 
 This project is adapted from the Cucumber boilerplate from Christian Bromann for webdriver.io at https://github.com/webdriverio/cucumber-boilerplate
 
