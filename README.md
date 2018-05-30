@@ -137,3 +137,14 @@ Then statements
 
 This project is adapted from the Cucumber boilerplate from Christian Bromann for webdriver.io at https://github.com/webdriverio/cucumber-boilerplate
 
+For an installable version of Maven on Windows: https://installmaven.weebly.com/
+
+Command line switches to launch browsers from Selenide:
+
+    mvn clean test -P chrome
+    mvn clean test -P firefox
+    mvn clean test -P ie
+    mvn clean test -P edge
+    mvn clean test -P phantomjs
+    mvn clean test -P htmlunit
+    mvn clean test -P safari
