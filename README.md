@@ -33,18 +33,25 @@ In addition, it is possible to put these locators within single quotes and follo
 
 See demo.feature for a working example. Additional tests will be found in src/other/selfTest.
 
-Selenide offers additional and compound locators such as 
-$("#divMain").$("button")
+Selenide offers additional and compound locators such as  
+
+    $("#divMain").$("button")
+
 This code represents the first button in #divMain. 
 When quotes are used, the locator is a cssSelector. 
 Standard Selenium By selectors can also be used:
-$(By.className("class"), 2);
+
+    $(By.className("class"), 2);
+
 In this case, the 2 represents the index value.
 
 Selenide also offers additional selectors such as
-$$("#multirowTable tr").filterBy(text("Norris"))
-A single $ represents one element.
-Two $$ represents a collection of elements.
+
+    $$("#multirowTable tr").filterBy(text("Norris"))
+
+A single $ will return the first matching element.
+Two $$ will return a collection of elements.
+
 Learn more: 
 http://selenide.org/documentation.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/elements-collection.html
