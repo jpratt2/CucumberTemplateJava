@@ -2,8 +2,6 @@
 	
 This Cucumber template is designed for use with Java, Maven, IntelliJ, and the Gherkin plugin for IntelliJ (https://plugins.jetbrains.com/plugin/9164-gherkin).
 
-It is not necessary to use quotation marks in these Gherkin statements.
-
 The template uses the benefits of the Selenide framework to solve some of the problems in Selenium including 
 1) automatic waits, 2) additional locator options, and 3) browser drivers.
 
@@ -32,6 +30,8 @@ In addition, it is possible to put these locators within single quotes and follo
     And I click on '.button'1
 
 See demo.feature for a working example. Additional tests are in src/other/selfTest.
+
+It is not necessary to use quotation marks to denote strings in these Gherkin statements.
 
 Selenide offers additional and compound locators such as  
 
