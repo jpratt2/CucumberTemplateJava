@@ -149,3 +149,9 @@ Command line switches to launch browsers in Selenide:
     mvn clean test -P phantomjs
     mvn clean test -P htmlunit
     mvn clean test -P safari
+    
+To run a single scenario from the command line, add a tag such as @this before the Scenario.
+
+    mvn test -Dcucumber.options="--tags @this"
+    mvn test `-Dcucumber.options="--tags @this"  
+In Windows powershell, it is necessary to escape the -D with a backtick.
