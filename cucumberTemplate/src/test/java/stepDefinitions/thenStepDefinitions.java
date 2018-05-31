@@ -9,12 +9,10 @@ import java.util.ArrayList;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.*;
 import static org.junit.Assert.*;
 
 public class thenStepDefinitions extends library {
-
-  //assertions////////////////////////
 
   @Then("the element (.*) should( not)* be visible")
   public void checkElementVisible(String elementLocator, String not) {
@@ -115,16 +113,6 @@ public class thenStepDefinitions extends library {
     }
   }
 
-  @Then("the element (.*) should( not)* be empty")
-  public void checkElementEmpty(String elementLocator, String not) {
-    if (not == null) { //reverse the not value and call checkElementHaveText
-        not = "not";
-    } else {
-        not = null;
-    }
-    checkElementHaveText(elementLocator, not);
-  }
-
   @Then("the browser title should( not)* be (.*)")
   public void checkTitle(String not, String expectedTitleTag) {
     if(not == null){
@@ -167,8 +155,10 @@ public class thenStepDefinitions extends library {
   @Then("the css property (.*) of element (.*) should( not)* have the value (.*)")
   public void checkCssPropertyValue(String property, String elementLocator, String not, String expectedCSSValue){
     SelenideElement element = getElement(elementLocator);
-        if (not == null) {
-      assertEquals(expectedCSSValue, element.getCssValue(property));
+    scrollIntoView(element);
+    if (not == null) {
+      //assertEquals(expectedCSSValue, element.getCssValue(property));
+      assertEquals(expectedCSSValue,getComputedStyle(element,property));
     } else {
       assertNotEquals(expectedCSSValue, element.getCssValue(property));
     }
@@ -197,7 +187,7 @@ public class thenStepDefinitions extends library {
 
   @Then("the cookie (.*) should( not)* exist")
   public void checkCookieNotExist(String cookieName, String not){
-    sleep(750);//wait for cookie
+    sleep(1750);//wait for cookie
     Cookie cookie = getWebDriver().manage().getCookieNamed(cookieName);
     if (not == null){
       assertNotNull(cookie);
@@ -238,7 +228,7 @@ public class thenStepDefinitions extends library {
     }
   }
 
-  @Then("(an alertbox|a confirmbox|a prompt) should( not)* be opened")
+  @Then("the (alertbox|confirmbox|prompt) should( not)* be opened")
   public void checkAlertExists(String skip, String not){
     Boolean alertExists;
     try{
@@ -252,10 +242,9 @@ public class thenStepDefinitions extends library {
     }else{
       assertFalse(alertExists);
     }
-    getWebDriver().switchTo().defaultContent();
   }
 
-  @Then("(an alertbox|a confirmbox|a prompt) should( not)* contain the text (.*)")
+  @Then("the (alertbox|confirmbox|prompt) should( not)* contain the text (.*)")
   public void checkAlertText(String skip, String not, String expectedText){
     String alertText = getWebDriver().switchTo().alert().getText();
     if (not == null){
@@ -263,14 +252,12 @@ public class thenStepDefinitions extends library {
     }else{
       assertNotEquals(expectedText, alertText);
     }
-    getWebDriver().switchTo().defaultContent();
   }
 
   @Then("the element (.*) should( not)* appear exactly (\\d+) times")
   public void checkNumberTimesElementAppears(String elementLocator, String not, Integer expectedAmount){
     ElementsCollection collection = getElementsCollection(elementLocator);
     Integer observedAmount = collection.size();
-    printVal(observedAmount);
     if (not == null){
       assertEquals(expectedAmount, observedAmount);
     }else{
@@ -304,7 +291,7 @@ public class thenStepDefinitions extends library {
   @Then("the URL (.*) should( not)* open in a new tab")
   public void checkURLOpenedNewTab(String expectedURL, String not){
       Boolean isNewTabOpened = isNewTabOpened();
-      ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+      tabs = new ArrayList<String>(driver.getWindowHandles());
       Integer mostRecentTabIndex = tabs.size() - 1;
       driver.switchTo().window(tabs.get(mostRecentTabIndex));
       if (not == null){
@@ -314,7 +301,6 @@ public class thenStepDefinitions extends library {
           assertEquals(expectedURL, driver.getCurrentUrl());
           assertFalse(isNewTabOpened);
       }
-      driver.switchTo().defaultContent();
   }
 
   @Then("a new browser tab should be opened")
@@ -332,6 +318,28 @@ public class thenStepDefinitions extends library {
     }
   }
 
+  @Then("the browser width should be (\\d+) pixels")
+  public void browserWidth(long expectedWidth){
+    int adjustment = isFirefox() ? 14
+                    :isIE() ? 16
+                    :isChrome() ? 16
+                    :16;
+    //Some browsers need an adjustment because their innerWidth measurement is incorrect when compared to the dimensions obtained from a browser plugin. This issue occurs when Selenium sets the width.
+    long observedWidth = executeJavaScript("return window.innerWidth;");
+    observedWidth = observedWidth + adjustment;
+    assertEquals(expectedWidth, observedWidth);
+  }
+
+  @Then("the element (.*) should( not)* contain the class (.*)")
+  public void checkForClass(String elementLocator, String not, String className){
+    SelenideElement element = getElement(elementLocator);
+    Boolean containsClass = executeJavaScript("return arguments[0].classList.contains(arguments[1])", element, className);
+    if (not == null){
+      assertTrue(containsClass);
+    }else{
+      assertFalse(containsClass);
+    }
+  }
 
 }
 

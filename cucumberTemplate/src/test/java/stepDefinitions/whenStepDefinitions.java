@@ -7,13 +7,12 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class whenStepDefinitions extends library {
-  //"When" statements are for test set up
-
   @When("I open (.*)")
   public void openURL(String URL) {
     if (URL.equals("demo app")) {
@@ -25,6 +24,15 @@ public class whenStepDefinitions extends library {
         open("http://" + URL);
       }
     }
+  }
+
+  @When("in a new window or tab, I open (.*)")
+  public void openURLNewWindow(String URL){
+    executeJavaScript("window.open()");
+    int tabCount = driver.getWindowHandles().size();
+    tabs = new ArrayList<String>(driver.getWindowHandles());
+    driver.switchTo().window(tabs.get(tabCount - 1));
+    openURL(URL);
   }
 
   @When("I wait for the page to load")
@@ -42,19 +50,24 @@ public class whenStepDefinitions extends library {
     clearBrowserCookies();
   }
 
-  @When("I delete the cookie named (.*)")
-  public void cookieValue(String cookieName) {
-    getWebDriver().manage().deleteCookieNamed(cookieName);
+  @When("I set a cookie (.*) with the value (.*)")
+  public void setCookie(String cookieName, String cookieValue) {
+    driver.manage().addCookie(new Cookie(cookieName, cookieValue)); //potential additional values to set: (name, value, domain, path, expiry)
   }
 
-  @When("I click on (.*)")
+  @When("I delete the cookie (.*)")
+  public void deleteCookie(String cookieName) {
+    driver.manage().deleteCookieNamed(cookieName);
+  }
+
+  @When("I click (.*)")
   public void clickElement(String elementLocator) {
     SelenideElement element = getElement(elementLocator);
     tabCountBeforeClick = getWebDriver().getWindowHandles().size();
     executeJavaScript("arguments[0].click();", element);//sometimes Chrome requires this for the "element not clickable" error
   }
 
-  @When("I double-click on (.*)")
+  @When("I double-click (.*)")
   public void doubleClickElement(String elementLocator) {
     SelenideElement element = getElement(elementLocator);
     tabCountBeforeClick = getWebDriver().getWindowHandles().size();
@@ -63,7 +76,7 @@ public class whenStepDefinitions extends library {
 
   @When("I set the browser size to (\\d+) by (\\d+) pixels")
   public void setBrowserSize(Integer xValue, Integer yValue) {
-    Dimension dimensions = new Dimension(420, 600);
+    Dimension dimensions = new Dimension(xValue, yValue);
     getWebDriver().manage().window().setSize(dimensions);
   }
 
@@ -97,23 +110,13 @@ public class whenStepDefinitions extends library {
     SelenideElement element1 = getElement(elementLocator1);
     SelenideElement element2 = getElement(elementLocator2);
     Actions act = new Actions(driver);
-    act.dragAndDrop(element1, element2);
+    act.dragAndDrop(element1, element2).perform();
   }
 
   @When("I submit the form (.*)")
   public void submitForm(String elementLocator) {
     SelenideElement element = getElement(elementLocator);
     element.submit();
-  }
-
-  @When("I set a cookie (.*) with the value (.*)")
-  public void setCookie(String cookieName, String cookieValue) {
-    driver.manage().addCookie(new Cookie(cookieName, cookieValue)); //potential additional values to set: (name, value, domain, path, expiry)
-  }
-
-  @When("I delete the cookie (.*)")
-  public void deleteCookie(String cookieName) {
-    driver.manage().deleteCookieNamed(cookieName);
   }
 
   @When("I type the keys (.*) in element (.*)")
@@ -141,14 +144,12 @@ public class whenStepDefinitions extends library {
     } else {
       driver.switchTo().alert().dismiss();
     }
-    driver.switchTo().defaultContent();
     //resource:  https://www.guru99.com/alert-popup-handling-selenium.html
   }
 
   @When("I enter the text (.*) into the prompt")
   public void enterTextForPromptAlert(String textForPrompt) {
     driver.switchTo().alert().sendKeys(textForPrompt);
-    driver.switchTo().defaultContent();
   }
 
   @When("I hover over element (.*)")
@@ -175,17 +176,9 @@ public class whenStepDefinitions extends library {
     moveMouseToElementOffset(elementLocator, 0, 0);
   }
 
-  @When("I exit the test")
-  public void exitTest() {
-    //for debugging
-    System.exit(0);
-  }
-
-  @When("I test the test")
-  public void testTheTest(){
-  //for debugging, as needed
-  openURL("demo app");
-  // test code
+  @When("I stop the test")
+  public void whenStopTest(){
+    stopTest();
   }
 
   @When("I highlight the element (.*)")
@@ -200,6 +193,15 @@ public class whenStepDefinitions extends library {
     System.out.println("****end of print value****");
   }
 
+  @When("I println the values of all cookies")
+  public void whenPrintValAllCookies(){
+    Set<Cookie> cookies = driver.manage().getCookies();
+    for (Cookie cookie : cookies) {
+      printVal(cookie);
+    //source: https://rajeevprabhakaran.wordpress.com/2014/05/07/get-all-cookies-from-a-website-and-print-selenium-webdriver-getcookies/
+    }
+  }
+
   @When("I scroll to element (.*)")
   public void scrollIntoView(String elementLocator) {
     SelenideElement element = getElement(elementLocator);
@@ -208,19 +210,25 @@ public class whenStepDefinitions extends library {
     //source: https://stackoverflow.com/a/20487332
   }
 
-  @When("I close the last opened (window|tab)")
-  public void closeLastOpenedTab(String ignore) {
+  @When("I close the last opened window or tab")
+  public void closeLastOpenedTab() {
     Integer size = driver.getWindowHandles().size();
-    ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+    tabs = new ArrayList<String>(driver.getWindowHandles());
     driver.switchTo().window(tabs.get(size - 1)).close();
     driver.switchTo().window(tabs.get(size - 2));
   }
 
-  @When("I focus on the last opened (window|tab)")
-  public void switchToLastOpenedTab(String ignore) {
+  @When("I focus on the last opened window or tab")
+  public void switchToLastOpenedTab() {
     Integer size = driver.getWindowHandles().size();
-    ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+    tabs = new ArrayList<String>(driver.getWindowHandles());
     driver.switchTo().window(tabs.get(size - 1));
+  }
+
+  @When("I focus on the first opened window or tab")
+  public void switchToFirstOpenedTab() {
+    tabs = new ArrayList<String>(driver.getWindowHandles());
+    driver.switchTo().window(tabs.get(0));
   }
 
   @When("I log in with username (.*) and password (.*)")
@@ -260,5 +268,15 @@ public class whenStepDefinitions extends library {
     putElementName("DragNDrop Area", $(".container").$("div",1));
     //it can now be used as "main button" in Gherkin syntax.
   }
+
+  @When("I test some code")
+  public void testCode(){
+    //for debugging
+    //openURL("demo app");
+
+  }
+
+
+
 
 }

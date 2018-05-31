@@ -2,6 +2,7 @@ package stepDefinitions;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import cucumber.api.junit.Cucumber;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,9 +13,10 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class library{
-    Integer timeoutLimitSeconds = 10;
-    Integer tabCountBeforeClick;
-    WebDriver driver = getWebDriver();
+    public static Integer timeoutLimitSeconds = 10;
+    public static Integer tabCountBeforeClick;
+    public static WebDriver driver = getWebDriver();
+    public static ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 
 
     //debugging/////////////////
@@ -51,13 +53,12 @@ public class library{
 
     ////////////utilities///////////////
 
-    HashMap<String, String> elementNameMap_Gherkin = new HashMap<String, String>();
-
+    public static HashMap<String, String> elementNameMap_Gherkin = new HashMap<String, String>();
     public String elementNameLookup_Gherkin(String name){
         return elementNameMap_Gherkin.get(name);
     }
 
-    HashMap<String, SelenideElement> elementNameMap_Java = new HashMap<String, SelenideElement>();
+    public static HashMap<String, SelenideElement> elementNameMap_Java = new HashMap<String, SelenideElement>();
     public SelenideElement elementNameLookup_Java(String name){
         return elementNameMap_Java.get(name);
     }
@@ -69,11 +70,11 @@ public class library{
 
     public SelenideElement getElement(String elementLocator){
         SelenideElement element;
-
         //check if the elementLocator is a name for a Java (code) locator
         if(elementNameLookup_Java(elementLocator) != null) {
             element = elementNameLookup_Java(elementLocator);
-            return element;//////////////////////end of method for java locator///////////////
+            return element;
+        //////////////////////end of method for java locator///////////////
         }
 
         //check if the elementLocator is a name for a Gherkin locator
@@ -110,7 +111,7 @@ public class library{
 
     public By convertStringToByLocator(String ByText) {
     String byType = StringUtils.substringBetween(ByText,".","(");
-    String byValue = StringUtils.substringBetween(ByText,"\"","\"");
+    String byValue = StringUtils.substringBetween(ByText,"(\"","\")");
     By byLocator= byType.equalsIgnoreCase("className") ? By.className(byValue)
                 : byType.equalsIgnoreCase("cssSelector") ? By.cssSelector(byValue)
                 : byType.equalsIgnoreCase("id") ? By.id(byValue)
@@ -176,8 +177,9 @@ public class library{
         }//source: https://stackoverflow.com/questions/10720325/selenium-webdriver-wait-for-complex-page-with-javascriptjs-to-load/10726369#10726369
     }
 
-
     public String getComputedStyle(SelenideElement element, String propertyValue){
+        //element must be in viewport for the element to be found
+        scrollIntoView(element);
         String computedStyle = (String) executeJavaScript(
                 "var element = arguments[0];"+
                         "var propertyValue = arguments[1];"+
@@ -189,6 +191,18 @@ public class library{
         // use this, alternatively element.getCssValue()
     }
 
+    public void scrollIntoView(SelenideElement element){
+        executeJavaScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    public void stopTest(){
+        Configuration.holdBrowserOpen = true;
+        System.exit(0);
+    }
+
+    public void pause(Integer milliseconds){
+        sleep(milliseconds);
+    }
 
 
 

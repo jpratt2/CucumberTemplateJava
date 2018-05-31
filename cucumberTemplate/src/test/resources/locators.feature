@@ -1,6 +1,7 @@
-Feature: Test the Cucumber framework
+Feature: test predefined steps in the Cucumber framework
+#more steps are located in the src\test\other folder
 
-  Scenario: test locator function
+  Scenario: demonstrate locator code examples
     When I open demo app
     # first button
     And I highlight the element By.tagname("button")
