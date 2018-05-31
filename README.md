@@ -20,7 +20,7 @@ a) By. selenium locators.
 	By.name("value")
 	By.partialLinkText("value")
 	By.tagName("value")
-	By.xpath("value")
+	By.xpath("value")     Example: By.xpath("//*[@id="formSubmitTest"]/div") Note that internal quotes are not escaped.
 
 b) CSS selectors
 
