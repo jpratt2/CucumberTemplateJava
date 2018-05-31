@@ -23,7 +23,7 @@ a) By. selenium locators.
 b) CSS selectors
 
     And I click #buttonId
-    And	I highlight body > div > div:nth-child(4)
+    And I highlight body > div > div:nth-child(4)
 
 In addition, it is possible to put these locators within single quotes and follow them by a number to obtain an element with that INDEX value.
 
