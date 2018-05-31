@@ -156,4 +156,4 @@ To run a single scenario from the command line, add a tag such as @this before t
     mvn test `-Dcucumber.options="--tags @this"  
 In Windows powershell, it is necessary to escape the -D with a backtick.
 
-    mvn test -Dcucumber.options="--name 'scenario 123'"
+    mvn test -Dcucumber.options="--name 'Test browser width'"
