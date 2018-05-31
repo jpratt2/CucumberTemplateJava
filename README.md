@@ -138,7 +138,7 @@ Then statements
 
 This project is adapted from the Cucumber boilerplate from Christian Bromann for webdriver.io at https://github.com/webdriverio/cucumber-boilerplate
 
-For an installable version of Maven on Windows: https://installmaven.weebly.com/
+For an installable version of Maven on Windows, consider https://installmaven.weebly.com/
 
 Command line switches to launch browsers in Selenide:
 
