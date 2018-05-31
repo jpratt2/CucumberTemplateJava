@@ -98,18 +98,19 @@ When statements
     I focus on element (.*)
     I move the mouse to element (\\S+) with an offset of (\\d+),(\\d+)
     I move the mouse to element (\\S+)$
-    I stop the test
-    I test the test
-    I highlight the element (.*)
-    I println the value (.*)
     I scroll to element (.*)
     I close the last opened window or tab
+    I focus on the first opened window or tab
     I focus on the last opened window or tab
     I log in with username (.*) and password (.*)
     I select option # (\\d+) in the dropdown element (.*)
     I select the option with the text (.*) in the dropdown element (.*)
     I set the name (.*) to the element (.*)
     I set names to page elements
+    I test some code
+    I stop the test
+    I highlight the element (.*)
+    I println the value (.*)
 
 Then statements
 
@@ -132,9 +133,11 @@ Then statements
     the cookie (.*) should( not)* exist
     the element (.*) should( not)* be (\\d+)px (wide|tall)
     the element (.*) should( not)* be positioned at (\\d+)px on the (x|y) axis
-    (an alertbox|a confirmbox|a prompt) should( not)* be opened
-    (an alertbox|a confirmbox|a prompt) should( not)* contain the text (.*)
+    the (alertbox|confirmbox|prompt) should( not)* be opened
+    the (alertbox|confirmbox|prompt) should( not)* contain the text (.*)
     the browser width should be (\\d+) pixels
+    the element (.*) should( not)* contain the class (.*)
+
 
 This project is adapted from the Cucumber boilerplate from Christian Bromann for webdriver.io at https://github.com/webdriverio/cucumber-boilerplate
 
