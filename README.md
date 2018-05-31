@@ -5,7 +5,7 @@ This Cucumber template is designed for use with Java, Maven, IntelliJ, and the G
 The template uses the benefits of the Selenide framework to solve some of the problems in Selenium including 
 1) automatic waits, 2) additional locator options, and 3) browser drivers.
 
-Two options are available for locators:
+Two options are available for locators in the Gherkin syntax:
 
 a) By. selenium locators.
 
@@ -22,12 +22,13 @@ a) By. selenium locators.
 
 b) CSS selectors
 
-    And I click on #buttonId
+    And I click #buttonId
+    And	I highlight body > div > div:nth-child(4)
 
 In addition, it is possible to put these locators within single quotes and follow them by a number to obtain an element with that INDEX value.
 
-    And I click on 'By.tagname("button")'3
-    And I click on '.button'1
+    And I click 'By.tagname("button")'3
+    And I click '.button'1
 
 See demo.feature for a working example. Additional tests are in src/other/selfTest.
 
@@ -67,7 +68,7 @@ Within the Java code, set the name of the compound locator using the putElementN
 
 A Gherkin statement will then recognize main button.
 
-     I click on main button     
+     I click main button     
 
 There are 2 categories of statements:
 When statements are for setting up the test. (Cucumber doesn't distinguish any difference between the keywords.) Then statements are for assertions. 
@@ -80,8 +81,8 @@ When statements
     I pause (\\d+) ms
     I clear cookies for the current domain
     I delete the cookie named (.*)
-    I click on (.*)
-    I double-click on (.*)
+    I click (.*)
+    I double-click (.*)
     I set the browser size to (\\d+) by (\\d+) pixels
     I close all browser tabs except the first tab
     I add (.*) to the inputfield (.*)
