@@ -33,7 +33,7 @@ See demo.feature for a working example. Additional tests are in src/other/selfTe
 
 It is not necessary to use quotation marks to denote strings in these Gherkin statements.
 
-Selenide offers additional and compound locators such as  
+Selenide offers compound locators such as  
 
     $("#divMain").$("button")
 
