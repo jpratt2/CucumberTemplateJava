@@ -75,6 +75,7 @@ When statements are for setting up the test. (Cucumber doesn't distinguish any d
 When statements
 
     I open (.*)
+    in a new window or tab, I open (.*)
     I wait for the page to load  
     I pause (\\d+) ms
     I clear cookies for the current domain
@@ -102,8 +103,8 @@ When statements
     I highlight the element (.*)
     I println the value (.*)
     I scroll to element (.*)
-    I close the last opened (window|tab)
-    I focus on the last opened (window|tab)
+    I close the last opened window or tab
+    I focus on the last opened window or tab
     I log in with username (.*) and password (.*)
     I select option # (\\d+) in the dropdown element (.*)
     I select the option with the text (.*) in the dropdown element (.*)
