@@ -153,6 +153,9 @@ Command line switches to launch browsers in Selenide:
 To run a single scenario from the command line, add a tag such as @this before the Scenario.
 
     mvn test -Dcucumber.options="--tags @this"
+    
+Or you may use the scenario name:
+
     mvn test -Dcucumber.options="--name 'Test browser width'"
 
 In Windows powershell, it is necessary to escape the -D with a backtick.
