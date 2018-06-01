@@ -152,11 +152,10 @@ For the step
 
     I clear all cookies in Chrome
 
-You should know:
-
-	1) Only one instance of Chrome can be running at a time
-	2) It uses the robots class to send keystrokes, so it is necessary to let the Chrome window stay focused.
-	3) The browser navigates to a chrome:// page.
+You should know that
+1) Only one instance of Chrome can be running at a time
+2) It uses the robots class to send keystrokes, so it is necessary to let the Chrome window stay focused.
+3) The browser navigates to a chrome:// page.
 
 This project is adapted from the Cucumber boilerplate from Christian Bromann for webdriver.io at https://github.com/webdriverio/cucumber-boilerplate
 
