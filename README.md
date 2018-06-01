@@ -146,16 +146,18 @@ Then statements
 
 # Miscellaneous
 
-The default settings for browser and base URL (and other settings) can be found in the runTest.java file.
+Default settings such as browser and base URL are set in the src/test/java/runTest.java file.
 
-For the step
+----
+For the step:
 
     I clear all cookies in Chrome
 
-You should know that
+There are some special requirements:
 1) Only one instance of Chrome can be running at a time
 2) It uses the robots class to send keystrokes, so it is necessary to let the Chrome window stay focused.
-3) The browser navigates to a chrome:// page.
+The browser navigates to a chrome:// page.
+----
 
 For an installable version of Maven on Windows, consider https://installmaven.weebly.com/
 
