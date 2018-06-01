@@ -35,7 +35,7 @@ In addition, it is possible to put these locators within single quotes and follo
 
 It is not necessary to use quotation marks to denote strings in these Gherkin statements.
 
-See demo.feature for a working example. Additional tests are in src/other/selfTest.
+See locators.feature for a working example. Additional tests are in src/other/selfTest.
 
 Selenide offers compound locators such as  
 
