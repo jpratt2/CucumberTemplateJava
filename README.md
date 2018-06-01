@@ -187,12 +187,13 @@ In Windows powershell, it is necessary to escape the -D with a backtick.
 
     mvn test `-Dcucumber.options="--tags @this"  
 ----
-For debugging:
+For debugging, these methods are available:
 
     printVal(value)
     alertVal(value)
     consoleLogVal(value)
     highlight(locator)
+    
 ----
 
 
