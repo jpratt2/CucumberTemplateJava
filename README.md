@@ -146,6 +146,10 @@ Then statements
 
 # Miscellaneous
 
+This project is adapted from the Cucumber boilerplate from Christian Bromann for webdriver.io at https://github.com/webdriverio/cucumber-boilerplate
+
+----
+
 Default settings such as browser and base URL are set in the src/test/java/runTest.java file.
 
 ----
@@ -160,7 +164,7 @@ The browser navigates to a chrome:// page.
 ----
 
 For an installable version of Maven on Windows, consider https://installmaven.weebly.com/
-
+----
 Command line switches to launch browsers in Selenide:
 
     mvn clean test -P chrome
@@ -170,7 +174,7 @@ Command line switches to launch browsers in Selenide:
     mvn clean test -P phantomjs
     mvn clean test -P htmlunit
     mvn clean test -P safari
-    
+----    
 To run a single scenario from the command line, add a tag such as @this before the Scenario.
 
     mvn test -Dcucumber.options="--tags @this"
@@ -182,6 +186,12 @@ Or you may use the scenario name:
 In Windows powershell, it is necessary to escape the -D with a backtick.
 
     mvn test `-Dcucumber.options="--tags @this"  
+----
+If it helps with debugging, this template offers:
+    printVal(object)
+    alertVal(object)
+    consoleLogVal(object)
+    highlight(locator)
 
-This project is adapted from the Cucumber boilerplate from Christian Bromann for webdriver.io at https://github.com/webdriverio/cucumber-boilerplate
+
 
