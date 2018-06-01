@@ -5,6 +5,7 @@ This Cucumber template is designed for use with Java, Maven, IntelliJ, and the G
 The template uses the benefits of the Selenide framework to solve some of the problems in Selenium including 
 1) automatic waits, 2) additional locator options, and 3) browser drivers.
 
+# Locators
 Two options are available for locators in the Gherkin syntax:
 
 a) By. selenium locators.
@@ -72,8 +73,9 @@ A Gherkin statement will then recognize main button.
 
      I click main button     
 
+# Predefined Statements
 There are 2 categories of statements:
-When statements are for setting up the test. Then statements are for assertions. However, this is for readability only. Cucumber doesn't treat the key words differently.
+When statements are for setting up the test. Then statements are for assertions. (However, this is for readability only. Cucumber doesn't distinguish the key words.)
 
 When statements
 
@@ -141,7 +143,7 @@ Then statements
     the browser width should be (\\d+) pixels
     the element (.*) should( not)* contain the class (.*)
 
-
+# Miscellaneous
 This project is adapted from the Cucumber boilerplate from Christian Bromann for webdriver.io at https://github.com/webdriverio/cucumber-boilerplate
 
 For an installable version of Maven on Windows, consider https://installmaven.weebly.com/
