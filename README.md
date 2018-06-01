@@ -9,8 +9,10 @@ Two options are available for locators in the Gherkin syntax:
 
 a) By. selenium locators.
 
-    And I click on By.tagname("button")
-    
+    And I click By.tagname("button")
+ 
+ Additional options:
+ 
 	By.className("value")
 	By.cssSelector("value")
 	By.id("value")
