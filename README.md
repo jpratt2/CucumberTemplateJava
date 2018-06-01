@@ -189,9 +189,9 @@ In Windows powershell, it is necessary to escape the -D with a backtick.
 ----
 For debugging:
 
-    printVal(object)
-    alertVal(object)
-    consoleLogVal(object)
+    printVal(value)
+    alertVal(value)
+    consoleLogVal(value)
     highlight(locator)
 ----
 
