@@ -113,6 +113,7 @@ When statements
     I test some code
     I stop the test
     I highlight the element (.*)
+    I println the values of all cookies
 
 Then statements
 
