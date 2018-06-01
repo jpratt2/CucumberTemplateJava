@@ -84,6 +84,7 @@ When statements
     I wait for the page to load  
     I pause (\\d+) ms
     I clear cookies for the current domain
+    I clear all cookies in Chrome
     I delete the cookie named (.*)
     I click (.*)
     I double-click (.*)
@@ -144,6 +145,19 @@ Then statements
     the element (.*) should( not)* contain the class (.*)
 
 # Miscellaneous
+
+The default settings for browser and base URL (and other settings) can be found in the runTest.java file.
+
+For the step
+
+    I clear all cookies in Chrome
+
+You should know:
+
+	1) Only one instance of Chrome can be running at a time
+	2) It uses the robots class to send keystrokes, so it is necessary to let the Chrome window stay focused.
+	3) The browser navigates to a chrome:// page.
+
 This project is adapted from the Cucumber boilerplate from Christian Bromann for webdriver.io at https://github.com/webdriverio/cucumber-boilerplate
 
 For an installable version of Maven on Windows, consider https://installmaven.weebly.com/
@@ -169,4 +183,7 @@ Or you may use the scenario name:
 In Windows powershell, it is necessary to escape the -D with a backtick.
 
     mvn test `-Dcucumber.options="--tags @this"  
+
+
+
 
