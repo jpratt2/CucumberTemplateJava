@@ -193,6 +193,7 @@ For debugging, these methods are available:
     alertVal(value)
     consoleLogVal(value)
     highlight(locator)
+    stopTest()
     
 ----
 
