@@ -1,16 +1,19 @@
 # Cucumber Template for Java
 	
-This Cucumber template is designed for use with Java, Maven, IntelliJ, and the Gherkin plugin for IntelliJ (https://plugins.jetbrains.com/plugin/9164-gherkin).
+This Cucumber template is designed for use with Java, Maven, IntelliJ, and the Gherkin plugin for IntelliJ (https://plugins.jetbrains.com/plugin/9164-gherkin). It has over 50 predefined statements so you can immediately start writing tests.
 
 The template uses the benefits of the Selenide framework to solve some of the problems in Selenium including 
 1) automatic waits, 2) additional locator options, and 3) browser drivers.
 
-Two options are available for locators:
+# Locators
+Two options are available for locators in the Gherkin syntax:
 
 a) By. selenium locators.
 
-    And I click on By.tagname("button")
-    
+    And I click By.tagname("button")
+ 
+ Additional options:
+ 
 	By.className("value")
 	By.cssSelector("value")
 	By.id("value")
@@ -22,16 +25,17 @@ a) By. selenium locators.
 
 b) CSS selectors
 
-    And I click on #buttonId
+    And I click #buttonId
+    And I highlight body > div > div:nth-child(4)
 
 In addition, it is possible to put these locators within single quotes and follow them by a number to obtain an element with that INDEX value.
 
-    And I click on 'By.tagname("button")'3
-    And I click on '.button'1
-
-See demo.feature for a working example. Additional tests are in src/other/selfTest.
+    And I click 'By.tagname("button")'3
+    And I click '.button'1
 
 It is not necessary to use quotation marks to denote strings in these Gherkin statements.
+
+See locators.feature for a working example. Additional tests are in src/other/selfTest.
 
 Selenide offers compound locators such as  
 
@@ -67,10 +71,11 @@ Within the Java code, set the name of the compound locator using the putElementN
 
 A Gherkin statement will then recognize main button.
 
-     I click on main button     
+     I click main button     
 
+# Predefined Statements
 There are 2 categories of statements:
-When statements are for setting up the test. (Cucumber doesn't distinguish any difference between the keywords.) Then statements are for assertions. 
+When statements are for setting up the test. Then statements are for assertions. (However, this is for readability only. Cucumber doesn't distinguish the key words.)
 
 When statements
 
@@ -79,9 +84,10 @@ When statements
     I wait for the page to load  
     I pause (\\d+) ms
     I clear cookies for the current domain
+    I clear all cookies in Chrome
     I delete the cookie named (.*)
-    I click on (.*)
-    I double-click on (.*)
+    I click (.*)
+    I double-click (.*)
     I set the browser size to (\\d+) by (\\d+) pixels
     I close all browser tabs except the first tab
     I add (.*) to the inputfield (.*)
@@ -98,18 +104,19 @@ When statements
     I focus on element (.*)
     I move the mouse to element (\\S+) with an offset of (\\d+),(\\d+)
     I move the mouse to element (\\S+)$
-    I stop the test
-    I test the test
-    I highlight the element (.*)
-    I println the value (.*)
     I scroll to element (.*)
     I close the last opened window or tab
+    I focus on the first opened window or tab
     I focus on the last opened window or tab
     I log in with username (.*) and password (.*)
     I select option # (\\d+) in the dropdown element (.*)
     I select the option with the text (.*) in the dropdown element (.*)
     I set the name (.*) to the element (.*)
     I set names to page elements
+    I test some code
+    I stop the test
+    I highlight the element (.*)
+    I println the values of all cookies
 
 Then statements
 
@@ -132,14 +139,32 @@ Then statements
     the cookie (.*) should( not)* exist
     the element (.*) should( not)* be (\\d+)px (wide|tall)
     the element (.*) should( not)* be positioned at (\\d+)px on the (x|y) axis
-    (an alertbox|a confirmbox|a prompt) should( not)* be opened
-    (an alertbox|a confirmbox|a prompt) should( not)* contain the text (.*)
+    the (alertbox|confirmbox|prompt) should( not)* be opened
+    the (alertbox|confirmbox|prompt) should( not)* contain the text (.*)
     the browser width should be (\\d+) pixels
+    the element (.*) should( not)* contain the class (.*)
+
+# Miscellaneous
 
 This project is adapted from the Cucumber boilerplate from Christian Bromann for webdriver.io at https://github.com/webdriverio/cucumber-boilerplate
 
-For an installable version of Maven on Windows, consider https://installmaven.weebly.com/
+----
 
+Default settings such as browser and base URL are set in the src/test/java/runTest.java file.
+
+----
+For the step:
+
+    I clear all cookies in Chrome
+
+There are some special requirements:
+1) Only one instance of Chrome can be running at a time
+2) It uses the robots class to send keystrokes, so it is necessary to let the Chrome window stay focused.
+The browser navigates to a chrome:// page.
+----
+
+For an installable version of Maven on Windows, consider https://installmaven.weebly.com/
+----
 Command line switches to launch browsers in Selenide:
 
     mvn clean test -P chrome
@@ -149,7 +174,7 @@ Command line switches to launch browsers in Selenide:
     mvn clean test -P phantomjs
     mvn clean test -P htmlunit
     mvn clean test -P safari
-    
+----    
 To run a single scenario from the command line, add a tag such as @this before the Scenario.
 
     mvn test -Dcucumber.options="--tags @this"
@@ -161,4 +186,15 @@ Or you may use the scenario name:
 In Windows powershell, it is necessary to escape the -D with a backtick.
 
     mvn test `-Dcucumber.options="--tags @this"  
+----
+For debugging, these methods are available:
+
+    printVal(value)
+    alertVal(value)
+    consoleLogVal(value)
+    highlight(locator)
+    stopTest()
+    
+----
+
 
