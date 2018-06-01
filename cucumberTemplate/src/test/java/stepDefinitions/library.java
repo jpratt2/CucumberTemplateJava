@@ -2,11 +2,11 @@ package stepDefinitions;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import cucumber.api.junit.Cucumber;
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import java.util.*;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -19,17 +19,27 @@ public class library{
     public static ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 
 
+
     //debugging/////////////////
-    public void printVal(Object val,Integer itemNum){
+    public void printVal(Object value,Integer itemNum){
         System.out.println("****print value**** item #:"+itemNum);
-        System.out.println(val);
+        System.out.println(value);
         System.out.println("****end of print value****");
     }
 
-    public void printVal(Object val){
+    public void printVal(Object value){
         System.out.println("****print value****");
-        System.out.println(val);
+        System.out.println(value);
         System.out.println("****end of print value****");
+    }
+
+    public void consoleLogVal(Object value){
+        Configuration.holdBrowserOpen = true; //to prevent closing the browser so you can inspect the console
+        executeJavaScript("console.log('console log value:'); console.log(arguments[0]);", value);
+    }
+    public void alertVal(Object value){
+        executeJavaScript("alert(arguments[0]);", value);
+        waitForAlertToBeAccepted();
     }
 
     public void highlightElement(SelenideElement element) {
@@ -44,12 +54,6 @@ public class library{
         SelenideElement element = getElement(elementLocator);
         highlightElement(element);
     }
-
-    public void consoleLog(Object obj){
-        Configuration.holdBrowserOpen = true; //to prevent closing the browser so you can inspect the console
-        executeJavaScript("console.log(arguments[0]);", obj);
-    }
-
 
     ////////////utilities///////////////
 
@@ -188,7 +192,7 @@ public class library{
                 , element,propertyValue);
         return computedStyle;
         //source: https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
-        // use this, alternatively element.getCssValue()
+        // use this alternatively: element.getCssValue()
     }
 
     public void scrollIntoView(SelenideElement element){
@@ -204,6 +208,78 @@ public class library{
         sleep(milliseconds);
     }
 
+    public void pressEnter(){
+        try{
+            Robot robot=new Robot();
+            robot.keyPress(KeyEvent.VK_ENTER);
+            sleep(500);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+    }
 
+    public void pressTab(Integer amount){
+        try{
+            Robot robot=new Robot();
+            for(Integer i=0; i<amount; i++) {
+                robot.keyPress(KeyEvent.VK_TAB);
+                sleep(500);
+                robot.keyRelease(KeyEvent.VK_TAB);
+            }
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void pressCommandT(){
+        try{
+            Robot robot=new Robot();
+            robot.keyPress(KeyEvent.VK_META);
+            robot.keyPress(KeyEvent.VK_T);
+            sleep(500);
+            robot.keyRelease(KeyEvent.VK_META);
+            robot.keyRelease(KeyEvent.VK_T);
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void pressControlT(){
+        try{
+            Robot robot=new Robot();
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_T);
+            sleep(500);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            robot.keyRelease(KeyEvent.VK_T);
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+
+    public Boolean alertExists(){
+        Boolean alertExists;
+        try{
+            getWebDriver().switchTo().alert();
+            alertExists = true;
+        }catch(Exception ex){
+            alertExists = false;
+        }
+        return alertExists;
+    }
+
+    public void waitForAlertToBeAccepted(){
+        Boolean alertExists = true;
+        while(alertExists == true){
+            alertExists = alertExists();
+            pause(500);
+        }
+    }
 
 }

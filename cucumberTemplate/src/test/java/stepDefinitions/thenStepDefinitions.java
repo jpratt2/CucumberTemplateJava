@@ -230,13 +230,7 @@ public class thenStepDefinitions extends library {
 
   @Then("the (alertbox|confirmbox|prompt) should( not)* be opened")
   public void checkAlertExists(String skip, String not){
-    Boolean alertExists;
-    try{
-      getWebDriver().switchTo().alert();
-      alertExists = true;
-    }catch(Exception ex){
-      alertExists = false;
-    }
+    Boolean alertExists = alertExists();
     if (not == null){
       assertTrue(alertExists);
     }else{

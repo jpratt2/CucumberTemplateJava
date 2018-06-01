@@ -1,4 +1,4 @@
-Feature: test predefined steps in the Cucumber framework
+Feature: test predefined steps in the Cucumber Template 
 #more steps are located in the src\test\other folder
 
   Scenario: demonstrate locator code examples

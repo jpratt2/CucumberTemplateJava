@@ -5,14 +5,14 @@ import cucumber.api.java.en.When;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
-
 import java.util.ArrayList;
 import java.util.Set;
-
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.isChrome;
 
 public class whenStepDefinitions extends library {
+
   @When("I open (.*)")
   public void openURL(String URL) {
     if (URL.equals("demo app")) {
@@ -35,6 +35,18 @@ public class whenStepDefinitions extends library {
     openURL(URL);
   }
 
+  @When("in a new tab, I open (.*)")
+  public void openURLUsingControlT(String URL){
+      //Use the robots class to send Control+T or Command+T, depending on OS
+      if(System.getProperty("os.name").contains("Mac")){
+          pressCommandT();
+      }else{
+          pressControlT();
+      }
+      focusOnLastOpenedTab();
+      openURL(URL);
+  }
+
   @When("I wait for the page to load")
   public void pageFinishLoad() {
     waitPageLoad();
@@ -48,6 +60,23 @@ public class whenStepDefinitions extends library {
   @When("I clear cookies for the current domain")
   public void clearCookiesCurrentDomain() {
     clearBrowserCookies();
+  }
+
+  @When("I clear all cookies in Chrome")
+  public void clearAllCookiesInChrome(){
+    //send keystrokes to the OS to clear all cookies
+    if(isChrome()){
+      driver.get("chrome://settings/siteData?search=cookies");
+      sendKeystrokesToClearCookiesInChrome();
+    }else{
+      printVal("notice - cookies were not cleared; This is not a Chrome browser");
+    }
+  }
+  public void sendKeystrokesToClearCookiesInChrome(){
+    //special Robots-class keystrokes are needed when on a chrome:// page
+    pressTab(4);
+    pressEnter();
+    pressEnter();
   }
 
   @When("I set a cookie (.*) with the value (.*)")
@@ -131,6 +160,7 @@ public class whenStepDefinitions extends library {
             : keyValueHoldInput.equals("shift") ? Keys.SHIFT
             : keyValueHoldInput.equals("command") ? Keys.COMMAND
             : Keys.ALT;
+    keyValueType = keyValueType.toLowerCase();
     String keyChord = Keys.chord(keyValueHoldActual, keyValueType);
     keyPress(keyChord, elementLocator);
     //resource: https://stackoverflow.com/a/11509778
@@ -186,13 +216,6 @@ public class whenStepDefinitions extends library {
     highlightElement(elementLocator);
   }
 
-  @When("I println the value (.*)")
-  public void whenPrintVal(String value) {
-    System.out.println("****print value****");
-    System.out.println(value);
-    System.out.println("****end of print value****");
-  }
-
   @When("I println the values of all cookies")
   public void whenPrintValAllCookies(){
     Set<Cookie> cookies = driver.manage().getCookies();
@@ -219,7 +242,7 @@ public class whenStepDefinitions extends library {
   }
 
   @When("I focus on the last opened window or tab")
-  public void switchToLastOpenedTab() {
+  public void focusOnLastOpenedTab() {
     Integer size = driver.getWindowHandles().size();
     tabs = new ArrayList<String>(driver.getWindowHandles());
     driver.switchTo().window(tabs.get(size - 1));
@@ -272,11 +295,9 @@ public class whenStepDefinitions extends library {
   @When("I test some code")
   public void testCode(){
     //for debugging
-    //openURL("demo app");
+    openURL("demo app");
 
   }
-
-
 
 
 }
