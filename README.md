@@ -162,7 +162,7 @@ For these steps:
 There are some special requirements:
 1) Only one instance of Chrome can be running at a time
 2) It uses the robots class to send keystrokes, so it is necessary to let the Chrome window stay focused.
-The browser navigates to a chrome:// page.
+The browser navigates to a chrome:// page for the clearance of cookies.
 ----
 
 For an installable version of Maven on Windows, consider https://installmaven.weebly.com/
