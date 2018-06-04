@@ -81,6 +81,7 @@ When statements
 
     I open (.*)
     in a new window or tab, I open (.*)
+    in a new tab using keystrokes, I open (.*)
     I wait for the page to load  
     I pause (\\d+) ms
     I clear cookies for the current domain
@@ -153,9 +154,10 @@ This project is adapted from the Cucumber boilerplate from Christian Bromann for
 Default settings such as browser and base URL are set in the src/test/java/runTest.java file.
 
 ----
-For the step:
+For these steps:
 
     I clear all cookies in Chrome
+    in a new tab using keystrokes, I open (.*)
 
 There are some special requirements:
 1) Only one instance of Chrome can be running at a time
