@@ -154,14 +154,15 @@ This project is adapted from the Cucumber boilerplate from Christian Bromann for
 Default settings such as browser and base URL are set in the src/test/java/runTest.java file.
 
 ----
-For these steps:
+For these steps
 
     I clear all cookies in Chrome
     in a new tab using keystrokes, I open (.*)
 
 There are some special requirements:
-1) Only one instance of Chrome can be running at a time
-2) It uses the robots class to send keystrokes, so it is necessary to let the Chrome window stay focused.
+1) Only one instance of the browser can be running at a time.
+2) It uses the robots class to send keystrokes, so it is necessary to let the browser window remain selected.
+		
 ----
 
 For an installable version of Maven on Windows, consider https://installmaven.weebly.com/
