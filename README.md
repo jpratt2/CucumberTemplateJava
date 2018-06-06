@@ -170,6 +170,7 @@ There are some special requirements:
 ----
 
 For an installable version of Maven on Windows, consider https://installmaven.weebly.com/
+
 ----
 Command line switches to launch browsers in Selenide:
 
