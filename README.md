@@ -35,9 +35,9 @@ In addition, it is possible to put these locators within single quotes and follo
 
 It is not necessary to use quotation marks to denote strings in these Gherkin statements.
 
-See locators.feature for a working example. Additional tests are in src/other/selfTest.
+See src/test/resources/locators.feature for a working example. Additional tests are in src/other/selfTest.
 
-Selenide offers compound locators such as  
+Selenide offers the ability to chain locator code. For example:  
 
     $("#divMain").$("button")
 
