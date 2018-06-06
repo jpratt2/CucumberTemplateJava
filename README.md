@@ -35,9 +35,9 @@ In addition, it is possible to put these locators within single quotes and follo
 
 It is not necessary to use quotation marks to denote strings in these Gherkin statements.
 
-See locators.feature for a working example. Additional tests are in src/other/selfTest.
+See src/test/resources/locators.feature for a working example. Additional tests are in src/other/selfTest.
 
-Selenide offers compound locators such as  
+Selenide offers the ability to chain locator code. For example:  
 
     $("#divMain").$("button")
 
@@ -65,7 +65,7 @@ To use a compound selector such as the above, you can use this Gherkin statement
 
     I set names to page elements
     
-Within the Java code, set the name of the compound locator using the putElementName method.
+Within the Java code for @When("I set names to page element"), you can set the name of compound locators using the putElementName method.
 
      putElementName("main button", $("#divMain").$("button") )
 
@@ -75,12 +75,13 @@ A Gherkin statement will then recognize main button.
 
 # Predefined Statements
 There are 2 categories of statements:
-When statements are for setting up the test. Then statements are for assertions. (However, this is for readability only. Cucumber doesn't distinguish the key words.)
+When statements are for setting up the test. Then statements are for assertions. (However, this is for readability only. Cucumber doesn't distinguish between the key words.)
 
 When statements
 
     I open (.*)
     in a new window or tab, I open (.*)
+    in a new tab using keystrokes, I open (.*)
     I wait for the page to load  
     I pause (\\d+) ms
     I clear cookies for the current domain
@@ -105,6 +106,10 @@ When statements
     I move the mouse to element (\\S+) with an offset of (\\d+),(\\d+)
     I move the mouse to element (\\S+)$
     I scroll to element (.*)
+    I scroll (\d+) pixels on the (x|y) axis
+    I scroll to the top
+    I scroll to the x,y value (\d+),(\d+)
+    I close the browser
     I close the last opened window or tab
     I focus on the first opened window or tab
     I focus on the last opened window or tab
@@ -153,17 +158,19 @@ This project is adapted from the Cucumber boilerplate from Christian Bromann for
 Default settings such as browser and base URL are set in the src/test/java/runTest.java file.
 
 ----
-For the step:
+For these steps
 
     I clear all cookies in Chrome
+    in a new tab using keystrokes, I open (.*)
 
 There are some special requirements:
-1) Only one instance of Chrome can be running at a time
-2) It uses the robots class to send keystrokes, so it is necessary to let the Chrome window stay focused.
-The browser navigates to a chrome:// page.
+1) Only one instance of the browser can be running at a time.
+2) It uses the robots class to send keystrokes, so it is necessary to let the browser window remain selected.
+		
 ----
 
 For an installable version of Maven on Windows, consider https://installmaven.weebly.com/
+
 ----
 Command line switches to launch browsers in Selenide:
 
