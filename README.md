@@ -6,7 +6,7 @@ The template uses the benefits of the Selenide framework to solve some of the pr
 1) automatic waits, 2) additional locator options, and 3) browser drivers.
 
 # Locators
-Two options are available for locators in the Gherkin syntax:
+Three options are available for locators in the Gherkin syntax:
 
 a) By. selenium locators.
 
@@ -27,8 +27,13 @@ b) CSS selectors
 
     And I click #buttonId
     And I highlight body > div > div:nth-child(4)
+    
+c) jQuery locators
+    
+    And I click $('#btnMakeVisible')[0]
+Note the [0] at the end for the index value; by default jQuery normally returns collections of elements.
 
-In addition, it is possible to put these locators within single quotes and follow them by a number to obtain an element with that INDEX value.
+It is possible to put By locator and cssSelectors within single quotes and follow them by a number to obtain an element with that INDEX value.
 
     And I click 'By.tagname("button")'3
     And I click '.button'1
