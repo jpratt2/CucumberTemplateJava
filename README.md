@@ -124,11 +124,11 @@ When statements
     I select the option with the text (.*) in the dropdown element (.*)
     I set the name (.*) to the element (.*)
     I set names to page elements
+    I refresh the page
     I test some code
     I stop the test
     I highlight the element (.*)
     I println the values of all cookies
-    I refresh the page
     I send the alert (.*)
 
 Then statements
