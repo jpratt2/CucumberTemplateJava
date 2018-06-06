@@ -90,6 +90,7 @@ When statements
     I click (.*)
     I double-click (.*)
     I set the browser size to (\\d+) by (\\d+) pixels
+    I set the browser width to (\\d+)px
     I close all browser tabs except the first tab
     I add (.*) to the inputfield (.*)
     I clear the inputfield (.*)
@@ -101,7 +102,7 @@ When statements
     I hold down the (control|shift|alt|command) key and type the key (.*) in element (.*)
     I (accept|dismiss) the (alertbox|confirmbox|prompt)
     I enter the text (.*) into the prompt
-    I hover over element (.*)
+    I hover over element (.*)       (Note: this requires the element to be visible on the page for CSS to update.)
     I focus on element (.*)
     I move the mouse to element (\\S+) with an offset of (\\d+),(\\d+)
     I move the mouse to element (\\S+)$
@@ -122,6 +123,8 @@ When statements
     I stop the test
     I highlight the element (.*)
     I println the values of all cookies
+    I refresh the page
+    I send the alert (.*)
 
 Then statements
 
