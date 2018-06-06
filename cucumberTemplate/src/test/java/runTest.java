@@ -10,7 +10,8 @@ public class runTest {
     @BeforeClass
     public static void setup() {
         Configuration.baseUrl = "";
-        if(System.getProperty("selenide.browser") == null){//this is passed via command line
+        //Configuration.browserSize = "1024x1024";
+        if(System.getProperty("selenide.browser") == null){//this value is passed via command line
             Configuration.browser = "chrome";   //set default browser
         }
     }

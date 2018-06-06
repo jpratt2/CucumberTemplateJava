@@ -6,6 +6,15 @@
   <artifactId>selenide-cucumber</artifactId>
   <version>1.0-SNAPSHOT</version>
 
+
+  <!-- https://github.com/spring-guides/gs-maven/issues/21 -->
+  <!-- temporary fix for Maven 3.5.3 for Windows 10 and Mac -->
+  <properties>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
+  </properties>
+
+
   <dependencies>
     <dependency>
       <groupId>io.cucumber</groupId>

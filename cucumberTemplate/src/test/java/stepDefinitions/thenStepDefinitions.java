@@ -70,8 +70,8 @@ public class thenStepDefinitions extends library {
     } else{
       return element.text();
     }
-    //note to self: if selenide.org implements code request 739 then replace elementText(element) with element.text() https://github.com/codeborne/selenide/issues/739
   }
+
   @Then("the element (.*) should( not)* have the same text as element (.*)")
   public void checkElementTextCompare(String elementLocator, String not, String elementLocator2) {
     SelenideElement element = getElement(elementLocator);
@@ -155,10 +155,8 @@ public class thenStepDefinitions extends library {
   @Then("the css property (.*) of element (.*) should( not)* have the value (.*)")
   public void checkCssPropertyValue(String property, String elementLocator, String not, String expectedCSSValue){
     SelenideElement element = getElement(elementLocator);
-    scrollIntoView(element);
     if (not == null) {
-      //assertEquals(expectedCSSValue, element.getCssValue(property));
-      assertEquals(expectedCSSValue,getComputedStyle(element,property));
+      assertEquals(expectedCSSValue, element.getCssValue(property));
     } else {
       assertNotEquals(expectedCSSValue, element.getCssValue(property));
     }
@@ -259,14 +257,14 @@ public class thenStepDefinitions extends library {
     }
   }
 
-  @Then("the element (.*) should( not)* have the class (.*)")
-  public void checkElementClass(String elementLocator, String not, String expectedClassName){
+  @Then("the element (.*) should( not)* contain the class (.*)")
+  public void checkForClass(String elementLocator, String not, String className){
     SelenideElement element = getElement(elementLocator);
-    String observedClassName = element.getAttribute("class");
+    Boolean containsClass = executeJavaScript("return arguments[0].classList.contains(arguments[1])", element, className);
     if (not == null){
-      assertTrue(observedClassName.contains(expectedClassName));
+      assertTrue(containsClass);
     }else{
-      assertFalse(observedClassName.contains(expectedClassName));
+      assertFalse(containsClass);
     }
   }
 
@@ -324,16 +322,7 @@ public class thenStepDefinitions extends library {
     assertEquals(expectedWidth, observedWidth);
   }
 
-  @Then("the element (.*) should( not)* contain the class (.*)")
-  public void checkForClass(String elementLocator, String not, String className){
-    SelenideElement element = getElement(elementLocator);
-    Boolean containsClass = executeJavaScript("return arguments[0].classList.contains(arguments[1])", element, className);
-    if (not == null){
-      assertTrue(containsClass);
-    }else{
-      assertFalse(containsClass);
-    }
-  }
+
 
 }
 

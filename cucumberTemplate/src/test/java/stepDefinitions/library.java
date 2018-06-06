@@ -6,7 +6,11 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebElement;
+
 import java.util.*;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -58,7 +62,7 @@ public class library{
     ////////////utilities///////////////
 
     public static HashMap<String, String> elementNameMap_Gherkin = new HashMap<String, String>();
-    public String elementNameLookup_Gherkin(String name){
+    public String elementNameLookup_string(String name){
         return elementNameMap_Gherkin.get(name);
     }
 
@@ -74,18 +78,28 @@ public class library{
 
     public SelenideElement getElement(String elementLocator){
         SelenideElement element;
-        //check if the elementLocator is a name for a Java (code) locator
+        //check if the elementLocator is a name for an element locator written in Java code
         if(elementNameLookup_Java(elementLocator) != null) {
             element = elementNameLookup_Java(elementLocator);
             return element;
         //////////////////////end of method for java locator///////////////
         }
 
-        //check if the elementLocator is a name for a Gherkin locator
-        if (elementNameLookup_Gherkin(elementLocator) != null){
-            elementLocator = elementNameLookup_Gherkin(elementLocator);
+        //check if the elementLocator is a name for a string locator
+        if (elementNameLookup_string(elementLocator) != null){
+            elementLocator = elementNameLookup_string(elementLocator);
         }
-        //process the Gherkin (String) locator:
+
+        //check if the elementLocator is written in jQuery
+        if(elementLocator.matches("\\$\\(.*")){
+            RemoteWebElement webElement = getElementByJQueryLocator(elementLocator);
+            element = $(webElement);
+            return element;
+            //////////////////////end of method for jQuery locator///////////////
+        }
+
+        //process the Gherkin string locator
+        //strip off single quotes, get the index value and locator
         String indexStr = StringUtils.substringAfterLast(elementLocator, "'");
         if (indexStr.equals("")) {
             indexStr = "0";
@@ -93,12 +107,20 @@ public class library{
         Integer index = Integer.parseInt(indexStr);
         elementLocator = StringUtils.removePattern(elementLocator, "'\\d+$");
         elementLocator = StringUtils.removePattern(elementLocator, "^'");
+
+        //check if it is a By. selenium locator
         if (elementLocator.matches("By[.].*")) {
             By byLocator = convertStringToByLocator(elementLocator);
             element = $(byLocator, index);
         } else {
             element = $(elementLocator, index);
         }
+        return element;
+    }
+
+    public RemoteWebElement getElementByJQueryLocator(String jQueryLocator){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        RemoteWebElement element = (RemoteWebElement) js.executeScript("return eval(arguments[0]);", jQueryLocator);
         return element;
     }
 
@@ -181,24 +203,6 @@ public class library{
         }//source: https://stackoverflow.com/questions/10720325/selenium-webdriver-wait-for-complex-page-with-javascriptjs-to-load/10726369#10726369
     }
 
-    public String getComputedStyle(SelenideElement element, String propertyValue){
-        //element must be in viewport for the element to be found
-        scrollIntoView(element);
-        String computedStyle = (String) executeJavaScript(
-                "var element = arguments[0];"+
-                        "var propertyValue = arguments[1];"+
-                        "var computedStyle = window.getComputedStyle(element).getPropertyValue(propertyValue);"+
-                        "return computedStyle;"
-                , element,propertyValue);
-        return computedStyle;
-        //source: https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
-        // use this alternatively: element.getCssValue()
-    }
-
-    public void scrollIntoView(SelenideElement element){
-        executeJavaScript("arguments[0].scrollIntoView(true);", element);
-    }
-
     public void stopTest(){
         Configuration.holdBrowserOpen = true;
         System.exit(0);
@@ -235,9 +239,11 @@ public class library{
     }
 
     public void pressCommandT(){
+        //note: this doesn't work //\\
         try{
             Robot robot=new Robot();
             robot.keyPress(KeyEvent.VK_META);
+            pause(250);
             robot.keyPress(KeyEvent.VK_T);
             sleep(500);
             robot.keyRelease(KeyEvent.VK_META);
@@ -281,5 +287,4 @@ public class library{
             pause(500);
         }
     }
-
 }

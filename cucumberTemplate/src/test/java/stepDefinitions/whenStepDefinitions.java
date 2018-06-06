@@ -1,11 +1,18 @@
 package stepDefinitions;
 
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.Select;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -35,11 +42,12 @@ public class whenStepDefinitions extends library {
     openURL(URL);
   }
 
-  @When("in a new tab, I open (.*)")
+  @When("in a new tab using keystrokes, I open (.*)")
   public void openURLUsingControlT(String URL){
       //Use the robots class to send Control+T or Command+T, depending on OS
       if(System.getProperty("os.name").contains("Mac")){
           pressCommandT();
+          //\\note: I'll have to fix this later, it doesn't work in Mac
       }else{
           pressControlT();
       }
@@ -91,7 +99,7 @@ public class whenStepDefinitions extends library {
 
   @When("I click (.*)")
   public void clickElement(String elementLocator) {
-    SelenideElement element = getElement(elementLocator);
+    WebElement element = getElement(elementLocator);
     tabCountBeforeClick = getWebDriver().getWindowHandles().size();
     executeJavaScript("arguments[0].click();", element);//sometimes Chrome requires this for the "element not clickable" error
   }
@@ -103,8 +111,16 @@ public class whenStepDefinitions extends library {
     element.doubleClick();
   }
 
-  @When("I set the browser size to (\\d+) by (\\d+) pixels")
+  @When("I set the browser size to (\\d+) by (\\d+) px")
   public void setBrowserSize(Integer xValue, Integer yValue) {
+    Dimension dimensions = new Dimension(xValue, yValue);
+    getWebDriver().manage().window().setSize(dimensions);
+  }
+
+  @When("I set the browser width to (\\d+)px")
+  public void setBrowserSize(Integer xValue) {
+    Dimension initialSize = driver.manage().window().getSize();
+    Integer yValue = initialSize.getWidth();
     Dimension dimensions = new Dimension(xValue, yValue);
     getWebDriver().manage().window().setSize(dimensions);
   }
@@ -185,13 +201,18 @@ public class whenStepDefinitions extends library {
   @When("I hover over element (.*)")
   public void hover(String elementLocator) {
     SelenideElement element = getElement(elementLocator);
+    //scrollIntoView(elementLocator);
     element.hover();
+    pause(750); //give time for the CSS to update
   }
 
   @When("I focus on element (.*)")
   public void focusOnElement(String elementLocator){
     SelenideElement element = getElement(elementLocator);
-    new Actions(driver).moveToElement(element).perform();
+    element.sendKeys(Keys.SHIFT);//works even when the window isn't actively selected
+    executeJavaScript("arguments[0].focus();", element);
+    pause(750); //wait for CSS to update
+    //https://stackoverflow.com/a/14560324
   }
 
   @When("I move the mouse to element (\\S+) with an offset of (\\d+),(\\d+)")
@@ -219,8 +240,9 @@ public class whenStepDefinitions extends library {
   @When("I println the values of all cookies")
   public void whenPrintValAllCookies(){
     Set<Cookie> cookies = driver.manage().getCookies();
+    int i = 1;
     for (Cookie cookie : cookies) {
-      printVal(cookie);
+      printVal(cookie, i++);
     //source: https://rajeevprabhakaran.wordpress.com/2014/05/07/get-all-cookies-from-a-website-and-print-selenium-webdriver-getcookies/
     }
   }
@@ -229,8 +251,6 @@ public class whenStepDefinitions extends library {
   public void scrollIntoView(String elementLocator) {
     SelenideElement element = getElement(elementLocator);
     executeJavaScript("arguments[0].scrollIntoView(true);", element);
-    sleep(500);
-    //source: https://stackoverflow.com/a/20487332
   }
 
   @When("I close the last opened window or tab")
@@ -268,7 +288,7 @@ public class whenStepDefinitions extends library {
   public void selectOptionNumber(Integer optionNumber, String elementLocator){
     SelenideElement element = getElement(elementLocator);
     Select dropdown = new Select(element);
-    dropdown.selectByIndex(optionNumber + 1);
+    dropdown.selectByIndex(optionNumber-1);//adjust for index value
   }
 
   @When("I select the option with the text (.*) in the dropdown element (.*)")
@@ -283,21 +303,36 @@ public class whenStepDefinitions extends library {
     elementNameMap_Gherkin.put(name,elementLocator);
   }
 
-  @When("I set names to page elements")
-  public void putNamesToElementsJava(){
-    //compound locators can help locate page elements more easily. For example, here is code for the first button in the div with #divID:
-    //putElementName("main button", $("#divID").find(By.tagName("button")));
-    //for use in "demo app", this finds the div that contains the "Dropzone" without any id:
-    putElementName("DragNDrop Area", $(".container").$("div",1));
-    //it can now be used as "main button" in Gherkin syntax.
+  @When("I scroll (-?\\d+) px on the (x|y) axis")
+  public void scrollMorePixels(Integer pixels, String xOrYaxis){
+     executeJavaScript(
+             "var currentXAxis = window.scrollX;"+
+                     "var currentYAxis = window.scrollY;" +
+                     "if(arguments[1] === 'x'){" +
+                     "window.scroll(currentXAxis + arguments[0], currentYAxis);" +
+                     "} else {" +
+                     "window.scroll(currentXAxis, currentYAxis + arguments[0]);" +
+                    "}", pixels, xOrYaxis);
   }
 
-  @When("I test some code")
-  public void testCode(){
-    //for debugging
-    openURL("demo app");
-
+  @When("I scroll to the top")
+    public void scrollToTop(){
+      executeJavaScript("window.scroll(0,0)");
   }
 
+  @When("I scroll to the x,y value (\\d+),(\\d+)")
+    public void scrollToXYValue(Integer xValue, Integer yValue){
+      executeJavaScript("window.scroll(arguments[0], arguments[1]);",xValue,yValue);
+  }
+
+  @When("I refresh the page")
+    public void refreshBroswer(){
+      executeJavaScript("window.location.reload(true);");
+    }
+
+  @When("I send the alert (.*)")
+  public void whenSendAlert(String text){
+    alertVal(text);
+  }
 
 }
