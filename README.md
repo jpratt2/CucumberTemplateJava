@@ -31,7 +31,7 @@ b) CSS selectors
 c) jQuery locators
     
     And I click $('#btnMakeVisible')[0]
-Note the [0] at the end for the index value; by default jQuery normally returns collections of elements.
+Note the [0] at the end for the index value; by default jQuery returns collections of elements.
 
 The automatic wait occurs only for By selectors and CSS selectors, but not for jQuery selectors.
 
