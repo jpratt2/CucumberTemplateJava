@@ -8,20 +8,21 @@ import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebElement;
-
 import java.util.*;
-
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
+
 public class library{
-    public static Integer timeoutLimitSeconds = 10;
+    //setting for "I wait for the page to load"
+    public static Integer timeoutLimitSeconds = 15;
+
+
+    //other
     public static Integer tabCountBeforeClick;
     public static WebDriver driver = getWebDriver();
     public static ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-
 
 
     //debugging/////////////////
@@ -49,8 +50,9 @@ public class library{
     public void highlightElement(SelenideElement element) {
         String currentBorderSetting = element.getCssValue("border");
         executeJavaScript("arguments[0].style.border='3px solid red'", element);
-        sleep(2000);
+        pause(2000);
         executeJavaScript("arguments[0].style.border='" + currentBorderSetting + "'", element);
+        pause(500);
         //source: https://stackoverflow.com/questions/10660291/highlight-elements-in-webdriver-during-runtime
     }
 
@@ -268,7 +270,6 @@ public class library{
         }
     }
 
-
     public Boolean alertExists(){
         Boolean alertExists;
         try{
@@ -287,4 +288,5 @@ public class library{
             pause(500);
         }
     }
+
 }

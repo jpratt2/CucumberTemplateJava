@@ -1,2 +1,0 @@
-START POWERSHELL -NoExit || CMD /K
-

@@ -1,18 +1,11 @@
 package stepDefinitions;
 
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.Select;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -22,7 +15,9 @@ public class whenStepDefinitions extends library {
 
   @When("I open (.*)")
   public void openURL(String URL) {
-    if (URL.equals("demo app")) {
+    if(URL.toLowerCase().matches(".*base url")){
+      open("");
+    } else if (URL.toLowerCase().matches(".*demo app")) {
       open("file:///" + System.getProperty("user.dir") + "/src/test/other/demo-app/index.html");
     } else {
       try {
@@ -31,6 +26,16 @@ public class whenStepDefinitions extends library {
         open("http://" + URL);
       }
     }
+  }
+
+  @When("I navigate to (.*)")
+  public void navigateTo(String URL){
+    openURL(URL);
+  }
+
+  @When("I go to the base URL")
+  public void navigateToBaseURL(){
+    open("");
   }
 
   @When("in a new window or tab, I open (.*)")
@@ -44,15 +49,15 @@ public class whenStepDefinitions extends library {
 
   @When("in a new tab using keystrokes, I open (.*)")
   public void openURLUsingControlT(String URL){
-      //Use the robots class to send Control+T or Command+T, depending on OS
-      if(System.getProperty("os.name").contains("Mac")){
-          pressCommandT();
-          //\\note: I'll have to fix this later, it doesn't work in Mac
-      }else{
-          pressControlT();
-      }
-      focusOnLastOpenedTab();
-      openURL(URL);
+    //Use the robots class to send Control+T or Command+T, depending on OS
+    if(System.getProperty("os.name").contains("Mac")){
+      pressCommandT();
+      //\\note: I'll have to fix this later, it doesn't work in Mac
+    }else{
+      pressControlT();
+    }
+    focusOnLastOpenedTab();
+    openURL(URL);
   }
 
   @When("I wait for the page to load")
@@ -61,7 +66,7 @@ public class whenStepDefinitions extends library {
   }
 
   @When("I pause (\\d+) ms")
-  public void pause(Integer milliseconds) {
+  public void whenPause(Integer milliseconds) {
     sleep(milliseconds);
   }
 
@@ -180,7 +185,7 @@ public class whenStepDefinitions extends library {
     String keyChord = Keys.chord(keyValueHoldActual, keyValueType);
     keyPress(keyChord, elementLocator);
     //resource: https://stackoverflow.com/a/11509778
-    //Note: for Alt to work, you should use the robots class, running one browser at a time: import java.awt.*;
+    //Note: for Alt to work, you should use the robots class: import java.awt.*;
   }
 
   @When("I (accept|dismiss) the (alertbox|confirmbox|prompt)")
@@ -201,9 +206,9 @@ public class whenStepDefinitions extends library {
   @When("I hover over element (.*)")
   public void hover(String elementLocator) {
     SelenideElement element = getElement(elementLocator);
-    //scrollIntoView(elementLocator);
+    scrollIntoView(elementLocator);
     element.hover();
-    pause(750); //give time for the CSS to update
+    pause(1000); //give time for the CSS to update
   }
 
   @When("I focus on element (.*)")
@@ -211,18 +216,18 @@ public class whenStepDefinitions extends library {
     SelenideElement element = getElement(elementLocator);
     element.sendKeys(Keys.SHIFT);//works even when the window isn't actively selected
     executeJavaScript("arguments[0].focus();", element);
-    pause(750); //wait for CSS to update
+    pause(1000); //wait for CSS to update
     //https://stackoverflow.com/a/14560324
   }
 
-  @When("I move the mouse to element (\\S+) with an offset of (\\d+),(\\d+)")
+  @When("with an offset of (\\d+),(\\d+), I move the mouse to element (.*)")
   public void moveMouseToElementOffset(String elementLocator, Integer xOffset, Integer yOffset) {
     SelenideElement element = getElement(elementLocator);
     Actions act = new Actions(driver);
     act.moveToElement(element, xOffset, yOffset).perform();
   }
 
-  @When("I move the mouse to element (\\S+)$")
+  @When("I move the mouse to element (.*)")
   public void moveMouseToElement(String elementLocator) {
     moveMouseToElementOffset(elementLocator, 0, 0);
   }
@@ -317,7 +322,16 @@ public class whenStepDefinitions extends library {
 
   @When("I scroll to the top")
     public void scrollToTop(){
-      executeJavaScript("window.scroll(0,0)");
+      executeJavaScript(
+              "var currentXAxis = window.scrollX;"+
+                      "window.scroll(currentXAxis,0)");
+  }
+
+  @When("I scroll to the bottom")
+  public void scrollToBottom(){
+    executeJavaScript(
+            "var currentXAxis = window.scrollX;"+
+                    "window.scroll(currentXAxis,1000000000)");
   }
 
   @When("I scroll to the x,y value (\\d+),(\\d+)")
@@ -326,13 +340,32 @@ public class whenStepDefinitions extends library {
   }
 
   @When("I refresh the page")
-    public void refreshBroswer(){
+    public void refreshBrowser(){
       executeJavaScript("window.location.reload(true);");
     }
 
   @When("I send the alert (.*)")
-  public void whenSendAlert(String text){
+  public void sendAlert(String text){
     alertVal(text);
+  }
+
+  @When("I set the browser size to desktop 1366 x 768")
+  public void setBrowserSizeDesktop(){
+    setBrowserSize(1366, 768);
+  }
+
+  @When("I set the browser size to mobile 360 x 640")
+  public void setBrowserSizeMobile(){
+    setBrowserSize(360,640);
+    //common sizes: http://gs.statcounter.com/screen-resolution-stats#monthly-201803-201803-bar
+    //common viewports: http://mediag.com/news/popular-screen-resolutions-designing-for-all/
+  }
+
+  @When("I test some code")
+  public void testSomeCode(){
+    openURL("demo app");
+    //
+
   }
 
 }

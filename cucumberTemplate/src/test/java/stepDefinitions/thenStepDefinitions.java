@@ -4,9 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.Cookie;
-
 import java.util.ArrayList;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
@@ -124,7 +122,7 @@ public class thenStepDefinitions extends library {
 
   @Then("the browser URL should( not)* be (.*)")
   public void checkBrowserURL(String not, String expectedBrowserURL) {
-    String actualBrowserURL = executeJavaScript("return window.top.location.href");
+    String actualBrowserURL = driver.getCurrentUrl(); //alternate: executeJavaScript("return window.top.location.href");
     if (not == null) {
       assertEquals(expectedBrowserURL, actualBrowserURL);
     } else {
@@ -174,7 +172,7 @@ public class thenStepDefinitions extends library {
 
   @Then("the cookie (.*) should( not)* contain the value (.*)")
   public void checkCookieValue(String cookieName, String not, String expectedCookieValue){
-    sleep(750);//wait for cookie
+    sleep(1000);//wait for cookie
     Cookie cookie = getWebDriver().manage().getCookieNamed(cookieName);
     if (not == null) {
       assertEquals(expectedCookieValue, cookie.getValue());
@@ -185,7 +183,7 @@ public class thenStepDefinitions extends library {
 
   @Then("the cookie (.*) should( not)* exist")
   public void checkCookieNotExist(String cookieName, String not){
-    sleep(1750);//wait for cookie
+    sleep(1000);//wait for cookie
     Cookie cookie = getWebDriver().manage().getCookieNamed(cookieName);
     if (not == null){
       assertNotNull(cookie);

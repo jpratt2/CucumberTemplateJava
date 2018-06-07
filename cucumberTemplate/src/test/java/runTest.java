@@ -11,8 +11,9 @@ public class runTest {
     public static void setup() {
         Configuration.baseUrl = "";
         //Configuration.browserSize = "1024x1024";
-        if(System.getProperty("selenide.browser") == null){//this value is passed via command line
+        if(System.getProperty("selenide.browser") == null){//this value is passed in via command line
             Configuration.browser = "chrome";   //set default browser
+            // options include chrome firefox ie edge htmlunit phantomjs safari
         }
     }
 

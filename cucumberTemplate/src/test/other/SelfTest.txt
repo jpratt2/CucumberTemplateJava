@@ -1,1 +1,0 @@
-Place the "SelfTest" folder in the src/test/resources folder to test the predefined steps.

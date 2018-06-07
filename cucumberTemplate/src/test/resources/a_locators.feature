@@ -1,7 +1,7 @@
 Feature: test predefined steps in the Cucumber Template 
 #more steps are located in the src\test\other folder
 
-  Scenario: locator code examples
+  Scenario: d01 locator code examples
     When I open demo app
 
       # Various locator examples
