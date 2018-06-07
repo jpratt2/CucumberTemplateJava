@@ -72,7 +72,7 @@ To use a compound selector such as the above, you can use this Gherkin statement
 
     I set names to page elements
     
-Within the Java code for @When("I set names to page element"), you can set the name of compound locators using the putElementName method.
+Within the Java code for @When("I set names to page elements"), you can set the name of compound locators using the putElementName method.
 
      putElementName("main button", $("#divMain").$("button") )
 
