@@ -250,5 +250,6 @@ You can use "base url" or "demo app" in any of the open URL statements
 It is not required to have the http:// in every URL. A domain name is enough.
 
 ----
-
-
+A typical Cucumber setup:
+The step statements should be in src/test/java
+The .feature files should be in src/test/resources
