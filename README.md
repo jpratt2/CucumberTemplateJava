@@ -21,17 +21,17 @@ a) By. selenium locators.
 		By.name("value")
 		By.partialLinkText("value")
 		By.tagName("value")
-		By.xpath("value")     Example: By.xpath("//*[@id="formSubmitTest"]/div") 
-				      Note that internal quotes are not escaped.
+		By.xpath("value")     Example: By.xpath("//*[@id="formSubmitTest"]/div")  Note that internal quotes are not escaped.
 
 b) CSS selectors
 
     And I click #buttonId
-    And I highlight body > div > div:nth-child(4)
+    And I click body > div > div:nth-child(4)
     
 c) jQuery locators
     
     And I click $('#btnMakeVisible')[0]
+    
 Note the [0] at the end for the index value; by default jQuery returns a collection of elements.
 
 The automatic wait occurs only for By selectors and CSS selectors, but not for jQuery selectors.
