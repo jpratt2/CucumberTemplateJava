@@ -41,64 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="whenStepDefinitions.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/whenStepDefinitions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1000#1001#0" expanded="true" />
-                <element signature="e#1022#1023#0" expanded="true" />
-                <element signature="e#1073#1074#0" expanded="true" />
-                <element signature="e#1091#1092#0" expanded="true" />
-                <element signature="e#1757#1758#0" expanded="true" />
-                <element signature="e#1786#1787#0" expanded="true" />
-                <element signature="e#12239#12240#0" expanded="true" />
-                <element signature="e#12274#12275#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="b_forVisualInspection.feature" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/b_forVisualInspection.feature">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="55" column="16" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="setNamesPageElements.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/setNamesPageElements.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="runTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/runTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="d_locators.feature" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/resources/d_locators.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+            <state relative-caret-position="748">
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
             </state>
           </provider>
         </entry>
@@ -112,11 +59,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="a_alertBoxes.feature" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/a_alertBoxes.feature">
+      <file leaf-file-name="runTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../GitPublic/cucumberTemplate/src/test/java/runTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+            <state>
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -137,15 +86,15 @@
       <find>alert</find>
       <find>\\d</find>
       <find>option</find>
-      <find />
+      <find>i close the</find>
       <find>select</find>
       <find>println</find>
       <find>exist</find>
-      <find />
-      <find />
-      <find />
+      <find>the class</find>
+      <find>SelenideElement element = getElement(elementLocator);</find>
+      <find>SelenideElement element = getElement\(elementLocator\)</find>
       <find>browser</find>
-      <find />
+      <find>contain the class</find>
       <find>elementNameLookup_Gherkin</find>
       <find>focus</find>
       <find>css</find>
@@ -155,13 +104,13 @@
       <find>visible</find>
       <find>rgb</find>
       <find>stop</find>
-      <find />
+      <find>close the brow</find>
       <find>test</find>
       <find>size</find>
       <find>url</find>
       <find>current</find>
       <find>scrollIntoView</find>
-      <find />
+      <find>browser url</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -170,14 +119,14 @@
       <replace>Amount</replace>
       <replace>browserURLpath</replace>
       <replace>locator</replace>
-      <replace />
-      <replace />
+      <replace>String elementLocator</replace>
+      <replace>SelenideElement element = returnElement(elementLocator);</replace>
       <replace>returnElement(elementLocator)</replace>
-      <replace />
+      <replace>SelenideElement element = returnElement(elementLocator</replace>
       <replace>elementLocator</replace>
       <replace>getElement</replace>
-      <replace />
-      <replace />
+      <replace>WebElement element = getElement(elementLocator);</replace>
+      <replace>WebElement element = getElement(elementLocator)</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\Users\labuser\Desktop\cucumberTemplate\src</dir>
@@ -237,8 +186,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="371" />
-    <option name="y" value="60" />
+    <option name="x" value="424" />
+    <option name="y" value="241" />
     <option name="width" value="1543" />
     <option name="height" value="881" />
   </component>
@@ -394,8 +343,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="371" y="60" width="1543" height="881" extended-state="0" />
-    <editor active="true" />
+    <frame x="424" y="241" width="1543" height="881" extended-state="0" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -465,28 +413,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/whenStepDefinitions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="4" lean-forward="true" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/runTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/thenStepDefinitions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2448">
-          <caret line="153" column="22" lean-forward="true" selection-start-line="149" selection-end-line="158" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/demos/demo.feature" />
     <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/whenStepDefinitions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -602,20 +528,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/a_alertBoxes.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/c_selfTests.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2261">
-          <caret line="133" column="60" selection-start-line="133" selection-start-column="60" selection-end-line="133" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/runTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -633,13 +545,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/b_forVisualInspection.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="55" column="16" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -697,6 +602,45 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/selfTests/a_alertBoxes.feature">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/selfTests/b_forVisualInspection.feature">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/selfTests/c_selfTests.feature">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/a_alertBoxes.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/b_forVisualInspection.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/c_selfTests.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2261">
+          <caret line="133" column="60" selection-start-line="133" selection-start-column="60" selection-end-line="133" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../GitPublic/cucumberTemplate/src/test/java/runTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
