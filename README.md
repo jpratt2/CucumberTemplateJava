@@ -197,9 +197,9 @@ Command line switches to launch browsers in Selenide:
 
 ----    
 
-To run a single scenario from the command line, add a tag such as @this before the Scenario.
+To run a special list of scenarios from the command line, add a tag such as @special before the Scenario.
 
-    mvn test -Dcucumber.options="--tags @this"
+    mvn test -Dcucumber.options="--tags @special"
     
 Or you may use the scenario name:
 
@@ -207,10 +207,10 @@ Or you may use the scenario name:
 
 In Windows powershell, it is necessary to escape the -D with a backtick.
 
-    mvn test `-Dcucumber.options="--tags @this"  
+    mvn test `-Dcucumber.options="--tags @special"  
     
 ----
-A suggestion for naming scenarios:
+A suggestion for naming the scenarios:
 
 *You may want to prefix the names of files with letters such as a_filename, b_file, etc.
 *The scenarios can also be named and numbered to match this prefix.
