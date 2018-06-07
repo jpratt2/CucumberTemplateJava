@@ -6,7 +6,7 @@ The template uses the benefits of the Selenide framework to solve some of the pr
 1) automatic waits, 2) additional locator options, and 3) browser drivers.
 
 # Locators
-Two options are available for locators in the Gherkin syntax:
+Three options are available for locators in the Gherkin syntax:
 
 a) By. selenium locators.
 
@@ -14,21 +14,29 @@ a) By. selenium locators.
  
  Additional options:
  
-	By.className("value")
-	By.cssSelector("value")
-	By.id("value")
-	By.linkText("value")
-	By.name("value")
-	By.partialLinkText("value")
-	By.tagName("value")
-	By.xpath("value")     Example: By.xpath("//*[@id="formSubmitTest"]/div") Note that internal quotes are not escaped.
+		By.className("value")
+		By.cssSelector("value")
+		By.id("value")
+		By.linkText("value")
+		By.name("value")
+		By.partialLinkText("value")
+		By.tagName("value")
+		By.xpath("value")     Example: By.xpath("//*[@id="formSubmitTest"]/div")  Note that internal quotes are not escaped.
 
 b) CSS selectors
 
     And I click #buttonId
-    And I highlight body > div > div:nth-child(4)
+    And I click body > div > div:nth-child(4)
+    
+c) jQuery locators
+    
+    And I click $('#btnMakeVisible')[0]
+    
+Note the [0] at the end for the index value; jQuery returns a collection of elements.
 
-In addition, it is possible to put these locators within single quotes and follow them by a number to obtain an element with that INDEX value.
+The automatic wait occurs only for By selectors and CSS selectors, but not for jQuery selectors.
+
+It is possible to put By locator and cssSelectors within single quotes and follow them by a number to obtain an element with that INDEX value.
 
     And I click 'By.tagname("button")'3
     And I click '.button'1
@@ -65,7 +73,7 @@ To use a compound selector such as the above, you can use this Gherkin statement
 
     I set names to page elements
     
-Within the Java code for @When("I set names to page element"), you can set the name of compound locators using the putElementName method.
+Within the Java code for @When("I set names to page elements"), you can set the name of compound locators using the putElementName method.
 
      putElementName("main button", $("#divMain").$("button") )
 
@@ -74,8 +82,7 @@ A Gherkin statement will then recognize main button.
      I click main button     
 
 # Predefined Statements
-There are 2 categories of statements:
-When statements are for setting up the test. Then statements are for assertions. (However, this is for readability only. Cucumber doesn't distinguish between the key words.)
+There are 2 categories of statements. When statements are for setting up the test. Then statements are for assertions. (However, this is for readability only; Cucumber doesn't distinguish between them.)
 
 When statements
 
@@ -90,6 +97,7 @@ When statements
     I click (.*)
     I double-click (.*)
     I set the browser size to (\\d+) by (\\d+) pixels
+    I set the browser width to (\\d+)px
     I close all browser tabs except the first tab
     I add (.*) to the inputfield (.*)
     I clear the inputfield (.*)
@@ -101,7 +109,7 @@ When statements
     I hold down the (control|shift|alt|command) key and type the key (.*) in element (.*)
     I (accept|dismiss) the (alertbox|confirmbox|prompt)
     I enter the text (.*) into the prompt
-    I hover over element (.*)
+    I hover over element (.*)       (Note: this requires the element to be visible on the page for CSS to update.)
     I focus on element (.*)
     I move the mouse to element (\\S+) with an offset of (\\d+),(\\d+)
     I move the mouse to element (\\S+)$
@@ -118,10 +126,12 @@ When statements
     I select the option with the text (.*) in the dropdown element (.*)
     I set the name (.*) to the element (.*)
     I set names to page elements
+    I refresh the page
     I test some code
     I stop the test
     I highlight the element (.*)
     I println the values of all cookies
+    I send the alert (.*)
 
 Then statements
 
