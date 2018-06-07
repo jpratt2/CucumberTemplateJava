@@ -82,7 +82,7 @@ A Gherkin statement will then recognize main button.
      I click main button     
 
 # Predefined Statements
-There are 2 categories of statements. When statements are for setting up the test. Then statements are for assertions. (However, this is for readability only. Cucumber doesn't distinguish between any the key words.)
+There are 2 categories of statements. When statements are for setting up the test. Then statements are for assertions. (However, this is for readability only; Cucumber doesn't distinguish between them.)
 
 When statements
 
