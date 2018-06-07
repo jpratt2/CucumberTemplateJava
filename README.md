@@ -87,8 +87,10 @@ There are 2 categories of statements. When statements are for setting up the tes
 When statements
 
     I open (.*)
+    I navigate to (.*)
     in a new window or tab, I open (.*)
     in a new tab using keystrokes, I open (.*)
+    I go to the base URL
     I wait for the page to load  
     I pause (\\d+) ms
     I clear cookies for the current domain
@@ -182,6 +184,7 @@ There are some special requirements:
 For an installable version of Maven on Windows, consider https://installmaven.weebly.com/
 
 ----
+
 Command line switches to launch browsers in Selenide:
 
     mvn clean test -P chrome
@@ -191,10 +194,12 @@ Command line switches to launch browsers in Selenide:
     mvn clean test -P phantomjs
     mvn clean test -P htmlunit
     mvn clean test -P safari
-----    
-To run a single scenario from the command line, add a tag such as @this before the Scenario.
 
-    mvn test -Dcucumber.options="--tags @this"
+----    
+
+To run a special list of scenarios from the command line, add a tag such as @special before the Scenario.
+
+    mvn test -Dcucumber.options="--tags @special"
     
 Or you may use the scenario name:
 
@@ -202,8 +207,31 @@ Or you may use the scenario name:
 
 In Windows powershell, it is necessary to escape the -D with a backtick.
 
-    mvn test `-Dcucumber.options="--tags @this"  
+    mvn test `-Dcucumber.options="--tags @special"  
+    
 ----
+A suggestion for naming the scenarios:
+
+*You may want to prefix the names of files with letters such as a_filename, b_file, etc.
+*The scenarios can also be named and numbered to match this prefix.
+
+For example:
+
+    Scenario: a01 test details here
+    
+To launch the test by id #:
+
+    mvn test -Dcucumber.options="--name 'a01'"  
+    
+No wildcard character is required.
+Similarly, to launch all scenarios that start with the letter 'a':
+
+     mvn test -Dcucumber.options="--name 'a'"  
+
+Again, a backtick is required before the -D if you use Powershell.
+
+----
+
 For debugging, these methods are available:
 
     printVal(value)
@@ -214,4 +242,14 @@ For debugging, these methods are available:
     
 ----
 
+You can use "base url" or "demo app" in any of the open URL statements
 
+    I open base url
+    I open demo app
+    
+It is not required to have the http:// in every URL. A domain name is enough.
+
+----
+A typical Cucumber setup:
+The step statements should be in src/test/java
+The .feature files should be in src/test/resources
