@@ -51,12 +51,6 @@ Selenide offers the ability to chain locator code. For example:
 
 This code represents the first button in #divMain. 
 
-Standard By. Selenium selectors can also be used:
-
-    $(By.className("class"), 2);
-
-In this case, the 2 represents the index value.
-
 Selenide also offers additional selectors such as
 
     $$("#multirowTable tr").filterBy(text("Norris"))
