@@ -4,6 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,6 +13,7 @@ import org.openqa.selenium.remote.RemoteWebElement;
 import java.util.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.isChrome;
 
 
 public class library{
@@ -73,9 +75,14 @@ public class library{
         return elementNameMap_Java.get(name);
     }
 
-    public void putElementName(String name, SelenideElement elementLocatorCode){
+    public static void setName(String name, SelenideElement elementLocatorCode){
         elementNameMap_Java.put(name, elementLocatorCode);
         //example:  putElementName("main button", $("#divMain").find("button"));
+    }
+
+    public static void setName(String name, String elementLocator){
+        elementNameMap_Gherkin.put(name, elementLocator);
+        //example:  putElementName("main button", "#buttonID");
     }
 
     public SelenideElement getElement(String elementLocator){
@@ -150,21 +157,6 @@ public class library{
                 : byType.equalsIgnoreCase("xpath") ? By.xpath(byValue)
                 : By.tagName("Error -- the By locator has an error");
     return byLocator;
-    }
-
-    public String getBrowserName(){
-        String browserName = executeJavaScript(
-                "    var userAgent = navigator.userAgent;\n" +
-                        "    var browserName =\n" +
-                        "        (userAgent.match('Firefox')) ? 'firefox'\n" +
-                        "            : (userAgent.match('OPR')) ? 'opera'\n" +
-                        "            : (userAgent.match('Chrome')) ? 'chrome'\n" +
-                        "            : (userAgent.match('Trident')) ? 'ie'\n" +
-                        "            : (userAgent.match('Safari')) ? 'safari'\n" +
-                        "            : 'browser-unknown' ;\n" +
-                        "    return browserName;"
-        );
-        return browserName;
     }
 
     String parentWindowHandler;
@@ -286,6 +278,18 @@ public class library{
         while(alertExists == true){
             alertExists = alertExists();
             pause(500);
+        }
+    }
+
+    public void clearAllCookiesInChrome(){
+        if(isChrome()){
+            driver.get("chrome://settings/siteData?search=cookies");
+            //special Robots-class keystrokes are needed when on a chrome:// page
+            pressTab(4);
+            pressEnter();
+            pressEnter();
+        }else{
+            System.out.println("***error - cookies were not cleared; This is not a Chrome browser.***");
         }
     }
 

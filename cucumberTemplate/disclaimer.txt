@@ -1,4 +1,0 @@
-
-Disclaimer: the demo app and many of the pre-defined steps were obtained or adapted from
- https://github.com/webdriverio/cucumber-boilerplate
- by Chris McMahon and Christian Bromann

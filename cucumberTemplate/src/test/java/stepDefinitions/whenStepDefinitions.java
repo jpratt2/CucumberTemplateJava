@@ -10,11 +10,11 @@ import java.util.Set;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.isChrome;
-
 public class whenStepDefinitions extends library {
 
+
   @When("I open (.*)")
-  public void openURL(String URL) {
+  public void openURL(String URL) throws Exception {
     if(URL.toLowerCase().matches(".*base url")){
       open("");
     } else if (URL.toLowerCase().matches(".*demo app")) {
@@ -29,17 +29,17 @@ public class whenStepDefinitions extends library {
   }
 
   @When("I navigate to (.*)")
-  public void navigateTo(String URL){
+  public void navigateTo(String URL) throws Exception{
     openURL(URL);
   }
 
   @When("I go to the base URL")
-  public void navigateToBaseURL(){
+  public void navigateToBaseURL() throws Exception{
     open("");
   }
 
   @When("in a new window or tab, I open (.*)")
-  public void openURLNewWindow(String URL){
+  public void openURLNewWindow(String URL)throws Exception{
     executeJavaScript("window.open()");
     int tabCount = driver.getWindowHandles().size();
     tabs = new ArrayList<String>(driver.getWindowHandles());
@@ -48,7 +48,7 @@ public class whenStepDefinitions extends library {
   }
 
   @When("in a new tab using keystrokes, I open (.*)")
-  public void openURLUsingControlT(String URL){
+  public void openURLUsingControlT(String URL)throws Exception{
     //Use the robots class to send Control+T or Command+T, depending on OS
     if(System.getProperty("os.name").contains("Mac")){
       pressCommandT();
@@ -61,39 +61,28 @@ public class whenStepDefinitions extends library {
   }
 
   @When("I wait for the page to load")
-  public void pageFinishLoad() {
+  public void pageFinishLoad() throws Exception {
     waitPageLoad();
   }
 
   @When("I pause (\\d+) ms")
-  public void whenPause(Integer milliseconds) {
+  public void whenPause(Integer milliseconds) throws Exception {
     sleep(milliseconds);
   }
 
   @When("I clear cookies for the current domain")
-  public void clearCookiesCurrentDomain() {
+  public void clearCookiesCurrentDomain() throws Exception {
     clearBrowserCookies();
   }
 
   @When("I clear all cookies in Chrome")
-  public void clearAllCookiesInChrome(){
+  public void whenClearCookiesInChrome() throws Exception{
     //send keystrokes to the OS to clear all cookies
-    if(isChrome()){
-      driver.get("chrome://settings/siteData?search=cookies");
-      sendKeystrokesToClearCookiesInChrome();
-    }else{
-      printVal("notice - cookies were not cleared; This is not a Chrome browser");
-    }
-  }
-  public void sendKeystrokesToClearCookiesInChrome(){
-    //special Robots-class keystrokes are needed when on a chrome:// page
-    pressTab(4);
-    pressEnter();
-    pressEnter();
+    clearAllCookiesInChrome();
   }
 
   @When("I set a cookie (.*) with the value (.*)")
-  public void setCookie(String cookieName, String cookieValue) {
+  public void setCookie(String cookieName, String cookieValue) throws Exception {
     driver.manage().addCookie(new Cookie(cookieName, cookieValue)); //potential additional values to set: (name, value, domain, path, expiry)
   }
 
@@ -102,36 +91,58 @@ public class whenStepDefinitions extends library {
     driver.manage().deleteCookieNamed(cookieName);
   }
 
+  @When("I println the values of all cookies")
+  public void whenPrintValAllCookies(){
+    Set<Cookie> cookies = driver.manage().getCookies();
+    int i = 1;
+    for (Cookie cookie : cookies) {
+      printVal(cookie, i++);
+      //source: https://rajeevprabhakaran.wordpress.com/2014/05/07/get-all-cookies-from-a-website-and-print-selenium-webdriver-getcookies/
+    }
+  }
+
   @When("I click (.*)")
-  public void clickElement(String elementLocator) {
+  public void clickElement(String elementLocator) throws Exception {
     WebElement element = getElement(elementLocator);
     tabCountBeforeClick = getWebDriver().getWindowHandles().size();
     executeJavaScript("arguments[0].click();", element);//sometimes Chrome requires this for the "element not clickable" error
   }
 
   @When("I double-click (.*)")
-  public void doubleClickElement(String elementLocator) {
+  public void doubleClickElement(String elementLocator)  throws Exception {
     SelenideElement element = getElement(elementLocator);
     tabCountBeforeClick = getWebDriver().getWindowHandles().size();
     element.doubleClick();
   }
 
   @When("I set the browser size to (\\d+) by (\\d+) px")
-  public void setBrowserSize(Integer xValue, Integer yValue) {
+  public void setBrowserSize(Integer xValue, Integer yValue) throws Exception {
     Dimension dimensions = new Dimension(xValue, yValue);
     getWebDriver().manage().window().setSize(dimensions);
   }
 
   @When("I set the browser width to (\\d+)px")
-  public void setBrowserSize(Integer xValue) {
+  public void setBrowserSize(Integer xValue) throws Exception {
     Dimension initialSize = driver.manage().window().getSize();
     Integer yValue = initialSize.getWidth();
     Dimension dimensions = new Dimension(xValue, yValue);
     getWebDriver().manage().window().setSize(dimensions);
   }
 
+  @When("I set the browser size to desktop 1366 x 768")
+  public void setBrowserSizeDesktop() throws Exception{
+    setBrowserSize(1366, 768);
+  }
+
+  @When("I set the browser size to mobile 360 x 640")
+  public void setBrowserSizeMobile() throws Exception{
+    setBrowserSize(360,640);
+    //common sizes: http://gs.statcounter.com/screen-resolution-stats#monthly-201803-201803-bar
+    //common viewports: http://mediag.com/news/popular-screen-resolutions-designing-for-all/
+  }
+
   @When("I close all browser tabs except the first tab")
-  public void closeAllTabsExceptFirst() {
+  public void closeAllTabsExceptFirst() throws Exception {
     Integer tabCount = driver.getWindowHandles().size();
     ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
     for (Integer i = 1; i < tabCount; i++) {
@@ -144,19 +155,19 @@ public class whenStepDefinitions extends library {
   }
 
   @When("I add (.*) to the inputfield (.*)")
-  public void addToInputField(String textToAdd, String elementLocator) {
+  public void addToInputField(String textToAdd, String elementLocator) throws Exception {
     SelenideElement element = getElement(elementLocator);
     element.setValue(textToAdd);
   }
 
   @When("I clear the inputfield (.*)")
-  public void clearInputField(String elementLocator) {
+  public void clearInputField(String elementLocator) throws Exception {
     SelenideElement element = getElement(elementLocator);
     element.setValue("");
   }
 
   @When("I drag element (.*) to element (.*)")
-  public void dragElementToElement(String elementLocator1, String elementLocator2) {
+  public void dragElementToElement(String elementLocator1, String elementLocator2) throws Exception {
     SelenideElement element1 = getElement(elementLocator1);
     SelenideElement element2 = getElement(elementLocator2);
     Actions act = new Actions(driver);
@@ -164,7 +175,7 @@ public class whenStepDefinitions extends library {
   }
 
   @When("I submit the form (.*)")
-  public void submitForm(String elementLocator) {
+  public void submitForm(String elementLocator) throws Exception {
     SelenideElement element = getElement(elementLocator);
     element.submit();
   }
@@ -176,7 +187,7 @@ public class whenStepDefinitions extends library {
   }
 
   @When("I hold down the (control|shift|alt|command) key and type the key (.*) in element (.*)")
-  public void keyPressHold(String keyValueHoldInput, String keyValueType, String elementLocator) {
+  public void keyPressHold(String keyValueHoldInput, String keyValueType, String elementLocator) throws Exception {
     Keys keyValueHoldActual = keyValueHoldInput.equals("control") ? Keys.CONTROL
             : keyValueHoldInput.equals("shift") ? Keys.SHIFT
             : keyValueHoldInput.equals("command") ? Keys.COMMAND
@@ -189,7 +200,7 @@ public class whenStepDefinitions extends library {
   }
 
   @When("I (accept|dismiss) the (alertbox|confirmbox|prompt)")
-  public void acceptPrompt(String isAccept, String Ignore) {
+  public void acceptPrompt(String isAccept, String Ignore) throws Exception {
     if (isAccept.equals("accept")) {
       driver.switchTo().alert().accept();
     } else {
@@ -204,7 +215,7 @@ public class whenStepDefinitions extends library {
   }
 
   @When("I hover over element (.*)")
-  public void hover(String elementLocator) {
+  public void hover(String elementLocator) throws Exception {
     SelenideElement element = getElement(elementLocator);
     scrollIntoView(elementLocator);
     element.hover();
@@ -212,7 +223,7 @@ public class whenStepDefinitions extends library {
   }
 
   @When("I focus on element (.*)")
-  public void focusOnElement(String elementLocator){
+  public void focusOnElement(String elementLocator) throws Exception{
     SelenideElement element = getElement(elementLocator);
     element.sendKeys(Keys.SHIFT);//works even when the window isn't actively selected
     executeJavaScript("arguments[0].focus();", element);
@@ -221,15 +232,112 @@ public class whenStepDefinitions extends library {
   }
 
   @When("with an offset of (\\d+),(\\d+), I move the mouse to element (.*)")
-  public void moveMouseToElementOffset(String elementLocator, Integer xOffset, Integer yOffset) {
+  public void moveMouseToElementOffset(String elementLocator, Integer xOffset, Integer yOffset) throws Exception {
     SelenideElement element = getElement(elementLocator);
     Actions act = new Actions(driver);
     act.moveToElement(element, xOffset, yOffset).perform();
   }
 
   @When("I move the mouse to element (.*)")
-  public void moveMouseToElement(String elementLocator) {
+  public void moveMouseToElement(String elementLocator) throws Exception {
     moveMouseToElementOffset(elementLocator, 0, 0);
+  }
+
+  @When("I scroll to element (.*)")
+  public void scrollIntoView(String elementLocator) throws Exception {
+    SelenideElement element = getElement(elementLocator);
+    executeJavaScript("arguments[0].scrollIntoView(true);", element);
+  }
+
+  @When("I close the last opened window or tab")
+  public void closeLastOpenedTab() throws Exception {
+    Integer size = driver.getWindowHandles().size();
+    tabs = new ArrayList<String>(driver.getWindowHandles());
+    driver.switchTo().window(tabs.get(size - 1)).close();
+    driver.switchTo().window(tabs.get(size - 2));
+  }
+
+  @When("I focus on the last opened window or tab")
+  public void focusOnLastOpenedTab() throws Exception {
+    Integer size = driver.getWindowHandles().size();
+    tabs = new ArrayList<String>(driver.getWindowHandles());
+    driver.switchTo().window(tabs.get(size - 1));
+  }
+
+  @When("I focus on the first opened window or tab")
+  public void switchToFirstOpenedTab() throws Exception {
+    tabs = new ArrayList<String>(driver.getWindowHandles());
+    driver.switchTo().window(tabs.get(0));
+  }
+
+  @When("I log in with username (.*) and password (.*)")
+    public void logIn(String user, String password) throws Exception{
+    SelenideElement usernameField = $("[type=text]");
+    SelenideElement passwordField = $("[type=password]");
+    SelenideElement submitButton  = $(By.tagName("button"));
+    usernameField.sendKeys(user);
+    passwordField.sendKeys(password);
+    submitButton.click();
+  }
+
+  @When("I select option # (\\d+) in the dropdown element (.*)")
+  public void selectOptionNumber(Integer optionNumber, String elementLocator) throws Exception{
+    SelenideElement element = getElement(elementLocator);
+    Select dropdown = new Select(element);
+    dropdown.selectByIndex(optionNumber-1);//adjust for index value
+  }
+
+  @When("I select the option with the text (.*) in the dropdown element (.*)")
+  public void selectOptionText(String optionText, String elementLocator) throws Exception{
+    SelenideElement element = getElement(elementLocator);
+    Select dropdown = new Select(element);
+    dropdown.selectByVisibleText(optionText);
+  }
+
+  @When("I set the name (.*) to the element (.*)")
+  public void declareElementName(String name, String elementLocator) throws Exception{
+    elementNameMap_Gherkin.put(name,elementLocator);
+  }
+
+  @When("I scroll (-?\\d+) px on the (x|y) axis")
+  public void scrollMorePixels(Integer pixels, String xOrYaxis) throws Exception{
+     executeJavaScript(
+             "var currentXAxis = window.scrollX;"+
+                     "var currentYAxis = window.scrollY;" +
+                     "if(arguments[1] === 'x'){" +
+                     "window.scroll(currentXAxis + arguments[0], currentYAxis);" +
+                     "} else {" +
+                     "window.scroll(currentXAxis, currentYAxis + arguments[0]);" +
+                    "}", pixels, xOrYaxis);
+  }
+
+  @When("I scroll to the top")
+    public void scrollToTop() throws Exception{
+      executeJavaScript(
+              "var currentXAxis = window.scrollX;"+
+                      "window.scroll(currentXAxis,0)");
+  }
+
+  @When("I scroll to the bottom")
+  public void scrollToBottom() throws Exception{
+    executeJavaScript(
+            "var currentXAxis = window.scrollX;"+
+                    "window.scroll(currentXAxis,1000000000)");
+  }
+
+  @When("I scroll to the x,y value (\\d+),(\\d+)")
+    public void scrollToXYValue(Integer xValue, Integer yValue) throws Exception{
+      executeJavaScript("window.scroll(arguments[0], arguments[1]);",xValue,yValue);
+  }
+
+  @When("I refresh the page")
+    public void refreshBrowser() throws Exception{
+      executeJavaScript("window.location.reload(true);");
+    }
+
+  @When("I send the alert (.*)")
+  public void sendAlert(String text){
+    alertVal(text);
   }
 
   @When("I stop the test")
@@ -242,127 +350,8 @@ public class whenStepDefinitions extends library {
     highlightElement(elementLocator);
   }
 
-  @When("I println the values of all cookies")
-  public void whenPrintValAllCookies(){
-    Set<Cookie> cookies = driver.manage().getCookies();
-    int i = 1;
-    for (Cookie cookie : cookies) {
-      printVal(cookie, i++);
-    //source: https://rajeevprabhakaran.wordpress.com/2014/05/07/get-all-cookies-from-a-website-and-print-selenium-webdriver-getcookies/
-    }
-  }
-
-  @When("I scroll to element (.*)")
-  public void scrollIntoView(String elementLocator) {
-    SelenideElement element = getElement(elementLocator);
-    executeJavaScript("arguments[0].scrollIntoView(true);", element);
-  }
-
-  @When("I close the last opened window or tab")
-  public void closeLastOpenedTab() {
-    Integer size = driver.getWindowHandles().size();
-    tabs = new ArrayList<String>(driver.getWindowHandles());
-    driver.switchTo().window(tabs.get(size - 1)).close();
-    driver.switchTo().window(tabs.get(size - 2));
-  }
-
-  @When("I focus on the last opened window or tab")
-  public void focusOnLastOpenedTab() {
-    Integer size = driver.getWindowHandles().size();
-    tabs = new ArrayList<String>(driver.getWindowHandles());
-    driver.switchTo().window(tabs.get(size - 1));
-  }
-
-  @When("I focus on the first opened window or tab")
-  public void switchToFirstOpenedTab() {
-    tabs = new ArrayList<String>(driver.getWindowHandles());
-    driver.switchTo().window(tabs.get(0));
-  }
-
-  @When("I log in with username (.*) and password (.*)")
-    public void logIn(String user, String password){
-    SelenideElement usernameField = $("[type=text]");
-    SelenideElement passwordField = $("[type=password]");
-    SelenideElement submitButton  = $(By.tagName("button"));
-    usernameField.sendKeys(user);
-    passwordField.sendKeys(password);
-    submitButton.click();
-  }
-
-  @When("I select option # (\\d+) in the dropdown element (.*)")
-  public void selectOptionNumber(Integer optionNumber, String elementLocator){
-    SelenideElement element = getElement(elementLocator);
-    Select dropdown = new Select(element);
-    dropdown.selectByIndex(optionNumber-1);//adjust for index value
-  }
-
-  @When("I select the option with the text (.*) in the dropdown element (.*)")
-  public void selectOptionText(String optionText, String elementLocator){
-    SelenideElement element = getElement(elementLocator);
-    Select dropdown = new Select(element);
-    dropdown.selectByVisibleText(optionText);
-  }
-
-  @When("I set the name (.*) to the element (.*)")
-  public void declareElementName(String name, String elementLocator){
-    elementNameMap_Gherkin.put(name,elementLocator);
-  }
-
-  @When("I scroll (-?\\d+) px on the (x|y) axis")
-  public void scrollMorePixels(Integer pixels, String xOrYaxis){
-     executeJavaScript(
-             "var currentXAxis = window.scrollX;"+
-                     "var currentYAxis = window.scrollY;" +
-                     "if(arguments[1] === 'x'){" +
-                     "window.scroll(currentXAxis + arguments[0], currentYAxis);" +
-                     "} else {" +
-                     "window.scroll(currentXAxis, currentYAxis + arguments[0]);" +
-                    "}", pixels, xOrYaxis);
-  }
-
-  @When("I scroll to the top")
-    public void scrollToTop(){
-      executeJavaScript(
-              "var currentXAxis = window.scrollX;"+
-                      "window.scroll(currentXAxis,0)");
-  }
-
-  @When("I scroll to the bottom")
-  public void scrollToBottom(){
-    executeJavaScript(
-            "var currentXAxis = window.scrollX;"+
-                    "window.scroll(currentXAxis,1000000000)");
-  }
-
-  @When("I scroll to the x,y value (\\d+),(\\d+)")
-    public void scrollToXYValue(Integer xValue, Integer yValue){
-      executeJavaScript("window.scroll(arguments[0], arguments[1]);",xValue,yValue);
-  }
-
-  @When("I refresh the page")
-    public void refreshBrowser(){
-      executeJavaScript("window.location.reload(true);");
-    }
-
-  @When("I send the alert (.*)")
-  public void sendAlert(String text){
-    alertVal(text);
-  }
-
-  @When("I set the browser size to desktop 1366 x 768")
-  public void setBrowserSizeDesktop(){
-    setBrowserSize(1366, 768);
-  }
-
-  @When("I set the browser size to mobile 360 x 640")
-  public void setBrowserSizeMobile(){
-    setBrowserSize(360,640);
-    //common sizes: http://gs.statcounter.com/screen-resolution-stats#monthly-201803-201803-bar
-    //common viewports: http://mediag.com/news/popular-screen-resolutions-designing-for-all/
-  }
-
   @When("I test some code")
-  public void testSomeCode(){
+  public void testSomeCode()throws Exception{
     openURL("demo app");
     //
 
