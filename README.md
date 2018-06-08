@@ -45,11 +45,13 @@ It is not necessary to use quotation marks to denote strings in these Gherkin st
 
 See src/test/resources/locators.feature for a working example. Additional tests are in src/other/selfTest.
 
+# Selenide locators
+
 Selenide offers the ability to chain locator code. For example:  
 
-    $("#divMain").$("button")
+    $("#divMain").$("button",3)
 
-This code represents the first button in #divMain. 
+This code represents the fourth button in #divMain. 
 
 Selenide also offers additional selectors such as
 
@@ -62,8 +64,7 @@ http://selenide.org/documentation.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/elements-collection.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/selectors.html
 
-
-To use a compound selector such as the above, you can use this Gherkin statement or your own statement:
+To use a compound Selenide selector, you can use this Gherkin statement or your own statement:
 
     I set names to page elements
     
