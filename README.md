@@ -218,7 +218,7 @@ read more: https://github.com/cucumber/cucumber/wiki/Tags
 
 To run a single test by name:
 
-        mvn test -Dcucumber.options="--name 'Test browser width'"
+   mvn test -Dcucumber.options="--name 'Test browser width'"
 
 ----
 
@@ -265,7 +265,7 @@ It is not required to have the http:// in the URL.
 
 ----
 
-A typical Cucumber setup:
+This uses a typical Cucumber setup:
 The step statements should be in src/test/java
 The .feature files should be in src/test/resources
 Cucumber tutorial: https://github.com/machzqcq/cucumber-jvm-template
