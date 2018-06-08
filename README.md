@@ -97,6 +97,8 @@ When statements
     I double-click (.*)
     I set the browser size to (\\d+) by (\\d+) pixels
     I set the browser width to (\\d+)px
+    I set the browser size to desktop 1366 x 768
+    I set the browser size to mobile 360 x 640
     I close all browser tabs except the first tab
     I add (.*) to the inputfield (.*)
     I clear the inputfield (.*)
