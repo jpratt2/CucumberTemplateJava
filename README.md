@@ -205,6 +205,7 @@ In Windows powershell, it is necessary to escape the -D with a backtick `.
     mvn test `-Dcucumber.options="--tags @special"  
 
 read more: https://github.com/cucumber/cucumber/wiki/Tags
+
 ----
 
 To run a single test by name:
@@ -246,12 +247,12 @@ For debugging, these methods are available:
     
 ----
 
-You can use "base url" or "demo app" in any of the open URL statements
+You can use "base url" or "demo app" in any of the "open URL" statements
 
     I open base url
     I open demo app
     
-It is not required to have the http:// in every URL. A domain name is enough.
+It is not required to have the http:// in the URL.
 
 ----
 
