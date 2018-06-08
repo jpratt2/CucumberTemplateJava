@@ -90,7 +90,7 @@ When statements
     I navigate to (.*)
     in a new window or tab, I open (.*)
     in a new tab using keystrokes, I open (.*)
-    I go to the base URL
+    I go to the base URL       Note: the other open statements can use this: base url.
     I wait for the page to load  
     I pause (\\d+) ms
     I clear cookies for the current domain
