@@ -121,9 +121,9 @@ When statements
     I log in with username (.*) and password (.*)
     I select option # (\\d+) in the dropdown element (.*)
     I select the option with the text (.*) in the dropdown element (.*)
+    I refresh the page
     I set the name (.*) to the element (.*)
     I set names to page elements
-    I refresh the page
     I test some code
     I stop the test
     I highlight the element (.*)
@@ -140,21 +140,21 @@ Then statements
     the element (.*) should( not)* contain within it this text: (.*)
     the element (.*) should( not)* have exactly this text: (.*)
     the element (.*) should( not)* have any text
+    the element (.*) should( not)* contain the class (.*)
+    the element (.*) should( not)* be (\\d+)px (wide|tall)
+    the element (.*) should( not)* be positioned at (\\d+)px on the (x|y) axis
+    the css property (.*) of element (.*) should( not)* have the value (.*)
+    the attribute (.*) of element (.*) should( not)* have the value (.*)
     the browser title should( not)* be (.*)
     the browser URL should( not)* be (.*)
     the browser URL path should( not)* be (.*)
     the browser URL should( not)* contain (.*)
-    the css property (.*) of element (.*) should( not)* have the value (.*)
-    the attribute (.*) of element (.*) should( not)* have the value (.*)
+    the browser width should be (\\d+) pixels
     the cookie (.*) should( not)* contain the value (.*)
     the cookie (.*) should( not)* exist
-    the element (.*) should( not)* be (\\d+)px (wide|tall)
-    the element (.*) should( not)* be positioned at (\\d+)px on the (x|y) axis
     the (alertbox|confirmbox|prompt) should( not)* be opened
     the (alertbox|confirmbox|prompt) should( not)* contain the text (.*)
-    the browser width should be (\\d+) pixels
-    the element (.*) should( not)* contain the class (.*)
-
+    
 # Miscellaneous
 
 This project is adapted from the Cucumber boilerplate from Christian Bromann for webdriver.io at https://github.com/webdriverio/cucumber-boilerplate
