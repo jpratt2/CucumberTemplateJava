@@ -85,7 +85,7 @@ When statements
     I navigate to (.*)
     in a new window or tab, I open (.*)
     in a new tab using keystrokes, I open (.*)
-    I go to the base URL       Note: the other open statements can use this: base url.
+    I go to the base URL              The other open statements can also use this: base url.
     I wait for the page to load  
     I pause (\\d+) ms
     I clear cookies for the current domain
@@ -192,34 +192,43 @@ Command line switches to launch browsers in Selenide:
 
 ----    
 
-To run a special list of scenarios from the command line, add a tag such as @special before the Scenario.
+To run a special list of scenarios from the command line, add a before the Scenario.
+
+    @special
+    Scenario: test
+    
+Maven command line to run this list:
 
     mvn test -Dcucumber.options="--tags @special"
     
-Or you may use the scenario name:
-
-    mvn test -Dcucumber.options="--name 'Test browser width'"
-
-In Windows powershell, it is necessary to escape the -D with a backtick.
+In Windows powershell, it is necessary to escape the -D with a backtick `.
 
     mvn test `-Dcucumber.options="--tags @special"  
     
 ----
-A suggestion for naming the scenarios:
 
-*You may want to prefix the names of files with letters such as a_filename, b_file, etc.
-*The scenarios can also be named and numbered to match this prefix.
+To run a single test by name:
+
+        mvn test -Dcucumber.options="--name 'Test browser width'"
+
+----
+
+A potential naming convention:
+
+    Prefix the names of files with letters such as a_filename, b_file, etc.
+    The scenarios can also be numbered to match this prefix.
 
 For example:
 
-    Scenario: a01 test details here
+    Scenario: a01 test name
+    Scenario: a02 test name2
     
-To launch the test by id #:
+To launch the test, you need only to use the name of the ID:
 
     mvn test -Dcucumber.options="--name 'a01'"  
     
 No wildcard character is required.
-Similarly, to launch all scenarios that start with the letter 'a':
+Similarly, to launch all scenarios starting with "a":
 
      mvn test -Dcucumber.options="--name 'a'"  
 
