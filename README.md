@@ -12,7 +12,7 @@ a) By. selenium locators.
 
     And I click By.tagname("button")
  
- Additional options:
+   Additional options:
  
 		By.className("value")
 		By.cssSelector("value")
@@ -21,7 +21,8 @@ a) By. selenium locators.
 		By.name("value")
 		By.partialLinkText("value")
 		By.tagName("value")
-		By.xpath("value")     Example: By.xpath("//*[@id="formSubmitTest"]/div")  Note that internal quotes are not escaped.
+		By.xpath("value")     Example: And I click By.xpath("//*[@id="formSubmitTest"]/div")  
+		                      Internal quotes are not escaped when used in a Gherkin statement.
 
 b) CSS selectors
 
@@ -32,11 +33,11 @@ c) jQuery locators
     
     And I click $('#btnMakeVisible')[0]
     
-Note the [0] at the end for the index value; jQuery returns a collection of elements.
+Note the [0] at the end for the index value because jQuery returns a collection of elements.
 
 The automatic wait occurs only for By selectors and CSS selectors, but not for jQuery selectors.
 
-It is possible to put By locator and cssSelectors within single quotes and follow them by a number to obtain an element with that INDEX value.
+To got an element that isn't first, it is possible to put a By locator or a cssSelector within single quotes and follow ot by a number to obtain the element with that INDEX value.
 
     And I click 'By.tagname("button")'3
     And I click '.button'1
@@ -45,17 +46,13 @@ It is not necessary to use quotation marks to denote strings in these Gherkin st
 
 See src/test/resources/locators.feature for a working example. Additional tests are in src/other/selfTest.
 
+# Selenide locators
+
 Selenide offers the ability to chain locator code. For example:  
 
-    $("#divMain").$("button")
+    $("#divMain").$("button", 3)
 
-This code represents the first button in #divMain. 
-
-Standard By. Selenium selectors can also be used:
-
-    $(By.className("class"), 2);
-
-In this case, the 2 represents the index value.
+This code represents the fourth button in #divMain. 
 
 Selenide also offers additional selectors such as
 
@@ -68,19 +65,23 @@ http://selenide.org/documentation.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/elements-collection.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/selectors.html
 
+# Naming Selectors
 
-To use a compound selector such as the above, you can use this Gherkin statement or your own statement:
+To use a compound Selenide selector, give it a name in the file setNamesToElementLocators.java.
+You can use a Gherkin statement, if desired, to set names to string selectors.
 
-    I set names to page elements
+    I set the name main button to the element By.tagname("button")
+
+But the main way to set names to either string or Selenide code selectors is in the setNamesToElementLocators file.
     
-Within the Java code for @When("I set names to page elements"), you can set the name of compound locators using the putElementName method.
-
-     putElementName("main button", $("#divMain").$("button") )
+    setName("main button", $("#divMain").$("button") )
+    setName("2nd button", "'button'1");
 
 A Gherkin statement will then recognize main button.
 
-     I click main button     
-
+    I click main button  
+    And I highlight the element 2nd button
+     
 # Predefined Statements
 There are 2 categories of statements. When statements are for setting up the test. Then statements are for assertions. (However, this is for readability only; Cucumber doesn't distinguish between them.)
 
@@ -90,28 +91,30 @@ When statements
     I navigate to (.*)
     in a new window or tab, I open (.*)
     in a new tab using keystrokes, I open (.*)
-    I go to the base URL
+    I go to the base URL                  Note: all of the "open" statements can use this term: base url.
     I wait for the page to load  
     I pause (\\d+) ms
     I clear cookies for the current domain
     I clear all cookies in Chrome
-    I delete the cookie named (.*)
+    I set a cookie (.*) with the value (.*)
+    I delete the cookie (.*)
+    I println the values of all cookies
     I click (.*)
     I double-click (.*)
     I set the browser size to (\\d+) by (\\d+) pixels
     I set the browser width to (\\d+)px
+    I set the browser size to desktop 1366 x 768
+    I set the browser size to mobile 360 x 640
     I close all browser tabs except the first tab
     I add (.*) to the inputfield (.*)
     I clear the inputfield (.*)
     I drag element (.*) to element (.*)
     I submit the form (.*)
-    I set a cookie (.*) with the value (.*)
-    I delete the cookie (.*)
     I type the keys (.*) in element (.*)
     I hold down the (control|shift|alt|command) key and type the key (.*) in element (.*)
     I (accept|dismiss) the (alertbox|confirmbox|prompt)
     I enter the text (.*) into the prompt
-    I hover over element (.*)       (Note: this requires the element to be visible on the page for CSS to update.)
+    I hover over element (.*)         Note: this requires the element to be visible.
     I focus on element (.*)
     I move the mouse to element (\\S+) with an offset of (\\d+),(\\d+)
     I move the mouse to element (\\S+)$
@@ -126,13 +129,12 @@ When statements
     I log in with username (.*) and password (.*)
     I select option # (\\d+) in the dropdown element (.*)
     I select the option with the text (.*) in the dropdown element (.*)
+    I refresh the page
     I set the name (.*) to the element (.*)
     I set names to page elements
-    I refresh the page
     I test some code
     I stop the test
     I highlight the element (.*)
-    I println the values of all cookies
     I send the alert (.*)
 
 Then statements
@@ -146,21 +148,21 @@ Then statements
     the element (.*) should( not)* contain within it this text: (.*)
     the element (.*) should( not)* have exactly this text: (.*)
     the element (.*) should( not)* have any text
+    the element (.*) should( not)* contain the class (.*)
+    the element (.*) should( not)* be (\\d+)px (wide|tall)
+    the element (.*) should( not)* be positioned at (\\d+)px on the (x|y) axis
+    the css property (.*) of element (.*) should( not)* have the value (.*)
+    the attribute (.*) of element (.*) should( not)* have the value (.*)
     the browser title should( not)* be (.*)
     the browser URL should( not)* be (.*)
     the browser URL path should( not)* be (.*)
     the browser URL should( not)* contain (.*)
-    the css property (.*) of element (.*) should( not)* have the value (.*)
-    the attribute (.*) of element (.*) should( not)* have the value (.*)
+    the browser width should be (\\d+) pixels
     the cookie (.*) should( not)* contain the value (.*)
     the cookie (.*) should( not)* exist
-    the element (.*) should( not)* be (\\d+)px (wide|tall)
-    the element (.*) should( not)* be positioned at (\\d+)px on the (x|y) axis
     the (alertbox|confirmbox|prompt) should( not)* be opened
     the (alertbox|confirmbox|prompt) should( not)* contain the text (.*)
-    the browser width should be (\\d+) pixels
-    the element (.*) should( not)* contain the class (.*)
-
+    
 # Miscellaneous
 
 This project is adapted from the Cucumber boilerplate from Christian Bromann for webdriver.io at https://github.com/webdriverio/cucumber-boilerplate
@@ -197,38 +199,50 @@ Command line switches to launch browsers in Selenide:
 
 ----    
 
-To run a special list of scenarios from the command line, add a tag such as @special before the Scenario.
+To run a special list of scenarios from the command line, add a before the Scenario.
+
+    @special
+    Scenario: test
+    
+Maven command line to run this list:
 
     mvn test -Dcucumber.options="--tags @special"
     
-Or you may use the scenario name:
-
-    mvn test -Dcucumber.options="--name 'Test browser width'"
-
-In Windows powershell, it is necessary to escape the -D with a backtick.
+In Windows powershell, it is necessary to escape the -D with a backtick `.
 
     mvn test `-Dcucumber.options="--tags @special"  
-    
-----
-A suggestion for naming the scenarios:
 
-*You may want to prefix the names of files with letters such as a_filename, b_file, etc.
-*The scenarios can also be named and numbered to match this prefix.
+read more: https://github.com/cucumber/cucumber/wiki/Tags
+
+----
+
+To run a single test by name:
+
+        mvn test -Dcucumber.options="--name 'Test browser width'"
+
+----
+
+A potential naming convention:
+
+    Prefix the names of files with letters such as a_filename, b_file, etc.
+    The scenarios can also be numbered to match this prefix.
 
 For example:
 
-    Scenario: a01 test details here
+    Scenario: a01 test name
+    Scenario: a02 test name2
     
-To launch the test by id #:
+To launch the test, you need only to use the name of the ID:
 
     mvn test -Dcucumber.options="--name 'a01'"  
     
 No wildcard character is required.
-Similarly, to launch all scenarios that start with the letter 'a':
+Similarly, to launch all scenarios starting with "a":
 
-     mvn test -Dcucumber.options="--name 'a'"  
+     mvn test -Dcucumber.options="--name '^a'"  
 
-Again, a backtick is required before the -D if you use Powershell.
+NOTE: there is a ^ before the "a".
+And again, a backtick is required before the -D if you use Powershell.
 
 ----
 
@@ -242,14 +256,16 @@ For debugging, these methods are available:
     
 ----
 
-You can use "base url" or "demo app" in any of the open URL statements
+You can use "base url" or "demo app" in any of the "open URL" statements
 
     I open base url
     I open demo app
     
-It is not required to have the http:// in every URL. A domain name is enough.
+It is not required to have the http:// in the URL.
 
 ----
+
 A typical Cucumber setup:
 The step statements should be in src/test/java
 The .feature files should be in src/test/resources
+Cucumber tutorial: https://github.com/machzqcq/cucumber-jvm-template
