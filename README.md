@@ -36,7 +36,7 @@ Note the [0] at the end for the index value; jQuery returns a collection of elem
 
 The automatic wait occurs only for By selectors and CSS selectors, but not for jQuery selectors.
 
-It is possible to put By locator and cssSelectors within single quotes and follow them by a number to obtain an element with that INDEX value.
+To got an element that isn't first, it is possible to put a By locator or a cssSelectos within single quotes and follow ot by a number to obtain the element with that INDEX value.
 
     And I click 'By.tagname("button")'3
     And I click '.button'1
@@ -49,7 +49,7 @@ See src/test/resources/locators.feature for a working example. Additional tests 
 
 Selenide offers the ability to chain locator code. For example:  
 
-    $("#divMain").$("button",3)
+    $("#divMain").$("button", 3)
 
 This code represents the fourth button in #divMain. 
 
