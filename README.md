@@ -203,7 +203,8 @@ Maven command line to run this list:
 In Windows powershell, it is necessary to escape the -D with a backtick `.
 
     mvn test `-Dcucumber.options="--tags @special"  
-    
+
+read more: https://github.com/cucumber/cucumber/wiki/Tags
 ----
 
 To run a single test by name:
@@ -253,6 +254,8 @@ You can use "base url" or "demo app" in any of the open URL statements
 It is not required to have the http:// in every URL. A domain name is enough.
 
 ----
+
 A typical Cucumber setup:
 The step statements should be in src/test/java
 The .feature files should be in src/test/resources
+Cucumber tutorial: https://github.com/machzqcq/cucumber-jvm-template
