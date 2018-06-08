@@ -12,7 +12,7 @@ a) By. selenium locators.
 
     And I click By.tagname("button")
  
- Additional options:
+   Additional options:
  
 		By.className("value")
 		By.cssSelector("value")
