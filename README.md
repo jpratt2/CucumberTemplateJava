@@ -21,7 +21,8 @@ a) By. selenium locators.
 		By.name("value")
 		By.partialLinkText("value")
 		By.tagName("value")
-		By.xpath("value")     Example: By.xpath("//*[@id="formSubmitTest"]/div")  Note that internal quotes are not escaped.
+		By.xpath("value")     Example: And I click By.xpath("//*[@id="formSubmitTest"]/div")  
+		                      Internal quotes are not escaped when used in a Gherkin statement.
 
 b) CSS selectors
 
@@ -32,7 +33,7 @@ c) jQuery locators
     
     And I click $('#btnMakeVisible')[0]
     
-Note the [0] at the end for the index value; jQuery returns a collection of elements.
+Note the [0] at the end for the index value because jQuery returns a collection of elements.
 
 The automatic wait occurs only for By selectors and CSS selectors, but not for jQuery selectors.
 
@@ -64,18 +65,23 @@ http://selenide.org/documentation.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/elements-collection.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/selectors.html
 
-To use a compound Selenide selector, you can use this Gherkin statement or your own statement:
+# Naming Selectors
 
-    I set names to page elements
+To use a compound Selenide selector, give it a name in the file setNamesToElementLocators.java.
+You can use a Gherkin statement, if desired, to set names to string selectors.
+
+    I set the name main button to the element By.tagname("button")
+
+But the main way to set names to either string or Selenide code selectors is in the setNamesToElementLocators file.
     
-Within the Java code for @When("I set names to page elements"), you can set the name of compound locators using the putElementName method.
-
-     putElementName("main button", $("#divMain").$("button") )
+    setName("main button", $("#divMain").$("button") )
+    setName("2nd button", "'button'1");
 
 A Gherkin statement will then recognize main button.
 
-     I click main button     
-
+    I click main button  
+    And I highlight the element 2nd button
+     
 # Predefined Statements
 There are 2 categories of statements. When statements are for setting up the test. Then statements are for assertions. (However, this is for readability only; Cucumber doesn't distinguish between them.)
 
@@ -85,7 +91,7 @@ When statements
     I navigate to (.*)
     in a new window or tab, I open (.*)
     in a new tab using keystrokes, I open (.*)
-    I go to the base URL                Note: the other "open" statements can also use the string base url.
+    I go to the base URL                  Note: all of the "open" statements can use this term: base url.
     I wait for the page to load  
     I pause (\\d+) ms
     I clear cookies for the current domain
