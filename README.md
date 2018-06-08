@@ -85,12 +85,14 @@ When statements
     I navigate to (.*)
     in a new window or tab, I open (.*)
     in a new tab using keystrokes, I open (.*)
-    I go to the base URL              The other open statements can also use this: base url.
+    I go to the base URL                Note: the other "open" statements can also use the string base url.
     I wait for the page to load  
     I pause (\\d+) ms
     I clear cookies for the current domain
     I clear all cookies in Chrome
-    I delete the cookie named (.*)
+    I set a cookie (.*) with the value (.*)
+    I delete the cookie (.*)
+    I println the values of all cookies
     I click (.*)
     I double-click (.*)
     I set the browser size to (\\d+) by (\\d+) pixels
@@ -100,13 +102,11 @@ When statements
     I clear the inputfield (.*)
     I drag element (.*) to element (.*)
     I submit the form (.*)
-    I set a cookie (.*) with the value (.*)
-    I delete the cookie (.*)
     I type the keys (.*) in element (.*)
     I hold down the (control|shift|alt|command) key and type the key (.*) in element (.*)
     I (accept|dismiss) the (alertbox|confirmbox|prompt)
     I enter the text (.*) into the prompt
-    I hover over element (.*)       (Note: this requires the element to be visible on the page for CSS to update.)
+    I hover over element (.*)         Note: this requires the element to be visible.
     I focus on element (.*)
     I move the mouse to element (\\S+) with an offset of (\\d+),(\\d+)
     I move the mouse to element (\\S+)$
@@ -127,7 +127,6 @@ When statements
     I test some code
     I stop the test
     I highlight the element (.*)
-    I println the values of all cookies
     I send the alert (.*)
 
 Then statements
