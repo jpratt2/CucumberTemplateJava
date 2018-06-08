@@ -233,8 +233,9 @@ To launch the test, you need only to use the name of the ID:
 No wildcard character is required.
 Similarly, to launch all scenarios starting with "a":
 
-     mvn test -Dcucumber.options="--name 'a'"  
+     mvn test -Dcucumber.options="--name '^a'"  
 
+NOTE: there is a ^ before the "a" denoting it must start with the a.
 Again, a backtick is required before the -D if you use Powershell.
 
 ----
