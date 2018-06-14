@@ -245,9 +245,9 @@ To launch the test, you need only to use the name of the ID:
 No wildcard character is required.
 Similarly, to launch all scenarios starting with "a":
 
-     mvn test -Dcucumber.options="--name '^a'"  
+     mvn test `-Dcucumber.options="--name '^a'"  
 
-NOTE: there is a ^ before the "a". This syntax of ^ only works in Windows if you are using Powershell. And again, a backtick is required before the -D if you use Powershell.
+NOTE: there is a ^ before the "a". This syntax of ^ only works in Windows if you are using Powershell. Again, a backtick is required before the -D if you use Powershell.
 
 ----
 
@@ -274,3 +274,9 @@ This uses a typical Cucumber setup:
 The step statements should be in src/test/java
 The .feature files should be in src/test/resources
 Cucumber tutorial: https://github.com/machzqcq/cucumber-jvm-template
+
+----
+
+If you want to use a jQuery locator in your java code, use it as a string in getElement();
+
+    Selenide element = getElement("$(jQuerylocator)");
