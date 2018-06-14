@@ -6,9 +6,11 @@ The template uses the benefits of the Selenide framework to solve some of the pr
 1) automatic waits, 2) additional locator options, and 3) browser drivers.
 
 # Locators
-Three options are available for locators in the Gherkin syntax:
+Four options are available for locators in the Gherkin syntax:
 
-a) By. selenium locators.
+a) Using named locators, see 
+
+b) By. selenium locators.
 
     And I click By.tagname("button")
  
@@ -24,12 +26,12 @@ a) By. selenium locators.
 		By.xpath("value")     Example: And I click By.xpath("//*[@id="formSubmitTest"]/div")  
 		                      Internal quotes are not escaped when used in a Gherkin statement.
 
-b) CSS selectors
+c) CSS selectors
 
     And I click #buttonId
     And I click body > div > div:nth-child(4)
     
-c) jQuery locators
+d) jQuery locators
     
     And I click $('#btnMakeVisible')[0]
     
@@ -37,7 +39,7 @@ Note the [0] at the end for the index value because jQuery returns a collection 
 
 The automatic wait occurs only for By selectors and CSS selectors, but not for jQuery selectors.
 
-To got an element that isn't first, it is possible to put a By locator or a cssSelector within single quotes and follow ot by a number to obtain the element with that INDEX value.
+To get an element that isn't first, it is possible to put a By locator or a cssSelector within single quotes and follow ot by a number to obtain the element with that INDEX value.
 
     And I click 'By.tagname("button")'3
     And I click '.button'1
@@ -64,7 +66,7 @@ Learn more:
 http://selenide.org/documentation.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/elements-collection.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/selectors.html
-
+  
 # Naming Selectors
 
 You can declare public static variables in the file e.java for Selenide locators. Superior to page objects, named locators can be used on multiple pages. In Selenide, the element isn't obtained until an action is performed on the locator.
@@ -86,7 +88,7 @@ You can also use Gherkin statements to set names to string selectors.
 A Gherkin statement will then recognize main button.
 
     And I highlight the element main button
-     
+
 # Predefined Statements
 There are 2 categories of statements. When statements are for setting up the test. Then statements are for assertions. (However, this is for readability only; Cucumber doesn't distinguish between them.)
 
