@@ -206,7 +206,7 @@ Command line switches to launch browsers in Selenide:
 
 ----    
 
-To run a special list of scenarios from the command line, add a before the Scenario.
+To run a special list of scenarios from the command line, add a @tag before the Scenario.
 
     @special
     Scenario: test
