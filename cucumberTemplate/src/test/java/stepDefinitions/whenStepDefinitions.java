@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Set;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static com.codeborne.selenide.WebDriverRunner.isChrome;
 public class whenStepDefinitions extends library {
 
 
@@ -41,6 +40,7 @@ public class whenStepDefinitions extends library {
   @When("in a new window or tab, I open (.*)")
   public void openURLNewWindow(String URL)throws Exception{
     executeJavaScript("window.open()");
+    WebDriver driver = getWebDriver();
     int tabCount = driver.getWindowHandles().size();
     tabs = new ArrayList<String>(driver.getWindowHandles());
     driver.switchTo().window(tabs.get(tabCount - 1));
@@ -83,16 +83,19 @@ public class whenStepDefinitions extends library {
 
   @When("I set a cookie (.*) with the value (.*)")
   public void setCookie(String cookieName, String cookieValue) throws Exception {
+    WebDriver driver = getWebDriver();
     driver.manage().addCookie(new Cookie(cookieName, cookieValue)); //potential additional values to set: (name, value, domain, path, expiry)
   }
 
   @When("I delete the cookie (.*)")
   public void deleteCookie(String cookieName) {
+    WebDriver driver = getWebDriver();
     driver.manage().deleteCookieNamed(cookieName);
   }
 
   @When("I println the values of all cookies")
   public void whenPrintValAllCookies(){
+    WebDriver driver = getWebDriver();
     Set<Cookie> cookies = driver.manage().getCookies();
     int i = 1;
     for (Cookie cookie : cookies) {
@@ -123,6 +126,7 @@ public class whenStepDefinitions extends library {
 
   @When("I set the browser width to (\\d+)px")
   public void setBrowserSize(Integer xValue) throws Exception {
+    WebDriver driver = getWebDriver();
     Dimension initialSize = driver.manage().window().getSize();
     Integer yValue = initialSize.getWidth();
     Dimension dimensions = new Dimension(xValue, yValue);
@@ -143,6 +147,7 @@ public class whenStepDefinitions extends library {
 
   @When("I close all browser tabs except the first tab")
   public void closeAllTabsExceptFirst() throws Exception {
+    WebDriver driver = getWebDriver();
     Integer tabCount = driver.getWindowHandles().size();
     ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
     for (Integer i = 1; i < tabCount; i++) {
@@ -168,6 +173,7 @@ public class whenStepDefinitions extends library {
 
   @When("I drag element (.*) to element (.*)")
   public void dragElementToElement(String elementLocator1, String elementLocator2) throws Exception {
+    WebDriver driver = getWebDriver();
     SelenideElement element1 = getElement(elementLocator1);
     SelenideElement element2 = getElement(elementLocator2);
     Actions act = new Actions(driver);
@@ -201,6 +207,7 @@ public class whenStepDefinitions extends library {
 
   @When("I (accept|dismiss) the (alertbox|confirmbox|prompt)")
   public void acceptPrompt(String isAccept, String Ignore) throws Exception {
+    WebDriver driver = getWebDriver();
     if (isAccept.equals("accept")) {
       driver.switchTo().alert().accept();
     } else {
@@ -211,6 +218,7 @@ public class whenStepDefinitions extends library {
 
   @When("I enter the text (.*) into the prompt")
   public void enterTextForPromptAlert(String textForPrompt) {
+    WebDriver driver = getWebDriver();
     driver.switchTo().alert().sendKeys(textForPrompt);
   }
 
@@ -234,7 +242,7 @@ public class whenStepDefinitions extends library {
   @When("with an offset of (\\d+),(\\d+), I move the mouse to element (.*)")
   public void moveMouseToElementOffset(String elementLocator, Integer xOffset, Integer yOffset) throws Exception {
     SelenideElement element = getElement(elementLocator);
-    Actions act = new Actions(driver);
+    Actions act = new Actions(getWebDriver());
     act.moveToElement(element, xOffset, yOffset).perform();
   }
 
@@ -251,6 +259,7 @@ public class whenStepDefinitions extends library {
 
   @When("I close the last opened window or tab")
   public void closeLastOpenedTab() throws Exception {
+    WebDriver driver = getWebDriver();
     Integer size = driver.getWindowHandles().size();
     tabs = new ArrayList<String>(driver.getWindowHandles());
     driver.switchTo().window(tabs.get(size - 1)).close();
@@ -259,6 +268,7 @@ public class whenStepDefinitions extends library {
 
   @When("I focus on the last opened window or tab")
   public void focusOnLastOpenedTab() throws Exception {
+    WebDriver driver = getWebDriver();
     Integer size = driver.getWindowHandles().size();
     tabs = new ArrayList<String>(driver.getWindowHandles());
     driver.switchTo().window(tabs.get(size - 1));
@@ -266,6 +276,7 @@ public class whenStepDefinitions extends library {
 
   @When("I focus on the first opened window or tab")
   public void switchToFirstOpenedTab() throws Exception {
+    WebDriver driver = getWebDriver();
     tabs = new ArrayList<String>(driver.getWindowHandles());
     driver.switchTo().window(tabs.get(0));
   }
@@ -296,7 +307,7 @@ public class whenStepDefinitions extends library {
 
   @When("I set the name (.*) to the element (.*)")
   public void declareElementName(String name, String elementLocator) throws Exception{
-    elementNameMap_Gherkin.put(name,elementLocator);
+    locatorNameMap_Gherkin.put(name,elementLocator);
   }
 
   @When("I scroll (-?\\d+) px on the (x|y) axis")
@@ -352,9 +363,11 @@ public class whenStepDefinitions extends library {
 
   @When("I test some code")
   public void testSomeCode()throws Exception{
-    openURL("demo app");
+    //openURL("demo app");
     //
 
+
+    //stopTest();
   }
 
 }

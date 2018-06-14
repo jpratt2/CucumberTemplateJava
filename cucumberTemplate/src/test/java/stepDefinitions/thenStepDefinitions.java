@@ -4,6 +4,8 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.WebDriver;
+
 import java.util.ArrayList;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -122,7 +124,7 @@ public class thenStepDefinitions extends library {
 
   @Then("the browser URL should( not)* be (.*)")
   public void checkBrowserURL(String not, String expectedBrowserURL) throws Exception {
-    String actualBrowserURL = driver.getCurrentUrl(); //alternate: executeJavaScript("return window.top.location.href");
+    String actualBrowserURL = getWebDriver().getCurrentUrl(); //alternate: executeJavaScript("return window.top.location.href");
     if (not == null) {
       assertEquals(expectedBrowserURL, actualBrowserURL);
     } else {
@@ -281,6 +283,7 @@ public class thenStepDefinitions extends library {
   @Then("the URL (.*) should( not)* open in a new tab")
   public void checkURLOpenedNewTab(String expectedURL, String not) throws Exception{
       Boolean isNewTabOpened = isNewTabOpened();
+      WebDriver driver = getWebDriver();
       tabs = new ArrayList<String>(driver.getWindowHandles());
       Integer mostRecentTabIndex = tabs.size() - 1;
       driver.switchTo().window(tabs.get(mostRecentTabIndex));

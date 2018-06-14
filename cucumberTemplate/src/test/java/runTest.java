@@ -2,7 +2,8 @@ import com.codeborne.selenide.Configuration;
 import cucumber.api.junit.Cucumber;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
-import static stepDefinitions.setNamesToElementLocators.setNamesToElementLocators;
+
+import static stepDefinitions.library.populateLocatorNameHashMap;
 
 
 @RunWith(Cucumber.class)
@@ -16,7 +17,8 @@ public class runTest {
             Configuration.browser = "chrome";   //set default browser
             // options include chrome firefox ie edge htmlunit phantomjs safari
         }
-        setNamesToElementLocators();
+
+        populateLocatorNameHashMap();
     }
 
 }
