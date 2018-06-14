@@ -39,7 +39,7 @@ Note the [0] at the end for the index value because jQuery returns a collection 
 
 The automatic wait occurs only for By selectors and CSS selectors, but not for jQuery selectors.
 
-To get an element that isn't first, it is possible to put a By locator or a cssSelector within single quotes and follow ot by a number to obtain the element with that INDEX value.
+To get an element that isn't first, it is possible to put a By locator or a cssSelector within single quotes and follow it by a number to obtain the element with that INDEX value.
 
     And I click 'By.tagname("button")'3
     And I click '.button'1
