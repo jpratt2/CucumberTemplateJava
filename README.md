@@ -277,6 +277,6 @@ Cucumber tutorial: https://github.com/machzqcq/cucumber-jvm-template
 
 ----
 
-If you want to use a jQuery locator in your java code, use it as a string in getElement();
+If you want to use a jQuery locator in your java code, you can use it as a string in getElement();
 
-    Selenide element = getElement("$(jQuerylocator)");
+    SelenideElement element = getElement("$(jQuerylocator)");
