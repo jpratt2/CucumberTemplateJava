@@ -67,20 +67,25 @@ https://selenide.gitbooks.io/user-guide/content/en/selenide-api/selectors.html
 
 # Naming Selectors
 
-To use a compound Selenide selector, give it a name in the file setNamesToElementLocators.java.
-You can use a Gherkin statement, if desired, to set names to string selectors.
+You can declare public static variables in the file e.java for Selenide locators. Superior to page objects, named locators can be used on multiple pages. In Selenide, the element isn't obtained until an action is performed on the locator.
 
-    I set the name main button to the element By.tagname("button")
+    public static mainButton = $("#divMain").$("button") )
+ 
+Then, in your Gherkin statements, you can refer to this variable name.
 
-But the main way to set names to either string or Selenide code selectors is in the setNamesToElementLocators file.
+    I click mainButton  
+
+In java code, the variable will be available as part of the "e" class:
+
+    e.mainButton.click();
     
-    setName("main button", $("#divMain").$("button") )
-    setName("2nd button", "'button'1");
+You can also use Gherkin statements to set names to string selectors.
+
+    I set the name main button to the element By.tagname("button")    
 
 A Gherkin statement will then recognize main button.
 
-    I click main button  
-    And I highlight the element 2nd button
+    And I highlight the element main button
      
 # Predefined Statements
 There are 2 categories of statements. When statements are for setting up the test. Then statements are for assertions. (However, this is for readability only; Cucumber doesn't distinguish between them.)
