@@ -8,8 +8,7 @@ The template uses the benefits of the Selenide framework to solve some of the pr
 # Locators
 Four options are available for locators in the Gherkin syntax:
 
-a) Named locators declared in e.java or in the Gherkin syntax. 
-See below: https://github.com/jpratt2/CucumberTemplateJava/blob/master/README.md#naming-selectors
+a) Named locators declared in e.java or in the Gherkin syntax, see below. 
 
 b) By. selenium locators.
 
@@ -68,7 +67,7 @@ http://selenide.org/documentation.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/elements-collection.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/selectors.html
   
-# Naming Selectors
+# Named Locators
 
 You can declare public static variables in the file e.java for Selenide locators. Superior to page objects, named locators can be used on multiple pages. In Selenide, the element isn't obtained until an action is performed on the locator.
 
