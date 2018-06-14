@@ -138,7 +138,6 @@ When statements
     I select the option with the text (.*) in the dropdown element (.*)
     I refresh the page
     I set the name (.*) to the element (.*)
-    I set names to page elements
     I test some code
     I stop the test
     I highlight the element (.*)
@@ -248,8 +247,7 @@ Similarly, to launch all scenarios starting with "a":
 
      mvn test -Dcucumber.options="--name '^a'"  
 
-NOTE: there is a ^ before the "a".
-And again, a backtick is required before the -D if you use Powershell.
+NOTE: there is a ^ before the "a". This syntax of ^ only works in Windows if you are using Powershell. And again, a backtick is required before the -D if you use Powershell.
 
 ----
 
