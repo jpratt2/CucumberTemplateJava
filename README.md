@@ -278,6 +278,6 @@ Cucumber tutorial: https://github.com/machzqcq/cucumber-jvm-template
 
 ----
 
-If you want to use a jQuery locator in java, use it as a string in getElement();
+If you want to use a jQuery locator in your java code, you can use it in getElement() as a string. Any of the Gherkin string locators can be passed in this way:
 
-    SelenideElement element = getElement("$(jQuerylocator)");
+    SelenideElement element = getElement("$('btnMakeVisible')[0]");
