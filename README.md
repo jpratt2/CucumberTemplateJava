@@ -8,7 +8,8 @@ The template uses the benefits of the Selenide framework to solve some of the pr
 # Locators
 Four options are available for locators in the Gherkin syntax:
 
-a) Using named locators declared in e.java or in the Gherkin syntax. https://github.com/jpratt2/CucumberTemplateJava/blob/master/README.md#naming-selectors
+a) Named locators declared in e.java or in the Gherkin syntax. 
+See below: https://github.com/jpratt2/CucumberTemplateJava/blob/master/README.md#naming-selectors
 
 b) By. selenium locators.
 
