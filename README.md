@@ -46,7 +46,7 @@ To get an element that isn't first, it is possible to put a By locator or a cssS
 
 It is not necessary to use quotation marks to denote strings in these Gherkin statements.
 
-See src/test/resources/locators.feature for a working example. Additional tests are in src/other/selfTest.
+See src/test/resources/a_locators.feature for a working example. Additional tests are in src/other/selfTest.
 
 # Selenide locators
 
@@ -77,7 +77,7 @@ Then, in your Gherkin statements, you can refer to this variable name.
 
     I click mainButton  
 
-In java code, the variable will be available as part of the Locators class (found in src/test/java/definitions).
+In java code, the variable will be a property of the Locators class.
 
     Locators.mainButton.click();
     
