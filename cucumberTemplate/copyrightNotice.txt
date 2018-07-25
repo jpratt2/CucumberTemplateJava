@@ -1,5 +1,6 @@
 copyright notice: the demo app and many pre-defined steps were obtained or adapted from 
 https://github.com/webdriverio/cucumber-boilerplate by Chris McMahon and Christian Bromann
 
-version 1.1
-June 14 2018
+ version 1.1
+ June 14 2018
+ https://github.com/jpratt2/CucumberTemplateJava

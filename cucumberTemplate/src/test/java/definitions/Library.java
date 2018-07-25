@@ -1,4 +1,4 @@
-package stepDefinitions;
+package definitions;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -17,7 +17,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.isChrome;
 
 
-public class library{
+public class Library {
     //setting for "I wait for the page to load", or waitPageLoad();
     public static Integer timeoutLimitSeconds = 15;
 
@@ -69,7 +69,7 @@ public class library{
     public static HashMap<String, Object> locatorNameMap_e = new HashMap<String, Object>();
 
     public static void populateLocatorNameHashMap(){
-        e locatorNamesObj = new e();
+        Locators locatorNamesObj = new Locators();
         Field[] names =  locatorNamesObj.getClass().getFields();
         Field name;
         String nameStr;
@@ -91,7 +91,7 @@ public class library{
     public static SelenideElement getElement(String elementLocator) {
         SelenideElement element;
 
-        //check if the elementLocator is a name specified in class "e"
+        //check if the elementLocator is a name specified in class "Locators"
         if (locatorNameMap_e.get(elementLocator) != null) {
             Object locatorCodeObj = locatorNameMap_e.get(elementLocator);
             element = (SelenideElement) locatorCodeObj;
@@ -136,7 +136,7 @@ public class library{
 
     public static ElementsCollection getElementsCollection(String elementLocator){
         ElementsCollection collection;
-        //check if the elementLocator is a name defined in the "e" class
+        //check if the elementLocator is a name defined in the "Locators" class
         if (locatorNameMap_e.get(elementLocator) != null){
             Object locatorCodeObj = locatorNameMap_e.get(elementLocator);
             collection = (ElementsCollection) locatorCodeObj;

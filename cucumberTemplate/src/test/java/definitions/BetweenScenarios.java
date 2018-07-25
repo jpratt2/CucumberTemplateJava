@@ -1,10 +1,10 @@
-package stepDefinitions;
+package definitions;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import static com.codeborne.selenide.Selenide.clearBrowserCookies;
 
-public class betweenScenarios extends library {
+public class BetweenScenarios extends Library {
 
     @Before
     public void beforeEachScenario(){

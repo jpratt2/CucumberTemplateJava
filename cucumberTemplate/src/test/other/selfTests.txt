@@ -1,1 +1,1 @@
-Place the "selfTests" folder in the src/test/resources folder to test the predefined steps.
+Place a copy of the "selfTests" folder in src/test/resources to test predefined steps.

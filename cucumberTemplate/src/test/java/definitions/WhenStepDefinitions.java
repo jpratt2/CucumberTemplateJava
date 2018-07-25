@@ -1,4 +1,4 @@
-package stepDefinitions;
+package definitions;
 
 import com.codeborne.selenide.SelenideElement;
 import cucumber.api.java.en.When;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-public class whenStepDefinitions extends library {
+public class WhenStepDefinitions extends Library {
 
 
   @When("I open (.*)")
@@ -305,7 +305,7 @@ public class whenStepDefinitions extends library {
     dropdown.selectByVisibleText(optionText);
   }
 
-  @When("I set the name (.*) to the element (.*)")
+  @When("I give the name (.*) to the locator (.*)")
   public void declareElementName(String name, String elementLocator) throws Exception{
     locatorNameMap_Gherkin.put(name,elementLocator);
   }

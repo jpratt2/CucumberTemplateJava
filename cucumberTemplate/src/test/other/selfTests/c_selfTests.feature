@@ -10,7 +10,7 @@ Feature: test predefined steps in Cucumber Template
     And   I clear cookies for the current domain
     Then  the cookie check should not exist
 
-  Scenario: c03 Test delete cookie and cookie should exist
+  Scenario: c03 Test delete cookie
     When  I open adobe.com
     Then  the cookie check should contain the value true
     And   I delete the cookie check
@@ -65,7 +65,7 @@ Feature: test predefined steps in Cucumber Template
 
   Scenario: c11 submit form and element class
     When  I open demo app
-    And   I set the name hiddenMessage to the element By.xpath("//*[@id="formSubmitTest"]/div")
+    And   I give the name hiddenMessage to the locator By.xpath("//*[@id="formSubmitTest"]/div")
     Then  the element hiddenMessage should contain the class hidden
     And   I submit the form #formSubmitTest
     Then  the element hiddenMessage should not contain the class hidden

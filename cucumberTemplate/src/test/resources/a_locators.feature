@@ -13,7 +13,7 @@ Feature: test predefined steps in the Cucumber Template
   Scenario: a02 give names to locators
     When I open demo app
       #give names to locators
-    When I set the name main button to the element By.tagname("button")
+    When I give the name main button to the locator By.tagname("button")
     And I highlight the element main button
       # This code should be in class e:
       # public static SelenideElement DragNDropArea = $(".container").$("div",1));

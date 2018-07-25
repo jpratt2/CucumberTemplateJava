@@ -1,4 +1,4 @@
-package stepDefinitions;
+package definitions;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
 import static org.junit.Assert.*;
 
-public class thenStepDefinitions extends library {
+public class ThenStepDefinitions extends Library {
 
   @Then("the element (.*) should( not)* be visible")
   public void checkElementVisible(String elementLocator, String not) throws Exception{
