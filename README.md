@@ -6,9 +6,11 @@ The template uses the benefits of the Selenide framework to solve some of the pr
 1) automatic waits, 2) additional locator options, and 3) browser drivers.
 
 # Locators
-Three options are available for locators in the Gherkin syntax:
+Four options are available for locators in the Gherkin syntax:
 
-a) By. selenium locators.
+a) Named locators declared in e.java or in the Gherkin syntax, see below. 
+
+b) By. selenium locators.
 
     And I click By.tagname("button")
  
@@ -24,12 +26,12 @@ a) By. selenium locators.
 		By.xpath("value")     Example: And I click By.xpath("//*[@id="formSubmitTest"]/div")  
 		                      Internal quotes are not escaped when used in a Gherkin statement.
 
-b) CSS selectors
+c) CSS selectors
 
     And I click #buttonId
     And I click body > div > div:nth-child(4)
     
-c) jQuery locators
+d) jQuery locators
     
     And I click $('#btnMakeVisible')[0]
     
@@ -37,7 +39,7 @@ Note the [0] at the end for the index value because jQuery returns a collection 
 
 The automatic wait occurs only for By selectors and CSS selectors, but not for jQuery selectors.
 
-To got an element that isn't first, it is possible to put a By locator or a cssSelector within single quotes and follow ot by a number to obtain the element with that INDEX value.
+To get an element that isn't first, it is possible to put a By locator or a cssSelector within single quotes and follow it by a number to obtain the element with that INDEX value.
 
     And I click 'By.tagname("button")'3
     And I click '.button'1
@@ -64,24 +66,29 @@ Learn more:
 http://selenide.org/documentation.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/elements-collection.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/selectors.html
+  
+# Named Locators
 
-# Naming Selectors
+You can declare public static variables in the file e.java for Selenide locators. Superior to page objects, named locators can be used on multiple pages. In Selenide, the element isn't obtained until an action is performed on the locator.
 
-To use a compound Selenide selector, give it a name in the file setNamesToElementLocators.java.
-You can use a Gherkin statement, if desired, to set names to string selectors.
+    public static mainButton = $("#divMain").$("button") )
+ 
+Then, in your Gherkin statements, you can refer to this variable name.
 
-    I set the name main button to the element By.tagname("button")
+    I click mainButton  
 
-But the main way to set names to either string or Selenide code selectors is in the setNamesToElementLocators file.
+In java code, the variable will be available as part of the "e" class:
+
+    e.mainButton.click();
     
-    setName("main button", $("#divMain").$("button") )
-    setName("2nd button", "'button'1");
+You can also use Gherkin statements to set names to string selectors.
+
+    I set the name main button to the element By.tagname("button")    
 
 A Gherkin statement will then recognize main button.
 
-    I click main button  
-    And I highlight the element 2nd button
-     
+    And I highlight the element main button
+
 # Predefined Statements
 There are 2 categories of statements. When statements are for setting up the test. Then statements are for assertions. (However, this is for readability only; Cucumber doesn't distinguish between them.)
 
@@ -131,7 +138,6 @@ When statements
     I select the option with the text (.*) in the dropdown element (.*)
     I refresh the page
     I set the name (.*) to the element (.*)
-    I set names to page elements
     I test some code
     I stop the test
     I highlight the element (.*)
@@ -199,7 +205,7 @@ Command line switches to launch browsers in Selenide:
 
 ----    
 
-To run a special list of scenarios from the command line, add a before the Scenario.
+To run a special list of scenarios from the command line, add a @tag before the Scenario.
 
     @special
     Scenario: test
@@ -239,10 +245,9 @@ To launch the test, you need only to use the name of the ID:
 No wildcard character is required.
 Similarly, to launch all scenarios starting with "a":
 
-     mvn test -Dcucumber.options="--name '^a'"  
+     mvn test `-Dcucumber.options="--name '^a'"  
 
-NOTE: there is a ^ before the "a".
-And again, a backtick is required before the -D if you use Powershell.
+NOTE: there is a ^ before the "a". This syntax of ^ only works in Windows if you are using Powershell. Again, a backtick is required before the -D if you use Powershell.
 
 ----
 
@@ -269,3 +274,9 @@ This uses a typical Cucumber setup:
 The step statements should be in src/test/java
 The .feature files should be in src/test/resources
 Cucumber tutorial: https://github.com/machzqcq/cucumber-jvm-template
+
+----
+
+If you want to use a jQuery locator in your java code, you can use it in getElement() as a string. Any of the Gherkin string locators can be passed in this way:
+
+    SelenideElement element = getElement("$('btnMakeVisible')[0]");
