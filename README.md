@@ -8,7 +8,7 @@ The template uses the benefits of the Selenide framework to solve some of the pr
 # Locators
 Four options are available for locators in the Gherkin syntax:
 
-a) Named locators declared in e.java or in the Gherkin syntax, see below. 
+a) Named locators declared in Locators.java or in the Gherkin syntax, see below. 
 
 b) By. selenium locators.
 
@@ -69,7 +69,7 @@ https://selenide.gitbooks.io/user-guide/content/en/selenide-api/selectors.html
   
 # Named Locators
 
-You can declare public static variables in the file e.java for Selenide locators. Superior to page objects, named locators can be used on multiple pages. In Selenide, the element isn't obtained until an action is performed on the locator.
+You can declare public static variables in Locators class for Selenide locators. Superior to page objects, named locators can be used across multiple pages. (In Selenide, the actual web element isn't obtained until an action is performed on the locator, such as a click().)
 
     public static mainButton = $("#divMain").$("button") )
  
@@ -77,9 +77,9 @@ Then, in your Gherkin statements, you can refer to this variable name.
 
     I click mainButton  
 
-In java code, the variable will be available as part of the "e" class:
+In java code, the variable will be available as part of the Locators class (found in src/test/java/definitions).
 
-    e.mainButton.click();
+    Locators.mainButton.click();
     
 You can also use Gherkin statements to set names to string selectors.
 
@@ -137,7 +137,7 @@ When statements
     I select option # (\\d+) in the dropdown element (.*)
     I select the option with the text (.*) in the dropdown element (.*)
     I refresh the page
-    I set the name (.*) to the element (.*)
+    I give the name (.*) to the locator (.*)
     I test some code
     I stop the test
     I highlight the element (.*)
