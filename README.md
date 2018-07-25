@@ -83,7 +83,7 @@ In java code, the variable will be a property of the Locators class.
     
 You can also use Gherkin statements to set names to string selectors.
 
-    I set the name main button to the element By.tagname("button")    
+    I give the name main button to the locator By.tagname("button")    
 
 A Gherkin statement will then recognize main button.
 
@@ -175,7 +175,7 @@ This project is adapted from the Cucumber boilerplate from Christian Bromann for
 
 ----
 
-Default settings such as browser and base URL are set in the src/test/java/runTest.java file.
+Default settings such as browser and base URL are set in the src/test/java/RunTest.java file.
 
 ----
 For these steps
