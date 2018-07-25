@@ -77,7 +77,7 @@ Then, in your Gherkin statements, you can refer to this variable name.
 
     I click mainButton  
 
-In java code, the variable will be available as part of the "e" class:
+In java code, the variable will be available as part of the Locators class (found in src/test/java/definitions).
 
     Locators.mainButton.click();
     
