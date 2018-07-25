@@ -8,7 +8,7 @@ The template uses the benefits of the Selenide framework to solve some of the pr
 # Locators
 Four options are available for locators in the Gherkin syntax:
 
-a) Named locators declared in e.java or in the Gherkin syntax, see below. 
+a) Named locators declared in Locators.java or in the Gherkin syntax, see below. 
 
 b) By. selenium locators.
 
