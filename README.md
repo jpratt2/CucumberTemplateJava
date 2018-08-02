@@ -2,9 +2,7 @@
 	
 This Cucumber template is designed for use with Java, Maven, IntelliJ, and the Gherkin plugin for IntelliJ (https://plugins.jetbrains.com/plugin/9164-gherkin). It has over 50 predefined statements so you can immediately start writing tests. 
 
-The template uses the benefits of the Selenide framework to solve some of the problems in Selenium including 
-
-  (1) automatic waits, (2) additional locator options, and (3) browser drivers.
+The template uses the benefits of the Selenide framework to solve some of the problems in Selenium including (1) automatic waits, (2) additional locator options, and (3) browser drivers.
 
 # Locators
 Four options are available for locators in the Gherkin syntax:
