@@ -68,7 +68,7 @@ https://selenide.gitbooks.io/user-guide/content/en/selenide-api/selectors.html
   
 # Named Locators
 
-You can declare public static variables in Locators class for Selenide locators. Superior to page objects, named locators can be used across multiple pages. (In Selenide, the actual web element isn't obtained until an action is performed on the locator, such as a click().)
+You can declare public static variables in the Locators class for Selenide locators. Superior to page objects, named locators can be used across multiple pages. (In Selenide, the actual web element isn't obtained until an action is performed on the locator, such as a click().)
 
     public static mainButton = $("#divMain").$("button") )
  
