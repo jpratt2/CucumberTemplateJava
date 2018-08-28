@@ -195,7 +195,7 @@ These statements then can be used:
     I start recording video
     I stop recording video
     
-The HYFYvideo class has an upload time-limit setting with a default value of 15 seconds.  
+The HYFYvideo class has an upload time-limit setting with a default value of 15 seconds.  It also needs the username and password entered which can be obtained at https://app.hyfy.io/accounts/login/ with "Sign up using email".
 
 More details are available at http://hyfy.io/automate
 
@@ -288,14 +288,14 @@ You can use "base url" or "demo app" in any of the "open URL" statements
     I open base url
     I open demo app
     
-It is not required to have the http:// in the URL.
+It is not necessary to have the http:// in the URL.
 
 ----
 
-This uses a typical Cucumber setup:
-The step statements should be in src/test/java
-The .feature files should be in src/test/resources
-Cucumber tutorial: https://github.com/machzqcq/cucumber-jvm-template
+This template uses a typical Cucumber folder structure.
+The step statements are located in src/test/java.
+The .feature files are located in src/test/resources.
+Cucumber tutorial: https://github.com/machzqcq/cucumber-jvm-template.
 
 ----
 
