@@ -1,0 +1,70 @@
+{
+   "background": {
+      "page": "background.html"
+   },
+   "browser_action": {
+      "default_icon": {
+         "19": "images/hyfy-circular-off_19.png",
+         "38": "images/hyfy-circular-off_38.png"
+      },
+      "default_title": "HYFY"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "contentscript-common.js" ],
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_end"
+   }, {
+      "css": [ "contentscript-recorder.css" ],
+      "js": [ "contentscript-recorder.js" ],
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_end"
+   }, {
+      "all_frames": true,
+      "exclude_matches": [ "*://app.hyfy.io/admin/*", "*://app.hyfy.io/jira/addon/*" ],
+      "js": [ "contentscript-webapp-sync.js" ],
+      "matches": [ "*://app.hyfy.io/*" ],
+      "run_at": "document_end"
+   }, {
+      "all_frames": true,
+      "js": [ "contentscript-share-modal.js" ],
+      "matches": [ "*://app.hyfy.io/share/*" ],
+      "run_at": "document_end"
+   }, {
+      "all_frames": true,
+      "css": [ "contentscript-recorder-jira-addon.css" ],
+      "js": [ "contentscript-recorder-jira-addon.js" ],
+      "matches": [ "*://app.hyfy.io/jira/addon/*" ],
+      "run_at": "document_end"
+   }, {
+      "all_frames": true,
+      "js": [ "contentscript-jira-addon-share-dialog.js" ],
+      "matches": [ "*://app.hyfy.io/jira/addon/share/*" ],
+      "run_at": "document_end"
+   }, {
+      "js": [ "contentscript-share-gmail.js" ],
+      "matches": [ "*://mail.google.com/mail/u/*/?view=cm*" ],
+      "run_at": "document_end"
+   }, {
+      "js": [ "contentscript-compose-gmail.js" ],
+      "matches": [ "*://mail.google.com/mail/*" ],
+      "run_at": "document_end"
+   } ],
+   "content_security_policy": "script-src 'self' 'unsafe-eval' https://www.google-analytics.com; object-src 'self'",
+   "default_locale": "en",
+   "description": "Screen video recorder & capture. Communicate what matters.",
+   "icons": {
+      "128": "images/hyfy-circular-on_128.png",
+      "16": "images/hyfy-circular-on_16.png",
+      "48": "images/hyfy-circular-on_48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArKIhKgWFILSDnUoYotfd3Ju6rG5S5scY5m6a3g6bvB+gs5C5ivNlJm/LG/a3Ot1bKAQ4stPqce8S/FOAchJGCfNKCLEnrCjE/fQpzwMffYbncigNGIw2+yWwEde2HgO037q9bPZ0+7QGuWoJoMMPtzNTyoJLcu1gRtpGFzt0FnZpwwzbOlt+7a4b8AgysI0CgUUxwly2cNycYhuoDM9VtLRKRYjmLRrqMzQeyrIV8FSqEd7/AOp/hIjSsoQvAbGN1oziNWH3T/40Sg4TzS25ykLcAjdiGoR4ZVQSOQalPXuN/3VTYtAT8z7M68wu3W95m4QaeCIe+IksEeMMEPI9AQIDAQAB",
+   "manifest_version": 2,
+   "minimum_chrome_version": "44.0.0",
+   "name": "HYFY Screen Video Recorder",
+   "permissions": [ "storage", "tabs", "tabCapture", "desktopCapture", "activeTab", "unlimitedStorage", "system.cpu", "system.memory", "notifications", "clipboardWrite", "webRequest", "\u003Call_urls>", "identity" ],
+   "short_name": "HYFY",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "3.26.0",
+   "web_accessible_resources": [ "*.html", "**/*.html", "scripts/share_modal_inject.js", "font/*", "images/*" ]
+}

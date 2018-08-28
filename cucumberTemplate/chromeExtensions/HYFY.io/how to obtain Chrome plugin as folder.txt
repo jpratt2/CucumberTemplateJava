@@ -1,0 +1,5 @@
+The folder of the chrome plugin was obtained by following these steps:
+a) navigate to chrome://version/
+b) Find the profile location, such as C:\Users\username\AppData\Local\Google\Chrome\User Data\Default
+c) navigate to the Extensions folder within it
+d) Find the folder with a name that matches the URL name from the Chrome store: kfhkikpdmehlpkaiplafjkaicdljldcf

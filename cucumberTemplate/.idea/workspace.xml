@@ -15,72 +15,8 @@
       <file leaf-file-name="ThenStepDefinitions.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/definitions/ThenStepDefinitions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2737">
-              <caret line="161" column="5" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="a_locators.feature" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/resources/a_locators.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="c_selfTests.feature" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/c_selfTests.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="42" lean-forward="true" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BetweenScenarios.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/definitions/BetweenScenarios.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="15" column="70" selection-start-line="15" selection-start-column="70" selection-end-line="15" selection-end-column="70" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="d_alertBoxes.feature" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/d_alertBoxes.feature">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="b_forVisualInspection.feature" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/b_forVisualInspection.feature">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="Library.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/definitions/Library.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="783">
-              <caret line="96" column="55" selection-start-line="96" selection-start-column="55" selection-end-line="96" selection-end-column="55" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Locators.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/definitions/Locators.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="102">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -88,8 +24,8 @@
       <file leaf-file-name="WhenStepDefinitions.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/definitions/WhenStepDefinitions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5491">
-              <caret line="323" selection-start-line="323" selection-end-line="323" />
+            <state relative-caret-position="5304">
+              <caret line="312" column="3" selection-start-line="312" selection-start-column="3" selection-end-line="312" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -97,14 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RunTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/RunTest.java">
+      <file leaf-file-name="Locators.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/definitions/Locators.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="306">
+              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -120,13 +53,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>println</find>
-      <find>exist</find>
-      <find />
-      <find />
       <find />
       <find>browser</find>
-      <find />
       <find>elementNameLookup_Gherkin</find>
       <find>focus</find>
       <find>css</find>
@@ -136,20 +64,25 @@
       <find>visible</find>
       <find>rgb</find>
       <find>stop</find>
-      <find />
       <find>test</find>
       <find>size</find>
       <find>url</find>
       <find>current</find>
       <find>scrollIntoView</find>
-      <find />
       <find>cookie</find>
       <find>putElement</find>
-      <find>driver</find>
       <find>elementNameMap_Gherkin</find>
       <find>elementNameMap_e</find>
       <find>//\\</find>
       <find>set</find>
+      <find>tabs</find>
+      <find>driver</find>
+      <find>close</find>
+      <find>sleep</find>
+      <find>static</find>
+      <find>closeAllT</find>
+      <find>type</find>
+      <find>public</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -158,17 +91,13 @@
       <replace>Amount</replace>
       <replace>browserURLpath</replace>
       <replace>locator</replace>
-      <replace />
-      <replace />
       <replace>returnElement(elementLocator)</replace>
-      <replace />
       <replace>elementLocator</replace>
       <replace>getElement</replace>
-      <replace />
-      <replace />
       <replace>set</replace>
       <replace>locatorNameMap_Gherkin</replace>
       <replace>locatorNameMap_e</replace>
+      <replace>public static</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\Users\labuser\Desktop\cucumberTemplate\src</dir>
@@ -178,11 +107,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/GoogleSearchStepDefinitions.java" />
-        <option value="$PROJECT_DIR$/src/test/java/WhenStepDefinitions.java" />
-        <option value="$PROJECT_DIR$/src/test/java/stepDefinitions/ThenStepDefinitions.java" />
-        <option value="$PROJECT_DIR$/src/test/resources/demos/google-text-search.feature" />
-        <option value="$PROJECT_DIR$/src/test/resources/demos/google-image-search.feature" />
         <option value="$PROJECT_DIR$/src/test/resources/demos/demo.feature" />
         <option value="$PROJECT_DIR$/src/test/java/stepDefinitions/predefinedThenStepDefinitions.java" />
         <option value="$PROJECT_DIR$/src/test/java/stepDefinitions/predefinedWhenStepDefinitions.java" />
@@ -195,7 +119,7 @@
         <option value="$PROJECT_DIR$/src/test/resources/visualInspectionTests.feature" />
         <option value="$PROJECT_DIR$/src/test/resources/needsVisualInspection.feature" />
         <option value="$PROJECT_DIR$/src/test/resources/locators.feature" />
-        <option value="$PROJECT_DIR$/../../selfTests.feature" />
+        <option value="$USER_HOME$/selfTests.feature" />
         <option value="$PROJECT_DIR$/src/test/other/selfTests/selfTests.feature" />
         <option value="$PROJECT_DIR$/src/test/resources/test - Copy.feature" />
         <option value="$PROJECT_DIR$/src/test/other/selfTests/needsVisualInspection.feature" />
@@ -206,7 +130,7 @@
         <option value="$PROJECT_DIR$/src/test/resources/d_locators.feature" />
         <option value="$PROJECT_DIR$/src/test/other/selfTests/a_alertBoxes.feature" />
         <option value="$PROJECT_DIR$/src/test/other/selfTests/b_forVisualInspection.feature" />
-        <option value="$PROJECT_DIR$/../../Acrobat Regression Tests Cucumber/src/test/java/stepDefinitions/adobeLibrary.java" />
+        <option value="$USER_HOME$/Acrobat Regression Tests Cucumber/src/test/java/stepDefinitions/adobeLibrary.java" />
         <option value="$PROJECT_DIR$/src/test/java/stepDefinitions/Hooks.java" />
         <option value="$PROJECT_DIR$/src/test/java/stepDefinitions/beforeScenarios.java" />
         <option value="$PROJECT_DIR$/src/test/java/stepDefinitions/setNamesPageElements.java" />
@@ -215,7 +139,6 @@
         <option value="$PROJECT_DIR$/src/test/resources/selfTests/a_locators.feature" />
         <option value="$PROJECT_DIR$/src/test/java/stepDefinitions/setNamesToElementLocators.java" />
         <option value="$PROJECT_DIR$/src/test/java/stepDefinitions/thenStepDefinitions.java" />
-        <option value="$PROJECT_DIR$/src/test/resources/test.feature" />
         <option value="$PROJECT_DIR$/src/test/java/stepDefinitions/betweenScenarios.java" />
         <option value="$PROJECT_DIR$/src/test/java/stepDefinitions/library.java" />
         <option value="$PROJECT_DIR$/src/test/java/stepDefinitions/whenStepDefinitions.java" />
@@ -225,10 +148,16 @@
         <option value="$PROJECT_DIR$/src/test/java/stepDefinitions/WhenStepDefinitions.java" />
         <option value="$PROJECT_DIR$/src/test/java/RunTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/stepDefinitions/Locators.java" />
-        <option value="$PROJECT_DIR$/src/test/java/definitions/ThenStepDefinitions.java" />
         <option value="$PROJECT_DIR$/src/test/resources/a_locators.feature" />
-        <option value="$PROJECT_DIR$/src/test/java/definitions/Locators.java" />
         <option value="$PROJECT_DIR$/src/test/other/selfTests/c_selfTests.feature" />
+        <option value="$PROJECT_DIR$/src/test/java/definitions/Locators.java" />
+        <option value="$PROJECT_DIR$/src/test/java/definitions/Library.java" />
+        <option value="$PROJECT_DIR$/src/test/java/definitions/ThenStepDefinitions.java" />
+        <option value="$PROJECT_DIR$/src/test/java/definitions/WhenStepDefinitions.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/test.feature" />
+        <option value="$PROJECT_DIR$/src/test/java/definitions/HYFYvideo.java" />
+        <option value="$PROJECT_DIR$/src/test/java/definitions/GivenStepDefinitions.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/e_video.feature" />
       </list>
     </option>
   </component>
@@ -239,9 +168,10 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="566" />
-    <option name="width" value="1354" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="376" />
+    <option name="y" value="4" />
+    <option name="width" value="1446" />
     <option name="height" value="1025" />
   </component>
   <component name="ProjectView">
@@ -296,14 +226,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="other" type="462c0819:PsiDirectoryNode" />
-              <item name="demo-app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cucumberTemplate" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cucumberTemplate" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="other" type="462c0819:PsiDirectoryNode" />
               <item name="selfTests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -333,6 +255,7 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\labuser\Desktop\cucumberTemplate\src\test\other\selfTests" />
       <recent name="C:\Users\labuser\Desktop\GitLocal\cucumberTemplate\src\test\resources" />
       <recent name="C:\Users\labuser\Desktop\GitLocal\cucumberTemplate\src\test\other\selfTests" />
       <recent name="C:\Users\labuser\Desktop\cucumber-3\src\test\resources\demos" />
@@ -407,8 +330,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="566" y="0" width="1354" height="1025" extended-state="0" />
-    <editor active="true" />
+    <frame x="376" y="4" width="1446" height="1025" extended-state="0" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -417,37 +339,37 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2187017" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3283237" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2099567" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3283237" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2187017" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17079058" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -457,9 +379,9 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Capture Tool" order="6" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info id="Favorites" order="5" side_tool="true" />
     </layout-to-restore>
@@ -478,7 +400,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/resources/demos/demo.feature" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -533,7 +454,7 @@
     <entry file="file://$PROJECT_DIR$/src/test/resources/demos/google-image-search.feature" />
     <entry file="file://$PROJECT_DIR$/src/test/resources/demos/demo.feature" />
     <entry file="file://$PROJECT_DIR$/src/test/resources/demo.feature" />
-    <entry file="file://$PROJECT_DIR$/../SelenideDemo/test/a_GoogleTest.java" />
+    <entry file="file://$PROJECT_DIR$/../selenidedemo/test/a_GoogleTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/other/selfTests.feature" />
     <entry file="file://$PROJECT_DIR$/src/test/resources/selfTest/test.feature" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -544,45 +465,22 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/d_locators.feature" />
-    <entry file="file://$PROJECT_DIR$/../../selfTests.feature" />
+    <entry file="file://$USER_HOME$/selfTests.feature" />
     <entry file="file://$PROJECT_DIR$/src/test/resources/test - Copy.feature" />
     <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/needsVisualInspection.feature" />
     <entry file="file://$PROJECT_DIR$/src/test/resources/forVisualInspection.feature" />
     <entry file="file://$PROJECT_DIR$/src/test/resources/selfTests/forVisualInspection.feature" />
     <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/testCode.java" />
-    <entry file="file://$PROJECT_DIR$/../../Acrobat Regression Tests Cucumber/src/test/java/stepDefinitions/adobeLibrary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Acrobat Regression Tests Cucumber/src/test/java/stepDefinitions/adobeLibrary.java" />
     <entry file="file://$PROJECT_DIR$/src/test/resources/d_locators.feature" />
     <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/a_alertBoxes.feature" />
-    <entry file="file://$PROJECT_DIR$/../../GitPublic/cucumberTemplate/src/test/java/runTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/GitPublic/cucumberTemplate/src/test/java/runTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/Hooks.java" />
     <entry file="file://$PROJECT_DIR$/src/test/resources/selfTests/c_selfTests.feature" />
     <entry file="file://$PROJECT_DIR$/src/test/resources/selfTests/a_locators.feature" />
     <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/setNamesToElementLocators.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/stepDefinitions/test.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/resources/test.feature" />
     <entry file="file://$PROJECT_DIR$/src/test/resources/a_locators_demo.feature" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/definitions/WhenStepDefinitions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5491">
-          <caret line="323" selection-start-line="323" selection-end-line="323" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/RunTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -593,23 +491,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/definitions/Library.java">
+    <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/c_selfTests.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="96" column="55" selection-start-line="96" selection-start-column="55" selection-end-line="96" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/definitions/ThenStepDefinitions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2737">
-          <caret line="161" column="5" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="425">
+          <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -623,30 +508,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/d_alertBoxes.feature">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/b_forVisualInspection.feature">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/definitions/Locators.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/definitions/Library.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="323">
+          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#843#851#0" expanded="true" />
+            <element signature="e#2526#2542#0" expanded="true" />
+            <element signature="e#2619#2635#0" expanded="true" />
+            <element signature="e#9080#9081#0" expanded="true" />
+            <element signature="e#9115#9116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/a_locators.feature">
+    <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/a_locators.feature">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/definitions/ThenStepDefinitions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/a_locators.feature">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/other/selfTests/c_selfTests.feature">
+    <entry file="file://$PROJECT_DIR$/src/test/resources/e_video.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="42" lean-forward="true" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/definitions/HYFYvideo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/definitions/GivenStepDefinitions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/definitions/WhenStepDefinitions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5304">
+          <caret line="312" column="3" selection-start-line="312" selection-start-column="3" selection-end-line="312" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/definitions/Locators.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
         </state>
       </provider>
     </entry>

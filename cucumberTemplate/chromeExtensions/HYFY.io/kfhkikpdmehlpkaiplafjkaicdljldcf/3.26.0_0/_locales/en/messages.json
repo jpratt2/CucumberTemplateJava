@@ -1,0 +1,10 @@
+{
+   "appDescription": {
+      "description": "The description of the application",
+      "message": "A platform for you to tell a story of your work through a video within seconds, and share it instantly with the rest of your team."
+   },
+   "appName": {
+      "description": "The name of the application",
+      "message": "HYFY"
+   }
+}

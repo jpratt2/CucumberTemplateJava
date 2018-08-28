@@ -77,7 +77,7 @@ public class Library {
             name = names[i];
             nameStr = name.toString();
             nameStr = StringUtils.substringAfterLast(nameStr, ".");
-            name.setAccessible(true);//in case the variable is not declared "public"
+            name.setAccessible(true);//in case the variable is not declared "public static"
             try {
                 Object value = name.get(locatorNamesObj);
                 locatorNameMap_e.put(nameStr,value);
@@ -85,7 +85,7 @@ public class Library {
                 System.out.println("***IllegalAccessException***"+ ex);
             }
         }
-        //sources: http://www.avajava.com/tutorials/lessons/how-do-i-list-the-public-fields-of-a-class.html & https://stackoverflow.com/a/14114122
+        //sources: http://www.avajava.com/tutorials/lessons/how-do-i-list-the-public static-fields-of-a-class.html & https://stackoverflow.com/a/14114122
     }
 
     public static SelenideElement getElement(String elementLocator) {
@@ -298,4 +298,9 @@ public class Library {
         }
     }
 
+    public static void selectTab(Integer tabIndex){
+        WebDriver driver = getWebDriver();
+        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(tabIndex));
+    }
 }
