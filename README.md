@@ -186,7 +186,7 @@ Default settings such as browser and base URL are set in the src/test/java/RunTe
 
 ----
 
-To record tests on video, the HYFY.io plugin is used.
+To record tests on video, the HYFY.io plugin is used in Chrome.
 More information is available at http://hyfy.io/automate
 
 ----
