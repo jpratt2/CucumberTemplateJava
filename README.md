@@ -174,7 +174,6 @@ Given statements
     I launch Chrome to record video
     I start recording video
     I stop recording video
-    I close the browser    
 
 # Miscellaneous
 
@@ -187,7 +186,18 @@ Default settings such as browser and base URL are set in the src/test/java/RunTe
 ----
 
 To record tests on video, the HYFY.io plugin is used in Chrome.
-More information is available at http://hyfy.io/automate
+This Given statement is designed to be the first statement of the test:
+
+    I launch Chrome to record video
+    
+These statements then can be used:
+
+    I start recording video
+    I stop recording video
+    
+The HYFYvideo class has an upload time-limit setting with a default value of 15 seconds.  
+
+More details are available at http://hyfy.io/automate
 
 ----
 For these steps
