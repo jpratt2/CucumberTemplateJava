@@ -2,7 +2,7 @@
 	
 This Cucumber template is designed for use with Java, Maven, IntelliJ, and the Gherkin plugin for IntelliJ (https://plugins.jetbrains.com/plugin/9164-gherkin). It has over 50 predefined statements so you can immediately start writing tests. 
 
-The template uses the benefits of the Selenide framework to solve some of the problems in Selenium including (1) automatic waits, (2) additional locator options, and (3) browser drivers.
+The template uses the benefits of the Selenide framework to solve some of the problems in Selenium including (1) automatic waits, (2) additional locator options, and (3) browser drivers. It also offers the ability of recording video of the test using the HYFY.io plugin for Chrome.
 
 # Locators
 Four options are available for locators in the Gherkin syntax:
@@ -89,7 +89,7 @@ A Gherkin statement will then recognize main button.
     And I highlight the element main button
 
 # Predefined Statements
-There are 2 categories of statements. When statements are for setting up the test. Then statements are for assertions. (However, this is for readability only; Cucumber doesn't distinguish between them.)
+There are 3 main categories of statements. When statements are for setting up the test. Then statements are for assertions. Given statements prepare the test environment. (However, this is for readability only; Cucumber doesn't distinguish between them.)
 
 When statements
 
@@ -117,6 +117,7 @@ When statements
     I drag element (.*) to element (.*)
     I submit the form (.*)
     I type the keys (.*) in element (.*)
+    I press Enter in element (.*)
     I hold down the (control|shift|alt|command) key and type the key (.*) in element (.*)
     I (accept|dismiss) the (alertbox|confirmbox|prompt)
     I enter the text (.*) into the prompt
@@ -136,7 +137,6 @@ When statements
     I select option # (\\d+) in the dropdown element (.*)
     I select the option with the text (.*) in the dropdown element (.*)
     I refresh the page
-    I give the name (.*) to the locator (.*)
     I test some code
     I stop the test
     I highlight the element (.*)
@@ -168,6 +168,14 @@ Then statements
     the (alertbox|confirmbox|prompt) should( not)* be opened
     the (alertbox|confirmbox|prompt) should( not)* contain the text (.*)
     
+Given statements
+
+    I give the name (.*) to the locator (.*)
+    I launch Chrome to record video
+    I start recording video
+    I stop recording video
+    I close the browser    
+
 # Miscellaneous
 
 This project is adapted from the Cucumber boilerplate from Christian Bromann for webdriver.io at https://github.com/webdriverio/cucumber-boilerplate
@@ -175,6 +183,11 @@ This project is adapted from the Cucumber boilerplate from Christian Bromann for
 ----
 
 Default settings such as browser and base URL are set in the src/test/java/RunTest.java file.
+
+----
+
+To record tests on video, the HYFY.io plugin is used.
+More information is available at http://hyfy.io/automate
 
 ----
 For these steps
