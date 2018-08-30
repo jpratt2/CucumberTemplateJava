@@ -7,7 +7,7 @@ The template uses the benefits of the Selenide framework to solve some of the pr
 # Locators
 Four options are available for locators in the Gherkin syntax:
 
-a) Named locators declared in Locators.java or in the Gherkin syntax, see below. 
+a) Selenide locators declared in Locators.java. 
 
 b) By. selenium locators.
 
@@ -37,8 +37,6 @@ d) jQuery locators
 Note the [0] at the end for the index value because jQuery returns a collection of elements. Also note that single quotes are used.
 The automatic wait occurs only for By selectors and CSS selectors, but not for jQuery selectors.
 
-Selenide locators may be coded in the Locators class.
-
 To get an element that isn't first, it is possible to put a By locator or a cssSelector within single quotes and follow it by a number to obtain the element with that INDEX value.
 
     And I click 'By.tagname("button")'3
@@ -48,7 +46,7 @@ It is not necessary to use quotation marks to denote strings in these Gherkin st
 
 See src/test/resources/a_locators.feature for a working example. Additional tests are in src/other/selfTest.
 
-# Selenide locators in Java code
+# Selenide locators in Java 
 
 Selenide offers the ability to chain locator code. For example:  
 
@@ -67,7 +65,7 @@ http://selenide.org/documentation.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/elements-collection.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/selectors.html
   
-# Named Locators
+# Declared Locators
 
 You can declare public static variables in the Locators class for Selenide locators. Superior to page objects, named locators can be used across multiple pages. (In Selenide, the actual web element isn't obtained until an action is performed on the locator, such as a click().)
 
