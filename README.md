@@ -32,9 +32,9 @@ c) CSS selectors
     
 d) jQuery locators
     
-    And I click $('#btnMakeVisible')[0]
+    And I click $('#btnMakeVisible')[0]      
     
-Note the [0] at the end for the index value because jQuery returns a collection of elements.
+Note the [0] at the end for the index value because jQuery returns a collection of elements. Also note that single quotes are used.
 
 The automatic wait occurs only for By selectors and CSS selectors, but not for jQuery selectors.
 
@@ -70,7 +70,7 @@ https://selenide.gitbooks.io/user-guide/content/en/selenide-api/selectors.html
 
 You can declare public static variables in the Locators class for Selenide locators. Superior to page objects, named locators can be used across multiple pages. (In Selenide, the actual web element isn't obtained until an action is performed on the locator, such as a click().)
 
-    public static mainButton = $("#divMain").$("button") )
+    public static mainButton = $("#divMain").$("button") 
  
 Then, in your Gherkin statements, you can refer to this variable name.
 
@@ -302,3 +302,6 @@ Cucumber tutorial: https://github.com/machzqcq/cucumber-jvm-template.
 If you want to use a jQuery locator in your java code, you can use it in getElement() as a string. Any of the Gherkin string locators can be passed in this way:
 
     SelenideElement element = getElement("$('btnMakeVisible')[0]");
+    
+
+
