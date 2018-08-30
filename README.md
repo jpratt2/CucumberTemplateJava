@@ -48,7 +48,7 @@ It is not necessary to use quotation marks to denote strings in these Gherkin st
 
 See src/test/resources/a_locators.feature for a working example. Additional tests are in src/other/selfTest.
 
-# Selenide locators
+# Selenide locators in Java code
 
 Selenide offers the ability to chain locator code. For example:  
 
