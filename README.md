@@ -36,6 +36,8 @@ d) jQuery locators
     
 Note the [0] at the end for the index value because jQuery returns a collection of elements. Also note that single quotes are used.
 
+Selenide locator code is not allowed in a Gherkin statement, but it may be coded in the Locators class.
+
 The automatic wait occurs only for By selectors and CSS selectors, but not for jQuery selectors.
 
 To get an element that isn't first, it is possible to put a By locator or a cssSelector within single quotes and follow it by a number to obtain the element with that INDEX value.
