@@ -62,6 +62,7 @@ Two $$ will return a collection of elements, and a single $ returns a single ele
 
 Learn more: 
 http://selenide.org/documentation.html
+https://github.com/codeborne/selenide/wiki/Selenide-vs-Selenium
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/elements-collection.html
 https://selenide.gitbooks.io/user-guide/content/en/selenide-api/selectors.html
   
